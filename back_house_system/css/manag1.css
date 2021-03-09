@@ -1,0 +1,87 @@
+*{
+    font-family: 'Mitr', sans-serif;
+}
+#bg_dash{
+    background-color: #ebebeb;
+}
+#bg_hd_card_m1{
+    background-color: #156e0d;
+    color: white;
+}
+
+#bg_hd_card_m2{
+    background-color: rgb(68, 135, 211);
+    color: white;
+}
+#bg_hd_card_m3{
+    background-color: rgb(134, 77, 3);
+    color: white;
+}
+
+#bg_hd_table_m{
+    background-color: #e4eee3;
+
+}
+
+#ul_m{
+    margin-top: 20px;
+    padding: 0px;
+}
+
+#ul_m li{
+    
+    list-style: none;
+    margin-top: 10px;
+
+}
+#ul_m a{
+    text-decoration: none;
+
+    
+}
+#ul_m a:hover {
+    color: rgb(143, 209, 100);
+    transition: 0.5s;
+}
+
+#ul_m #m_m1{
+    color: rgb(143, 209, 100);
+}
+#ul_m #m_m2{
+    color: rgb(68, 135, 211);
+}
+#ul_m #m_m3{
+    color: rgb(134, 77, 3);
+}
+#ul_m #m_m4{
+    color: rgb(250, 223, 68);
+}
+#t_m_m1{
+    color: rgb(236, 236, 236);
+}
+#t_m_m2{
+    color: rgb(236, 236, 236);
+}
+#t_m_m3{
+    color: rgb(236, 236, 236);
+}
+#t_m_m4{
+    color: rgb(236, 236, 236);
+}
+#t_m_m1:hover{
+    color: rgb(231, 187, 104);
+    transition: 0.5s;
+}
+#t_m_m2:hover{
+    color: rgb(231, 187, 104);
+    transition: 0.5s;
+}
+#t_m_m3:hover{
+    color: rgb(231, 187, 104);
+    transition: 0.5s;
+}
+#t_m_m4:hover{
+    color: rgb(231, 187, 104);
+    transition: 0.5s;
+}
+

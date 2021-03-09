@@ -1,0 +1,34 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Mitr', sans-serif;
+    
+}
+
+/*! สีกำหนดเอง ผ่าน id*/
+#bg_hder{
+
+    background-color: #fdf5e7;
+}
+
+#bg_teamSOM{
+    background-color: #ff9900;
+    
+
+    
+}
+#bg_sec{
+    background-color: #e2e0e0;
+}
+#bg_ft{
+    background-color: #ff9900;
+}
+#bg_hd_card_m{
+    background-color: #156e0d;
+    color: white;
+}
+#aboutScroll{
+    width: 100%;
+    overflow-x: scroll;
+}
+
