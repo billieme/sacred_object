@@ -16,11 +16,12 @@
                 $conn = mysqli_connect(DB_server, DB_user, DB_password, DB_name);
                 $this->dbcon = $conn;
                 mysqli_set_charset($this->dbcon, "utf8"); // ! Set ตัวหนังสือ เป็น UTF8
+                date_default_timezone_set("Asia/Bangkok");
 
                 if (mysqli_connect_errno()) {
                     echo"เชื่อมต่อ Database ไม่สำเร็จ!";
                 }else{
-                    // ! echo"เชื่อมต่อ Database สำเร็จแล้ว";
+                    //  !echo"เชื่อมต่อ Database สำเร็จแล้ว";
                 }
 
             }    
@@ -295,6 +296,20 @@
 
 
                 } //ปีกกาของคลาส
+
+
+                //
+                // ──────────────────────────────────────── I ──────────
+                // !  :::::: : :  :   :    :     :        :          :  Class for ร้านค้าหน้าบ้าน
+                // ──────────────────────────────────────────────────
+                //
+
+                class shopSacredObj extends DB_conn{
+                    public function runQuery($query){
+                        $reS = mysqli_query($this->dbcon, $query); 
+                        return $reS;
+                    }
+                }//ปีกกาของคลาส
     
     
 

@@ -32,3 +32,19 @@
     overflow-x: scroll;
 }
 
+#picSize{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media screen and (max-width: 764px){
+    #picSize{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
