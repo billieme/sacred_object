@@ -79,8 +79,8 @@
     </div>
     <div class="card-body bg-light">
                 
-                    <table class="table table-striped w-100 pb-3" id="myTable1">
-                <thead>
+                    <table class="min-vw-100 table table-striped pb-3" id="myTable1">
+                <thead class="min-vw-100">
                     <tr class="text-center" id="bg_hd_table_m">
                     <th scope="col">ลำดับ</th>
                     <th scope="col">รูปวัตถุมงคล</th>
@@ -90,9 +90,9 @@
                     <th scope="col">คงเหลือ</th>
                     <th scope="col">วันที่เพิ่มสินค้า</th>
                     <th scope="col">จัดการ</th>
-
                     </tr>
                 </thead>
+
                 <tbody>
 
                 <?php

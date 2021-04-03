@@ -20,7 +20,7 @@ if(!isset($_SESSION['user_level'])== "a"){
         <meta name="description" content="" />
         <meta name="author" content="" />
         <link href="css/styles.css" rel="stylesheet" />
-        <link rel="stylesheet" href="css/manag1.css" />
+        <link rel="stylesheet" href="css/manag1.css?version=<?php echo filemtime('css/manag1.css'); ?>" />
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/> <!-- font awesome5 -->
         <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300&display=swap" rel="stylesheet"><!-- font google-->

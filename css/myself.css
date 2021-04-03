@@ -32,11 +32,26 @@
     overflow-x: scroll;
 }
 
+/*
+ * ────────────────────────────────────────────────────── I ──────────
+ *   :::::: CSS FOR Shop SacredOBJ : :  :   :    :     :        :          :
+ * ────────────────────────────────────────────────────────────────
+ */
+
+
+
 #picSize{
     width: 100%;
     height: 200px;
     object-fit: cover;
     object-position: center;
+}
+#name_shop_card{
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
 }
 
 @media screen and (max-width: 764px){
@@ -47,4 +62,7 @@
         object-position: center;
     }
 }
+
+/** ──────────────────────────────────────────────────────────────────────────────── */
+
 
