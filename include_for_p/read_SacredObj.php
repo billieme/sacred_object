@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-7">
                     <div class="card w-100 p-3">
-                        <img src="image/product/<?php echo $fetchData['product_cover']; ?>" alt="">
+                        <img id="imgSacredObj" src="image/product/<?php echo $fetchData['product_cover']; ?>" alt="">
                     </div>
                 </div>
                 <div class="col-md">
@@ -52,33 +52,61 @@
                                 <input id="qty" type="number" value="1">
                                 <div for="">ชิ้น</div>
                             </div>
+
                             <div class="text-right">
+                                <?php 
+                                    if(!isset($_SESSION['id'])){
+                                ?>
+                                <button id="notSessionID" class="btn btn-success">
+                                    <i class="fas fa-cart-arrow-down"></i> เพิ่มลงตะกร้าสินค้า
+                                </button>
+                                <?php
+                                }
+                                if(isset($_SESSION['id'])){
+                                ?>
                                 <button class="btn btn-success">
                                     <i class="fas fa-cart-arrow-down"></i> เพิ่มลงตะกร้าสินค้า
                                 </button>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
-                        <p>
-                       
-            
-                        </p>
-
-
-
-
 
 
                     </div>
                 </div>
             </div>
-            <hr>
-
-
-
-
-
 
 
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!--jquery-->
+<script src="sweetalert/sweetalert2.all.min.js"></script>
+<script src="zoom"></script>
+
+<script>
+$(document).ready(function() {
+    $("#imgSacredObj").imageZoom();
+
+
+    $("#notSessionID").click(function() {
+
+        Swal.fire({
+            text: 'โปรดเข้าสู่ระบบ เพื่อเพิ่มสินค้าลงตะกร้า',
+            icon: 'warning',
+            showClass: {
+                popup: 'animate__animated animate__wobble'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__flipOutY'
+            }
+        })
+
+
+    })
+});
+</script>

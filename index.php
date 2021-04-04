@@ -27,6 +27,15 @@
     <!--bootstrap-->
 
 
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <!-- animation css Swal -->
+
+  <link rel="stylesheet" href="css/image-zoom.css">
+  <!-- Zoom Image -->
+  
 
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
@@ -211,6 +220,17 @@
                         <a class="btn btn-light mr-2 col-md font-weight-bold" href="index.php?p=aboutus"><i
                                 class="fa fa-location-arrow text-danger" aria-hidden="true"></i> เกี่ยวกับเรา</a>
                     </li>
+                    <?php 
+                                    if(!isset($_SESSION['id'])){
+                                    }
+                                    if(isset($_SESSION['id'])){
+                                        ?>
+                    <li class="nav-item mr-2">
+                        <a class="btn btn-primary mr-2 col-md font-weight-bold" href="index.php?p=basket"><i class="fas fa-shopping-basket text-warning"></i> ตะกร้าของฉัน</a>
+                    </li>
+                    <?php
+                                    }
+                                    ?>
                     <!--<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Dropdown
@@ -229,7 +249,7 @@
                 <form action="index.php?p=sacredOb" method="post" class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="ค้นหาวัตถุมงคล" aria-label="Search"
                         name="search" autocomplete="off" required>
-                    <button class="btn btn-outline-success btn-success text-light my-2 my-sm-0" type="submit">Search
+                    <button class="btn btn-outline-success btn-success text-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Search
                     </button>
                 </form>
             </div>
@@ -268,6 +288,9 @@
                     break;
                     case "readSacredObj":
                         include_once('include_for_p/read_SacredObj.php');
+                    break;
+                    case "basket":
+                        include_once('include_for_p/basket.php');
                     break;
 
 
@@ -326,6 +349,15 @@
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <!--JS Data Table-->
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+
+    <script src="js/image-zoom.min.js?version=<?php echo filemtime('js/image-zoom.min.js'); ?>"></script>
+    <!-- Zoom image -->
+    
+
+
+
+
+
     <script>
     $(document).ready(function() {
         bsCustomFileInput.init()

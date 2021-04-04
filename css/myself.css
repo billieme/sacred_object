@@ -8,7 +8,7 @@
 /*! สีกำหนดเอง ผ่าน id*/
 #bg_hder{
 
-    background-color: #fdf5e7;
+    background-color: #ffe1ae;
 }
 
 #bg_teamSOM{
@@ -30,6 +30,15 @@
 #aboutScroll{
     width: 100%;
     overflow-x: scroll;
+}
+#imgNews{
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 200px;
+}
+#divImgNews{
+    overflow: hidden;
 }
 
 /*
@@ -67,6 +76,7 @@ input[id=qty]{
     width:70px;
     margin:0px .5rem;
 }
+
 
 @media screen and (max-width: 764px){
     #picSize{

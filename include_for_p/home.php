@@ -61,8 +61,8 @@
                                 ?>
             <div class="card mb-4 max-w-100">
                 <div class="row no-gutters">
-                    <div class="col-md-3 align-self-center">
-                        <img src="image/news/<?php echo $num['news_cover']; ?>" class="card-img w-100 "
+                    <div id="divImgNews" class="col-md-3 align-self-center">
+                        <img id="imgNews" src="image/news/<?php echo $num['news_cover']; ?>" class="card-img w-100 "
                             title="รูปภาพข่าว">
                     </div>
                     <div class="col-md-8">

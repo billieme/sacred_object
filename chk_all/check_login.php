@@ -38,7 +38,7 @@
                             showConfirmButton: false,
                             timer: 2500
                             }).then(function(){ 
-                                window.location.href = '../index.php?p=home';
+                                window.history.back();
                             });
                         
                     });
