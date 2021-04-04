@@ -41,7 +41,7 @@
         <?php
         //! ส่วนหัว ////////////////
         ?>
-        
+
         <div class="container-fluid m-0" id="bg_hder">
             <div class="row p-2">
 
@@ -227,13 +227,14 @@
                 </li>-->
                 </ul>
                 <form action="index.php?p=sacredOb" method="post" class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="ค้นหาวัตถุมงคล" aria-label="Search" name="search" autocomplete="off">
+                    <input class="form-control mr-sm-2" type="text" placeholder="ค้นหาวัตถุมงคล" aria-label="Search"
+                        name="search" autocomplete="off" required>
                     <button class="btn btn-outline-success btn-success text-light my-2 my-sm-0" type="submit">Search
                     </button>
                 </form>
             </div>
         </nav>
-        
+
 
 
 
@@ -245,6 +246,7 @@
 
 
         <?php
+            if(isset($_GET['p'])){
                 switch ($_GET['p']){
                     case "home":
                         include_once('include_for_p/home.php');
@@ -264,6 +266,9 @@
                     case "sacredOb":
                         include_once('include_for_p/sacred_object.php');
                     break;
+                    case "readSacredObj":
+                        include_once('include_for_p/read_SacredObj.php');
+                    break;
 
 
 
@@ -272,6 +277,14 @@
                         include_once('include_for_p/home.php');
                     break;
                 }
+
+            }else if(!isset($_GET['p'])){
+                ?>
+                    <script>
+                        window.location.href='index.php?p=home';
+                    </script>
+                <?php
+            }
         
         ?>
 

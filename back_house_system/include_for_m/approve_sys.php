@@ -68,7 +68,7 @@
     </div>
     <div class="card-body bg-light">
                 
-                    <table class="table table-striped w-100 pl-0 pr-0 pb-3 pt-0" id="myTable">
+                <table class="min-vw-100 table table-striped pl-0 pr-0 pb-3 pt-0" id="myTable">
                 <thead>
                     <tr id="bg_hd_table_m">
                     <th scope="col">ลำดับ</th>

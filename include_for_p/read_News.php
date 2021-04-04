@@ -30,7 +30,7 @@
                         <hr>
                         <div >
                             <h4 class = "mb-2"><b> รายละเอียดข่าว : </b></h4>
-                            <p align="justify"><?php echo $num['news_description']; ?></p>
+                            <p id="detailSacredObj"><?php echo $num['news_description']; ?></p>
                         </div>
 
                     </div>

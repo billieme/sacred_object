@@ -30,7 +30,7 @@
                                 while($fetchSeach = mysqli_fetch_array($sqlSearch)){
                                     ?>
                 <div class="card col-md-3 m-2 p-3">
-                    <a class="card" href="#">
+                    <a class="card" href="index.php?p=readSacredObj&id4readSacredObj=<?php echo $fetchSeach['id_product']; ?>">
                         <img id="picSize" src="image/product/<?php echo $fetchSeach['product_cover']; ?>"
                             title="คลิกเพื่อดูรายละเอียดวัตถุมงคล">
                     </a>
@@ -59,6 +59,7 @@
                             echo"Can't Search data";
                         }
 
+/* -------------------------------------------------------------------------- */
 
                     }else{
                         ?>
@@ -68,7 +69,7 @@
                         while( $fetchArray = mysqli_fetch_array($sql)){
                             ?>
                 <div class="card col-md-3 m-2 p-3">
-                    <a class="card" href="#">
+                    <a class="card" href="index.php?p=readSacredObj&id4readSacredObj=<?php echo $fetchArray['id_product']; ?>">
                         <img id="picSize" src="image/product/<?php echo $fetchArray['product_cover']; ?>"
                             title="คลิกเพื่อดูรายละเอียดวัตถุมงคล">
                     </a>

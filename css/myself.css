@@ -53,6 +53,19 @@
     text-overflow: ellipsis;
     
 }
+#detailSacredObj{
+    word-break:break-all;
+}
+input[id=qty]::-webkit-inner-spin-button, 
+input[id=qty]::-webkit-outer-spin-button {  
+   opacity: 1;
+
+}
+input[id=qty]{
+    text-align:right;
+    width:70px;
+    margin:0px .5rem;
+}
 
 @media screen and (max-width: 764px){
     #picSize{
@@ -62,6 +75,9 @@
         object-position: center;
     }
 }
+
+
+
 
 /** ──────────────────────────────────────────────────────────────────────────────── */
 
