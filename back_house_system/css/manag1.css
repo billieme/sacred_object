@@ -56,18 +56,9 @@
 #ul_m #m_m4{
     color: rgb(250, 223, 68);
 }
-#t_m_m1{
-    color: rgb(236, 236, 236);
-}
-#t_m_m2{
-    color: rgb(236, 236, 236);
-}
-#t_m_m3{
-    color: rgb(236, 236, 236);
-}
-#t_m_m4{
-    color: rgb(236, 236, 236);
-}
+
+
+
 #t_m_m1:hover{
     color: rgb(231, 187, 104);
     transition: 0.5s;
@@ -83,5 +74,8 @@
 #t_m_m4:hover{
     color: rgb(231, 187, 104);
     transition: 0.5s;
+}
+.hoverMenuManager{
+    color: rgb(231, 187, 104);
 }
 

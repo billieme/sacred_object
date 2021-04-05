@@ -70,7 +70,7 @@ if(!isset($_SESSION['user_level'])== "a"){
                                             <i class="fas fa-address-book" id="m_m1"></i> 
                                         </div>
                                         <div class="col">
-                                            <p class=" mb-0" id="t_m_m1">อนุมัติรายชื่อผู้สมัครสมาชิก</p> 
+                                            <p class="mb-0" id="t_m_m1">อนุมัติรายชื่อผู้สมัครสมาชิก</p> 
                                         </div>
                                         
                                     
@@ -183,7 +183,39 @@ if(!isset($_SESSION['user_level'])== "a"){
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
         <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script> <!-- JS Data Table -->
-        <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script> <!-- JS Data Table -->
+        <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script> 
+        <!-- JS Data Table -->
+
+
+        <script>
+            $(document).ready(function(){
+               <?php
+                    if($_GET['m'] =="m1"){
+                        ?>
+                            $("#t_m_m1").addClass('hoverMenuManager');
+                        <?php
+                    }
+                    if($_GET['m'] =="m2"){
+                        ?>
+                            $("#t_m_m2").addClass('hoverMenuManager');
+                        <?php
+                    }
+                    if($_GET['m'] =="m3"){
+                        ?>
+                            $("#t_m_m3").addClass('hoverMenuManager');
+                        <?php
+                    }
+                    if($_GET['m'] =="m4"){
+                        ?>
+                            $("#t_m_m4").addClass('hoverMenuManager');
+                        <?php
+                    }
+                    
+               ?>
+
+            });
+        
+        </script>
         
         
     </body>
