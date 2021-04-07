@@ -69,7 +69,7 @@
     <div class="card-body bg-light">
                 
                 <table class="min-vw-100 table table-striped pl-0 pr-0 pb-3 pt-0" id="myTable">
-                <thead>
+                <thead class="text-center">
                     <tr id="bg_hd_table_m">
                     <th scope="col">ลำดับ</th>
                     <th scope="col">Username</th>
@@ -77,11 +77,10 @@
                     <th scope="col">Name</th>
                     <th scope="col">Lastname</th>
                     <th scope="col">E-mail</th>
-                    <th scope="col">Status</th>
                     <th scope="col">จัดการอนุมัติ</th>
                     </tr>
                 </thead>
-                <tbody class="">
+                <tbody class="text-center">
 
 
                 <?php
@@ -98,7 +97,6 @@
                     <td><?php echo $num['first_name']; ?></td>
                     <td><?php echo $num['last_name']; ?></td>
                     <td><?php echo $num['email']; ?></td>
-                    <td class=""><?php echo $num['register_status']; ?></td>
                     <td class="text-center">
                         <?php
                             if($num['register_status'] == "wait"){
