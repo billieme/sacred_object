@@ -1,3 +1,25 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script><!--jquery-->
+<script src="sweetalert/sweetalert2.all.min.js"></script>
+
+<?php
+    if(isset($_GET['alert'])=="noqty"){
+        ?>
+            <script>
+                    $(document).ready(function(){
+                        
+                            Swal.fire({
+                            icon: 'success',
+                            title: 'จำนวนชิ้นต้องไม่ต่ำกว่า 1 ชิ้น',
+                            showConfirmButton: false,
+                            timer: 2500
+                            });
+                        
+                    });
+            </script>
+        <?php
+    }
+?>
+
 <div class="container mt-4 mb-4">
     <div class="card min-vh-100">
         <div class="card-body">
@@ -46,11 +68,16 @@
                             <p id="detailSacredObj"><?php echo $fetchData['product_des'];?></p>
                         </div>
 
+                        <form action="index.php?p=basket" method="post">
+                                <!-- //! Form -->
+
                         <div class="d-flex d-inline justify-content-between align-items-center">
+                        
                             <div class="d-flex">
-                                <div class="">จำนวน</div>
-                                <input id="qty" type="number" value="1">
-                                <div for="">ชิ้น</div>
+
+                                    <div class="">จำนวน</div>
+                                    <input id="qty" type="number" name="data4basket[qty]" value="1">
+                                    <div for="">ชิ้น</div>
                             </div>
 
                             <div class="text-right">
@@ -64,9 +91,14 @@
                                 }
                                 if(isset($_SESSION['id'])){
                                 ?>
-                                <button class="btn btn-success">
+
+                                <input name="data4basket[id]" value="<?php echo$id4readSacredObj;?>" hidden></input>
+
+                                <button class="btn btn-success" type="submit">
                                     <i class="fas fa-cart-arrow-down"></i> เพิ่มลงตะกร้าสินค้า
                                 </button>
+
+                                </form>
                                 <?php
                                 }
                                 ?>

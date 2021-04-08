@@ -21,7 +21,7 @@
                 if (mysqli_connect_errno()) {
                     echo"เชื่อมต่อ Database ไม่สำเร็จ!";
                 }else{
-                    //  !echo"เชื่อมต่อ Database สำเร็จแล้ว";
+                    //echo"เชื่อมต่อ Database สำเร็จแล้ว";
                 }
 
             }    

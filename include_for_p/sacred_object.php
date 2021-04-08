@@ -27,8 +27,18 @@
                             if($row < 1){
                                 echo"ไม่พบวัตถุมงคล ' $SearchSObj ' ที่ท่านค้นหา";
                             }else{
+                            ?>
+                            <div class=" pl-5 pr-5 col-md-12 alert alert-primary">
+                                <text class="font-weight-bold">ผลการค้นหา : </text><text class="text-secondary"><?php echo $SearchSObj;?></text>
+                            
+                            </div>
+                            <?php
                                 while($fetchSeach = mysqli_fetch_array($sqlSearch)){
                                     ?>
+
+                                    
+
+
                 <div class="card col-md-3 m-2 p-3">
                     <a class="card" href="index.php?p=readSacredObj&id4readSacredObj=<?php echo $fetchSeach['id_product']; ?>">
                         <img id="picSize" src="image/product/<?php echo $fetchSeach['product_cover']; ?>"
