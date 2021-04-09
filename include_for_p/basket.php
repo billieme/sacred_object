@@ -12,23 +12,13 @@
 
             <?php
 
-                                        $forBasket = new shopSacredObj();
-                                        
+                                        $id_user = $_SESSION['id'];
 
-                                        if(isset($_POST['data4basket'])){
-                                            
-                                                        
-                                                        $qty = $_POST['data4basket']['qty'];
-                                                        $id = $_POST['data4basket']['id'];
-                                                        $sql = $forBasket->runQuery("SELECT * FROM product WHERE id_product='$id' ");
+                                        $forBasket = new shopSacredObj();
+
+                                                        $sql = $forBasket->runQuery("SELECT * FROM basket WHERE id_user='$id_user'");
                                                         if($sql){
-                                                            if($qty <= 0 ){
-                                                                ?>
-            <script>
-            window.location.href = 'index.php?p=readSacredObj&id4readSacredObj=<?php echo $id ?>&alert=noqty';
-            </script>
-            <?php
-                                                            }else{
+          
                                                                 ?>
             <table class="table table-striped">
                 <thead class="alert alert-primary font-weight-bold">
@@ -56,35 +46,40 @@
                         </th>
                     </tr>
                 </thead>
+
                 <tbody>
-                        <?php
-                                $numFetch1=1;
-                                while($fetch1 = mysqli_fetch_array($sql)){
-                        ?>
-                    <tr>
-                        <td>
-                            <input type="checkbox" name="id4d[]" value="<?php echo $fetch1['id_product'];?>">
-                        </td>
-                        <td>
-                        <?php echo $fetch1['product_name'];?>
-                        </td>
-                        <td>
-                        <?php echo $numFetch1; ?>
-                        </td>
-                    </tr>
-                    <?php
-                            $numFetch1++;
+                            <?php
+                                $i4Fetch = 1;
+                                $num = mysqli_num_rows($sql);
+
+                                if($num > 0){
+                                            while($numfetch = mysqli_fetch_array($sql)){
+                                        ?>
+                                    <tr>
+                                        <td>
+                                            <?php echo $i4Fetch; ?>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                        $i4Fetch++;
+                                            }
+                                }else{
+                                    ?>
+                                        <tr class="text-center">
+                                            <td colspan="7" class="font-weight-bold text-danger">sdg</td>
+                                        </tr>
+                                    <?php
                                 }
-                    ?>
+                                ?>
                 </tbody>
 
             </table>
             <?php
-                                                            }
+                                                            
                                                         }else{
                                                             echo"Can't SQL";
                                                         }
-                                    }
+                                    
             ?>
         </div>
     </div>
