@@ -68,7 +68,7 @@
                             <p id="detailSacredObj"><?php echo $fetchData['product_des'];?></p>
                         </div>
 
-                        <form action="index.php?p=basket" method="post">
+                        <form action="index.php?p=chk_basket" method="post">
                                 <!-- //! Form -->
 
                         <div class="d-flex d-inline justify-content-between align-items-center">

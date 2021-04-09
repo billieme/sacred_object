@@ -292,8 +292,8 @@
                     case "basket":
                         include_once('include_for_p/basket.php');
                     break;
-                    case "test":
-                        include_once('test.php');
+                    case "chk_basket":
+                        include_once('chk_all/chk_basket.php');
                     break;
 
 
