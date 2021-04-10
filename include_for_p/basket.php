@@ -2,6 +2,16 @@
 <!--jquery-->
 <script src="sweetalert/sweetalert2.all.min.js"></script>
 
+<?php
+    if(!isset($_SESSION['id'])){
+        ?>
+<script>
+window.location.href = 'index.php';
+</script>
+<?php
+    }
+?>
+
 <div class="container mt-4 mb-4">
     <div class="card min-vh-100">
         <div class="card-header text-center">
@@ -27,9 +37,6 @@
                             <input type="checkbox" id="checkAll">
                         </th>
                         <th scope="col">
-                            #
-                        </th>
-                        <th scope="col">
                             ภาพตัวอย่าง
                         </th>
                         <th scope="col">
@@ -48,27 +55,35 @@
                 </thead>
 
                 <tbody>
-                            <?php
+                    <?php
                                 $i4Fetch = 1;
                                 $num = mysqli_num_rows($sql);
 
                                 if($num > 0){
                                             while($numfetch = mysqli_fetch_array($sql)){
                                         ?>
-                                    <tr>
-                                        <td>
-                                            <?php echo $i4Fetch; ?>
-                                        </td>
-                                    </tr>
-                                    <?php
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="id4del[]">
+                        </td>
+                        <td>
+
+                            <img id="img4basket" src="image/product/<?php echo $numfetch['cover_basket']; ?>" alt="">
+
+                        </td>
+                        <td>
+                            <?php echo $numfetch['b_product_name'] ;?>
+                        </td>
+                    </tr>
+                    <?php
                                         $i4Fetch++;
                                             }
                                 }else{
                                     ?>
-                                        <tr class="text-center">
-                                            <td colspan="7" class="font-weight-bold text-danger">sdg</td>
-                                        </tr>
-                                    <?php
+                    <tr class="text-center">
+                        <td colspan="7" class="font-weight-bold text-danger">sdg</td>
+                    </tr>
+                    <?php
                                 }
                                 ?>
                 </tbody>

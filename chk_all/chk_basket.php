@@ -7,7 +7,7 @@
                 $forBasket = new shopSacredObj();
                                                         
 
-                if(isset($_POST['data4basket'])){
+                if(isset($_POST['submit'])){
                     
                                 
                                 $qty = $_POST['data4basket']['qty'];
@@ -17,7 +17,7 @@
                                     if($qty <= 0 ){
                                         ?>
                 <script>
-                window.location.href = 'index.php?p=readSacredObj&id4readSacredObj=<?php echo $id ?>&alert=noqty';
+                window.location.href = '../index.php?p=readSacredObj&id4readSacredObj=<?php echo $id ?>&alert=noqty';
                 </script>
 
                 <?php
@@ -62,7 +62,7 @@
                                                             showConfirmButton: false,
                                                             timer: 2500
                                                             }).then(function(){ 
-                                                                window.history.back();
+                                                                window.location.href='../index.php?p=readSacredObj&id4readSacredObj=<?php echo $id_product; ?>&basketSuccess=ok';
                                                             });
                     
                                                          });
@@ -82,7 +82,7 @@
                     //! check if don't have data4basket
                     ?>
                         <script>
-                            window.location.href='index.php';
+                            window.history.back();
                         </script>
                     <?php
                 }

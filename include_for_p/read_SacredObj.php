@@ -8,7 +8,7 @@
                     $(document).ready(function(){
                         
                             Swal.fire({
-                            icon: 'success',
+                            icon: 'error',
                             title: 'จำนวนชิ้นต้องไม่ต่ำกว่า 1 ชิ้น',
                             showConfirmButton: false,
                             timer: 2500
@@ -84,9 +84,9 @@
                                 <?php 
                                     if(!isset($_SESSION['id'])){
                                 ?>
-                                <button id="notSessionID" class="btn btn-success">
+                                <text id="notSessionID" class="btn btn-danger">
                                     <i class="fas fa-cart-arrow-down"></i> เพิ่มลงตะกร้าสินค้า
-                                </button>
+                                </text>
                                 <?php
                                 }
                                 if(isset($_SESSION['id'])){
@@ -94,7 +94,7 @@
 
                                 <input name="data4basket[id]" value="<?php echo$id4readSacredObj;?>" hidden></input>
 
-                                <button class="btn btn-success" type="submit">
+                                <button class="btn btn-success" type="submit" name="submit">
                                     <i class="fas fa-cart-arrow-down"></i> เพิ่มลงตะกร้าสินค้า
                                 </button>
 

@@ -1,7 +1,7 @@
 *{
     margin: 0px;
     padding: 0px;
-    font-family: 'Mitr', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     
 }
 
@@ -75,6 +75,12 @@ input[id=qty]{
     text-align:right;
     width:70px;
     margin:0px .5rem;
+}
+#img4basket{
+    width: 30px;
+    height: 30px ;
+    object-fit: cover;
+    object-position: center;
 }
 
 
