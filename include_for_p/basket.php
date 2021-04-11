@@ -30,11 +30,16 @@ window.location.href = 'index.php';
                                                         if($sql){
           
                                                                 ?>
-            <table class="table table-striped">
+            <div id="table4overflowX">
+                <form action="chk_all/chk_del_basket.php" method="post">
+                                        <div id="delBasket" class="alert alert-danger" hidden>
+                                            <button class="btn btn-danger">ล้างตะกร้าสินค้า</button>
+                                        </div>
+            <table class="table table-striped w-100" >
                 <thead class="alert alert-primary font-weight-bold">
                     <tr>
                         <th scope="col">
-                            <input type="checkbox" id="checkAll">
+                          <label for="checkAll"><input type="checkbox" id="checkAll"> All </label>
                         </th>
                         <th scope="col">
                             ภาพตัวอย่าง
@@ -49,7 +54,7 @@ window.location.href = 'index.php';
                             จำนวน
                         </th>
                         <th scope="col">
-                            ราคา
+                            ราคา/บาท
                         </th>
                     </tr>
                 </thead>
@@ -64,7 +69,7 @@ window.location.href = 'index.php';
                                         ?>
                     <tr>
                         <td>
-                            <input type="checkbox" name="id4del[]">
+                            <input class="checkboxId4del" type="checkbox" name="id4del[]" value="<?php echo $numfetch['id_basket']; ?>">
                         </td>
                         <td>
 
@@ -74,6 +79,15 @@ window.location.href = 'index.php';
                         <td>
                             <?php echo $numfetch['b_product_name'] ;?>
                         </td>
+                        <td>
+                            <?php echo number_format($numfetch['b_product_price']) ;?>
+                        </td>
+                        <td>
+                            <?php echo $numfetch['b_product_qty'] ;?>
+                        </td>
+                        <td>
+                            <?php echo number_format($numfetch['b_price']) ;?>
+                        </td>
                     </tr>
                     <?php
                                         $i4Fetch++;
@@ -81,7 +95,9 @@ window.location.href = 'index.php';
                                 }else{
                                     ?>
                     <tr class="text-center">
-                        <td colspan="7" class="font-weight-bold text-danger">sdg</td>
+                        <td colspan="7" class="font-weight-bold text-danger">
+                                    <div class="alert alert-danger">ไม่มีสินค้าในตะกร้าของท่าน</div>
+                        </td>
                     </tr>
                     <?php
                                 }
@@ -89,6 +105,11 @@ window.location.href = 'index.php';
                 </tbody>
 
             </table>
+
+            </form>
+
+
+            </div>
             <?php
                                                             
                                                         }else{
@@ -99,3 +120,48 @@ window.location.href = 'index.php';
         </div>
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function(){
+       $("#checkAll").on('click', function(){
+           if(this.checked){
+               $(".checkboxId4del").each(function(){
+                    $(this).prop('checked', true);
+                })
+                
+                $("#delBasket").prop('hidden', false)
+                $("#delBasket").addClass('animate__animated animate__bounceIn')
+
+                
+            }else{
+                $(".checkboxId4del").each(function(){
+                    $(this).prop('checked', false);
+                })
+                $("#delBasket").removeClass('animate__animated animate__bounceIn')  
+                $("#delBasket").prop('hidden', true)  
+           }
+       })
+       $(".checkboxId4del").on('click', function(){
+           if(this.checked){
+                $("#delBasket").prop('hidden', false)
+                $("#delBasket").addClass('animate__animated animate__bounceIn')
+           }
+           $(this).each(function(){
+               if($(".checkboxId4del:checked").length == 0){
+                $("#delBasket").removeClass('animate__animated animate__bounceIn')  
+                $("#delBasket").prop('hidden', true)  
+               }
+           })
+
+           if($(".checkboxId4del:checked").length == $(".checkboxId4del").length){
+               $("#checkAll").prop('checked', true)
+               
+           }else{
+            $("#checkAll").prop('checked', false)
+           }
+           
+       })
+    });
+
+</script>

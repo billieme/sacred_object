@@ -84,12 +84,16 @@ input[id=qty]{
 }
 
 
+
 @media screen and (max-width: 764px){
     #picSize{
         width: 100%;
         height: auto;
         object-fit: cover;
         object-position: center;
+    }
+    #table4overflowX{
+        overflow-x: scroll;
     }
 }
 
