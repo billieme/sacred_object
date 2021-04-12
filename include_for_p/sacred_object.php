@@ -25,7 +25,11 @@
                         if($sqlSearch){
                             $row = mysqli_num_rows($sqlSearch);
                             if($row < 1){
-                                echo"ไม่พบวัตถุมงคล ' $SearchSObj ' ที่ท่านค้นหา";
+                                ?>
+                                <h5 class="textbill-primary font-weight-bold">
+                                    <?php echo"ไม่พบวัตถุมงคล ' $SearchSObj ' ที่ท่านค้นหา"; ?>
+                                </h5>
+                                <?php
                             }else{
                             ?>
                             <div class=" pl-5 pr-5 col-md-12 alert alert-primary">

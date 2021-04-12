@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="bootstrap/bootstrap.css">
     <!--bootstrap-->
 
-
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -33,10 +32,13 @@
   <link rel="stylesheet" href="css/image-zoom.css">
   <!-- Zoom Image -->
   
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+  <!-- Data table -->
 
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <!--CSS Data Table-->
+    
 
 
 
@@ -82,25 +84,25 @@
                         <div class="col-sm d-flex justify-content-end">
                             <form action="chk_all/check_login.php" method="post">
                                 <div class="row d-flex justify-content-end">
-                                    <div class="col-md p-0 mb-2 mr-1">
-                                        <input type="text" class="form-control" name="username" placeholder="Username"
-                                            required="sdgsdg">
+                                    <div class="col-md p-0 mb-2 mr-2">
+                                        <input type="text" class="col-md inputbill-border" name="username" placeholder="Username"
+                                            required="sdgsdg" autocomplete="off" value="<?php if(isset($_COOKIE['saveUser'])){ echo $_COOKIE['saveUser']; } ?>">
                                     </div>
-                                    <div class="col-md p-0 mr-1">
-                                        <input type="password" class="form-control" name="password"
-                                            placeholder="Password" required>
+                                    <div class="col-md p-0 mr-2">
+                                        <input type="password" class="col-md inputbill-border" name="password"
+                                            placeholder="Password" required value="<?php if(isset($_COOKIE['savePass'])){ echo $_COOKIE['savePass']; } ?>">
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end pt-1">
-                                    <label class="textbill-primary font-weight-bold">บันทึกรหัสผ่าน <input type="checkbox" name="" id=""></label>
+                                    <label class="textbill-primary font-weight-bold">บันทึกรหัสผ่าน <input type="checkbox" id="" name="savePass" value="ok" <?php if(isset($_COOKIE['savePass'])){?> checked <?php } ?>></label>
                                 </div>
 
                                 <div class="row justify-content-end mt-2 pr-1 form-inline">
-                                    <div class="form-group">
-                                        <a class="mr-2 textbill-primary" href="index.php?p=reg">สมัครสมาชิก</a>
+                                    <div class="form-group d-flex align-items-center">
+                                        <a class="mr-2 btnbill-primary" href="index.php?p=reg">สมัครสมาชิก</a>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="form-control btn btn-warning text-light mr-1"
+                                        <button type="submit" class="btnbill-warning mr-1"
                                             name="submit">เข้าสู่ระบบ <i class="fa fa-sign-in"
                                                 aria-hidden="true"></i></button>
                                     </div>
@@ -146,40 +148,7 @@
 
                 <?php
                             }
-                            if ($_SESSION['r_s'] == "wait"){
-                                ?>
-                <div class="col-xl d-flex align-items-center justify-content-end">
-                    <div class="row">
-                        <div class="col-sm d-flex justify-content-end">
-                            <form action="chk_all/check_login.php" method="post">
-                                <div class="row form-inline ">
-                                    <div class="form-group mr-2 ">
-                                        <input type="text" class="form-control" name="username" placeholder="Username"
-                                            required="sdgsdg">
-                                    </div>
-                                    <div class="form-group mr-2 ">
-                                        <input type="password" class="form-control" name="password"
-                                            placeholder="Password" required>
-                                    </div>
-                                </div>
-
-                                <div class="row justify-content-end mt-2 pr-1 form-inline">
-                                    <div class="form-group">
-                                        <a class="mr-2 text-decoration-none" href="index.php?p=reg">สมัครสมาชิก</a>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="form-control btn btn-warning text-light mr-1"
-                                            name="submit">เข้าสู่ระบบ <i class="fa fa-sign-in"
-                                                aria-hidden="true"></i></button>
-
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <?php
-                        }
+                            
                     }
                         ?>
 
@@ -195,7 +164,6 @@
         ?>
 
         <nav class="navbar navbar-expand-lg navbar-dark" id="bg_teamSOM">
-
             <button class="navbar-toggler p-2" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -347,8 +315,10 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <!--jquery-->
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <!--JS Data Table-->
+
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <!-- js Datatable -->
+
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
 
     <script src="js/image-zoom.min.js?version=<?php echo filemtime('js/image-zoom.min.js'); ?>"></script>
@@ -364,12 +334,35 @@
         bsCustomFileInput.init()
     })
     </script>
-    <!-- function Data table-->
-    <script>
-    $(document).ready(function() {
-        $('#myTable').DataTable();
-    });
-    </script>
+    
+    
+    <!-- function Data tab le-->
+<script type="text/javascript" charset="utf-8">
+        $(document).ready( function () {
+            $('#myTable').DataTable({
+                
+                "oLanguage": {
+                    "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
+                    "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
+                    "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
+                    "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
+                    "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
+                    "sSearch": "ค้นหา :",
+                    "aaSorting" :[[0,'desc']],
+                    "oPaginate": {
+                    "sFirst":    "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext":     "ถัดไป",
+                    "sLast":     "หน้าสุดท้าย"
+                    },
+                },
+                "scrollX": true 
+                        
+            });
+        } );
+
+</script>
+
 
 </body>
 

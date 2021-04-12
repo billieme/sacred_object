@@ -58,6 +58,61 @@
 #divImgNews{
     overflow: hidden;
 }
+.inputbill-border{
+    padding: 0.3rem;
+    border:3px solid gray;
+    transition: 0.3s all ease-in-out;
+    font-weight: bold;
+    color: gray;
+}
+.inputbill-border:focus{
+    padding: 0.3rem;
+    border:5px solid gray;
+    outline: none;
+    background:none;
+    border-top: none;border-left: none;border-right: none;
+    color: gray;
+    
+}
+
+.btnbill-primary{
+    padding: 6px 12px;
+    background-color: #0d72ee;
+    color:white;
+    cursor: pointer;
+    border-color: #0d72ee;
+    border:2px solid #0d72ee;
+    border-radius: 5px;
+    transition: 0.9s all ease;
+
+}
+
+.btnbill-primary:hover{
+    text-decoration: none;
+    color: #0d72ee;
+    background-color: rgb(241, 241, 11);
+    transition-duration: 0.5s;
+    animation: ease-in-out;
+    transform: rotate(5deg);
+}
+.btnbill-warning{
+    padding: 6px 12px;
+    background-color: #fd7e14;
+    color:white;
+    cursor: pointer;
+    border-color: #fd7e14;
+    border:2px solid #fd7e14;
+    border-radius: 5px;
+    transition: 0.9s all ease;
+
+}
+.btnbill-warning:hover{
+    text-decoration: none;
+    color: #fd7e14;
+    background-color: rgb(255, 255, 0);
+    transition-duration: 0.5s;
+    transform: rotate(-5deg);
+}
 
 /*
  * ────────────────────────────────────────────────────── I ──────────

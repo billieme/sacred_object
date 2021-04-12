@@ -76,5 +76,10 @@
 .hoverMenuManager{
     color: rgb(231, 187, 104);
 }
-
+.divImageProduct img{
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    object-position: center;
+}
 

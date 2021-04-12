@@ -13,8 +13,10 @@
     }else{
         $user = $_POST['username'];
         $pasw = $_POST['password'];
+
+        $passMD5 = md5($pasw);
         
-        $res = $login_f->login_form($user, $pasw); 
+        $res = $login_f->login_form($user, $passMD5); 
         $num = mysqli_fetch_array($res);
 
 
@@ -24,8 +26,16 @@
             $_SESSION['lname'] = $num['last_name'];
             $_SESSION['user_level'] = $num['user_level'];
             $_SESSION['r_s'] = $num['register_status'];
-
             
+
+            if(isset($_POST['savePass'])){
+                setcookie("saveUser", $user, time() + (2592000 * 12), "/");
+                setcookie("savePass", $pasw, time() + (2592000 * 12), "/");
+            }elseif(!isset($_POST['savePass'])){
+                setcookie("savePass", "", time() - (2592000 * 12), "/");
+                setcookie("saveUser", "", time() - (2592000 * 12), "/");
+            }
+
             if($_SESSION['r_s'] == "pass"){
                 
                 if($_SESSION['user_level']=="p"){
@@ -107,7 +117,9 @@
                         showConfirmButton: false,
                         timer: 3500
                         }).then(function(){ 
-                            window.location.href = '../index.php?p=home';
+                            
+                            window.location.href = 'chk_logout.php?logout=wait';
+                           
                         });
                     
                 });

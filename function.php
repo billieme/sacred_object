@@ -59,6 +59,11 @@
                 header("Location: index.php");
 
             }
+            public function logout(){
+                session_start();
+                session_destroy();
+            }
+            
             //? ฟังก์ชั่น เพิ่มข่าวจากเจ้าหน้าที่
             public function inst_news($newsT, $newsS, $newsD, $newsAT, $newNF1){
                 $result = mysqli_query($this->dbcon, "INSERT INTO news(

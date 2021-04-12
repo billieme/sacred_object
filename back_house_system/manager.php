@@ -183,7 +183,9 @@ if(!isset($_SESSION['user_level'])== "a"){
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
-        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script> <!-- JS Data Table -->
+
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+         <!-- JS Data Table -->
         <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script> 
         <!-- JS Data Table -->
 

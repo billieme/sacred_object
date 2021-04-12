@@ -112,8 +112,9 @@
                     <tr class="text-center">
                     <th scope="row"><?php $num1['id_product']; echo $n;  ?></th>
                     <td>
-                        
-                        <img style="width:100px" src="../image/product/<?php echo $num1['product_cover'];?>" alt="">
+                        <div class="divImageProduct">
+                            <img src="../image/product/<?php echo $num1['product_cover'];?>" alt="">
+                        </div>
                         
                     </td>
                     <td><?php echo $num1['product_name'];?></td>
