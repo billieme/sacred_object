@@ -24,6 +24,7 @@
             $_SESSION['lname'] = $num['last_name'];
             $_SESSION['user_level'] = $num['user_level'];
             $_SESSION['r_s'] = $num['register_status'];
+
             
             if($_SESSION['r_s'] == "pass"){
                 

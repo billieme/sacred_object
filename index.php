@@ -2,7 +2,6 @@
     session_start();
     require_once('function.php');
     $connect_database = new DB_conn();
-    
 ?>
 
 
@@ -73,6 +72,7 @@
                 //! Login ////////////////<<<<<
                 ?>
                 <?php
+                    
                     if (!isset($_SESSION['id'])) {
                         
                             //! ถ้าไม่มี Session 
@@ -91,10 +91,13 @@
                                             placeholder="Password" required>
                                     </div>
                                 </div>
+                                <div class="d-flex justify-content-end pt-1">
+                                    <label class="textbill-primary font-weight-bold">บันทึกรหัสผ่าน <input type="checkbox" name="" id=""></label>
+                                </div>
 
                                 <div class="row justify-content-end mt-2 pr-1 form-inline">
                                     <div class="form-group">
-                                        <a class="mr-2 text-decoration-none" href="index.php?p=reg">สมัครสมาชิก</a>
+                                        <a class="mr-2 textbill-primary" href="index.php?p=reg">สมัครสมาชิก</a>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="form-control btn btn-warning text-light mr-1"
