@@ -38,9 +38,16 @@ window.location.href = 'index.php';
             <table class="table table-striped w-100" >
                 <thead class="alert alert-primary font-weight-bold">
                     <tr>
+                    <?php
+                    $num1 = mysqli_fetch_array($sql);
+                    if($num1 > 0){
+                    ?>
                         <th scope="col">
                           <label for="checkAll"><input type="checkbox" id="checkAll"> All </label>
                         </th>
+                    <?php
+                    }
+                    ?>
                         <th scope="col">
                             ภาพตัวอย่าง
                         </th>
