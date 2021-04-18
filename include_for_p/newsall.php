@@ -6,7 +6,7 @@
 
 
 <div class="container mt-4 mb-4">
-    <div class="card">
+    <div class="card min-vh-100">
         <div class="card-header ">
             <h3 class="text-center"><b><i class="fas fa-newspaper text-success"></i> ข่าวประชาสัมพันธ์ทั้งหมด</b></h3>
         </div>

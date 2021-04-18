@@ -44,10 +44,10 @@ window.location.href = 'index.php';
                                     ?>  
                                     
             <table class="table table-striped w-100" >
-                <thead class="alert alert-primary font-weight-bold">
+                <thead class="alert alert-primary font-weight-bold text-nowrap">
                     <tr>
                         <th scope="col">
-                          <label for="checkAll"><input type="checkbox" id="checkAll"> All </label>
+                          <label class="m-0" for="checkAll"><input type="checkbox" id="checkAll"> เลือกทั้งหมด </label>
                         </th>
                     
                         <th scope="col">
@@ -68,7 +68,7 @@ window.location.href = 'index.php';
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody class="text-nowrap">
                     <?php
                                 $i4Fetch = 1;
                                 $num = mysqli_num_rows($sql);
