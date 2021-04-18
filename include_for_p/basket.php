@@ -32,15 +32,24 @@ window.location.href = 'index.php';
                                                                 ?>
             <div id="table4overflowX">
                 <form action="chk_all/chk_del_basket.php" method="post">
+                                   <?php
+                                    $chkqty4del = mysqli_num_rows($sql);
+                                    if($chkqty4del > 0){
+                                    ?>
                                         <div id="delBasket" class="alert alert-danger" hidden>
                                             <button class="btn btn-danger">ล้างตะกร้าสินค้า</button>
                                         </div>
+                                    <?php
+                                    }
+                                    ?>  
+                                    
             <table class="table table-striped w-100" >
                 <thead class="alert alert-primary font-weight-bold">
                     <tr>
                         <th scope="col">
                           <label for="checkAll"><input type="checkbox" id="checkAll"> All </label>
                         </th>
+                    
                         <th scope="col">
                             ภาพตัวอย่าง
                         </th>
