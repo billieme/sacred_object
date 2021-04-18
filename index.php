@@ -2,8 +2,24 @@
     session_start();
     require_once('function.php');
     $connect_database = new DB_conn();
+    $chk_r_s = new shopSacredObj();
+    
+    if(isset($_SESSION['id'])) {
+        $id_ses = $_SESSION['id'];
+        $sql4chk_r_s = $chk_r_s->runQuery("SELECT * FROM user WHERE id='$id_ses' ");
+        if($sql4chk_r_s){
+            $num4chk_r_s = mysqli_fetch_array($sql4chk_r_s);
+            if($num4chk_r_s['register_status'] == "pass"){
+                    // echo"k";
+            }else{
+                header("Location: chk_all/chk_logout.php?logout=m");
+                // echo"no";
+            }
+        }else{
+            echo"ไม่สามารถเชื่อม function เช็ค User status ได้";
+        }
+    }        
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +30,8 @@
     <title><?php echo title_web; ?></title>
     <link rel="stylesheet" href="css/myself.css?version=<?php echo filemtime('css/myself.css'); ?>">
     <!--CSS หน้าแรก-->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+   
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!-- font awesome5 -->

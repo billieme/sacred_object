@@ -1,6 +1,10 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script><!--jquery-->
+<script src="../sweetalert/sweetalert2.all.min.js"></script>
+
 <?php
     require_once('../function.php');
     $logout_f = new DB_conn();
+
 
 
     if (isset($_GET['logout'])=="m") {

@@ -1,3 +1,4 @@
+
 *{
     margin: 0px;
     padding: 0px;
@@ -137,7 +138,7 @@
     
 }
 #detailSacredObj{
-    word-break:break-all;
+    word-wrap: break-word;
 }
 input[id=qty]::-webkit-inner-spin-button, 
 input[id=qty]::-webkit-outer-spin-button {  

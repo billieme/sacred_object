@@ -12,7 +12,7 @@
         </div>
         <div class="card-body pt-4">
 
-            <table id="myTable">
+            <table id="myTable" class="w-100">
                 <thead class="">
                     <tr>
                         <th></th>

@@ -61,7 +61,9 @@
             }
             public function logout(){
                 session_start();
-                session_destroy();
+                $reS = session_destroy();
+                return $reS;
+
             }
             
             //? ฟังก์ชั่น เพิ่มข่าวจากเจ้าหน้าที่
