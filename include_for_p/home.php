@@ -71,7 +71,7 @@
                                 <h4 class="card-title"><?php echo $num['news_title']; ?></h4>
                             </div>
 
-                            <div><span class="badge badge-danger text-warning d-inline">ข่าวใหม่ !</span>
+                            <div><span class="badge badge-danger text-warning d-inline">New </span>
                                 <p class="d-inline text-secondary font-weight-light" style="font-size:0.9rem;">
                                     ผู้เขียนข่าวโดย คุณ, <?php echo $num['news_author']; ?> > โพสต์เมื่อ :
                                     <?php echo $slN->thai_date_and_time(strtotime($time)); ?></p>

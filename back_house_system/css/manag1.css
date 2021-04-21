@@ -1,4 +1,7 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+*{
+    font-family: 'Roboto', sans-serif;
+}
 #bg_dash{
     background-color: #ebebeb;
 }

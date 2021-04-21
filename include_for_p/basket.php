@@ -14,7 +14,7 @@ window.location.href = 'index.php';
 
 <div class="container mt-4 mb-4">
     <div class="card min-vh-100">
-        <div class="card-header text-center">
+        <div class="card-header text-center bg-primary text-light">
             <h3 class="font-weight-bold"><i class="fas fa-shopping-basket text-warning"></i> ตะกร้าสินค้าของฉัน</h3>
         </div>
         <div class="card-body">
@@ -31,19 +31,19 @@ window.location.href = 'index.php';
           
                                                                 ?>
             <div id="table4overflowX">
-                <form action="chk_all/chk_del_basket.php" method="post">
+                <form action="chk_all/chk_save_basket.php" method="post">
                                    <?php
                                     $chkqty4del = mysqli_num_rows($sql);
                                     if($chkqty4del > 0){
                                     ?>
                                         <div id="delBasket" class="alert alert-danger" hidden>
-                                            <button class="btn btn-danger">ล้างตะกร้าสินค้า</button>
+                                            <button class="btn btn-danger">ล้างตะกร้าสินค้า 📛</button>
                                         </div>
                                     <?php
                                     }
                                     ?>  
                                     
-            <table class="table table-striped w-100" >
+            <table class="table table-striped w-100">
                 <thead class="alert alert-primary font-weight-bold text-nowrap">
                     <tr>
                         <th scope="col">
@@ -81,7 +81,7 @@ window.location.href = 'index.php';
                             <input class="checkboxId4del" type="checkbox" name="id4del[]" value="<?php echo $numfetch['id_basket']; ?>">
                         </td>
                         <td>
-
+                            <input type="text" name="id4basket[]" value="<?php echo $numfetch['id_basket'] ;?>">
                             <img id="img4basket" src="image/product/<?php echo $numfetch['cover_basket']; ?>" alt="">
 
                         </td>
@@ -105,20 +105,41 @@ window.location.href = 'index.php';
                                     ?>
                     <tr class="text-center">
                         <td colspan="7" class="font-weight-bold text-danger">
-                                    <div class="alert alert-danger">ไม่มีสินค้าในตะกร้าของท่าน</div>
+                                    <div class="alert alert-danger"> ไม่มีสินค้าในตะกร้าของท่าน ❌</div>
                         </td>
                     </tr>
                     <?php
                                 }
                                 ?>
+                    
                 </tbody>
 
             </table>
+            </div>
+                                <?php
+                                    $slectSumprice = new shopSacredObj();
+                                    $sql4slectSumprice = $slectSumprice->runQuery("SELECT SUM(b_price) FROM basket");
+                                    $fetchDT = mysqli_fetch_assoc($sql4slectSumprice);
+                                ?>
+                                <div class="text-right alert alert-primary p-2">
+                                
+                                    <h4 class="font-weight-bold m-0">💰 ราคารวมทั้งสิ้น : <text class="text-success"><?php echo number_format($fetchDT['SUM(b_price)']) ;?></text> บาท</h4>
+                                </div>
+                                
+                                <?php
+                                    $chkQtybasket = mysqli_num_rows($sql);
+                                    if($chkQtybasket > 0){
+                                ?>
+                                <div class="text-right">
+                                    <button class="btn btn-success" type="submit">สั่งสินค้า</button>
+                                </div>
+                                <?php
+                                    }
+                                    ?>
 
             </form>
 
 
-            </div>
             <?php
                                                             
                                                         }else{
