@@ -5,7 +5,23 @@
     font-family: 'Roboto', sans-serif;
     
 }
-
+::-webkit-scrollbar{
+    width: 0.5em;
+    height: 0.5em;
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb{
+    background-color: tomato;
+    border-radius: 20px;
+    -webkit-box-shadow: 10px 9px 19px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 9px 19px -11px rgba(0,0,0,0.75);
+    box-shadow: 10px 9px 19px -11px rgba(0,0,0,0.75);
+    
+}
+::-webkit-scrollbar-track{
+    background-color: rgb(214, 213, 214);
+    
+}
 /*
  * ──────────────────────────────────────────────────────── I ──────────
  *   :::::: F O R   F O N T : :  :   :    :     :        :          :

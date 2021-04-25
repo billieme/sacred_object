@@ -1,0 +1,7 @@
+{
+    "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace Bold",
+    "editor.wordWrap": "on",
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.cursorBlinking": "expand",
+    "editor.fontSize": 16
+}

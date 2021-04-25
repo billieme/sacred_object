@@ -1,4 +1,5 @@
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script><!--jquery-->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!--jquery-->
 <script src="../sweetalert/sweetalert2.all.min.js"></script>
 
 
@@ -22,8 +23,11 @@
 
         if($num > 0){
             $_SESSION['id'] = $num['id'];
+            $_SESSION['tname'] = $num['title_name'];
             $_SESSION['name'] = $num['first_name'];
             $_SESSION['lname'] = $num['last_name'];
+            $_SESSION['pnumber'] = $num['phone_number'];
+            $_SESSION['email'] = $num['email'];
             $_SESSION['user_level'] = $num['user_level'];
             $_SESSION['r_s'] = $num['register_status'];
             
@@ -40,65 +44,63 @@
                 
                 if($_SESSION['user_level']=="p"){
                     ?>
-                        <script>
-                    $(document).ready(function(){
-                        
-                            Swal.fire({
-                            icon: 'success',
-                            title: 'รหัสผ่านถูกต้อง',
-                            showConfirmButton: false,
-                            timer: 2500
-                            }).then(function(){ 
-                                window.history.back();
-                            });
-                        
-                    });
+<script>
+$(document).ready(function() {
 
+    Swal.fire({
+        icon: 'success',
+        title: 'รหัสผ่านถูกต้อง',
+        showConfirmButton: false,
+        timer: 2500
+    }).then(function() {
+        window.history.back();
+    });
 
-                </script>
+});
+</script>
 
-                <?php
+<?php
                 }
                 
                 if($_SESSION['user_level']=="a"){
                     ?>
-                    <script>
-                    $(document).ready(function(){
-                        
-                            Swal.fire({
-                            icon: 'success',
-                            title: 'รหัสผ่านถูกต้อง',
-                            text: 'ยินดีต้อนรับคุณ (เจ้าหน้าที่)',
-                            showConfirmButton: false,
-                            timer: 2500
-                            }).then(function(){ 
-                                window.location.href = '../back_house_system/manager.php?m=m1';
-                            });
-                        
-                    });
-                </script>
+<script>
+$(document).ready(function() {
 
-                <?php
+    Swal.fire({
+        icon: 'success',
+        title: 'รหัสผ่านถูกต้อง',
+        text: 'ยินดีต้อนรับคุณ (เจ้าหน้าที่)',
+        showConfirmButton: false,
+        timer: 2500
+    }).then(function() {
+        window.location.href = '../back_house_system/manager.php?m=m1';
+    });
+
+});
+</script>
+
+<?php
                 }
                 if($_SESSION['user_level']=="ma"){
                     ?>
-                    <script>
-                    $(document).ready(function(){
-                        
-                            Swal.fire({
-                            icon: 'success',
-                            title: 'รหัสผ่านถูกต้อง',
-                            text: 'ยินดีต้อนรับคุณ (ผู้บริหาร)',
-                            showConfirmButton: false,
-                            timer: 2500
-                            }).then(function(){ 
-                                window.location.href = '../back_house_system/executive.php';
-                            });
-                        
-                    });
-                </script>
+<script>
+$(document).ready(function() {
 
-                <?php
+    Swal.fire({
+        icon: 'success',
+        title: 'รหัสผ่านถูกต้อง',
+        text: 'ยินดีต้อนรับคุณ (ผู้บริหาร)',
+        showConfirmButton: false,
+        timer: 2500
+    }).then(function() {
+        window.location.href = '../back_house_system/executive.php';
+    });
+
+});
+</script>
+
+<?php
                 }
 
 
@@ -107,46 +109,46 @@
             
             if($_SESSION['r_s'] == "wait"){
                 ?>
-                <script>
-                $(document).ready(function(){
-                    
-                        Swal.fire({
-                        icon: 'success',
-                        title: 'รหัสผ่านของท่านยังใช้งานไม่ได้',
-                        text: 'โปรดรอการอนนุมัติการสมัครสมาชิก',
-                        showConfirmButton: false,
-                        timer: 3500
-                        }).then(function(){ 
-                            
-                            window.location.href = 'chk_logout.php?logout=wait';
-                           
-                        });
-                    
-                });
-            </script>
+<script>
+$(document).ready(function() {
 
-            <?php   
+    Swal.fire({
+        icon: 'success',
+        title: 'รหัสผ่านของท่านยังใช้งานไม่ได้',
+        text: 'โปรดรอการอนนุมัติการสมัครสมาชิก',
+        showConfirmButton: false,
+        timer: 3500
+    }).then(function() {
+
+        window.location.href = 'chk_logout.php?logout=wait';
+
+    });
+
+});
+</script>
+
+<?php   
             }
 
             }else{
                 ?>
-                <script>
-                $(document).ready(function(){
-                    
-                        Swal.fire({
-                        icon: 'error',
-                        title: 'โปรดลองอีกครั้ง !',
-                        text: 'Username หรือ Password ไม่ถูกต้อง',
-                        showConfirmButton: false,
-                        timer: 2500
-                        }).then(function(){ 
-                            window.location.href = '../index.php?p=home';
-                        });
-                    
-                });
-            </script>
+<script>
+$(document).ready(function() {
 
-            <?php   
+    Swal.fire({
+        icon: 'error',
+        title: 'โปรดลองอีกครั้ง !',
+        text: 'Username หรือ Password ไม่ถูกต้อง',
+        showConfirmButton: false,
+        timer: 2500
+    }).then(function() {
+        window.location.href = '../index.php?p=home';
+    });
+
+});
+</script>
+
+<?php   
             }
 
         

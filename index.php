@@ -142,10 +142,12 @@
                         <div class="col-sm d-flex justify-content-end">
                             <form action="chk_all/chk_logout.php" method="post">
                                 <div class="row justify-content-end mt-2 pr-1 form-inline">
-                                    <?php
-                                                        echo "เข้าสู่ระบบสำเร็จ, ";
-                                                        echo "สวัสดี คุณ : ". $_SESSION['name']." ".$_SESSION['lname']; 
-                                                    ?>
+                                                    <div class="font-weight-bold alert alert-warning m-0">
+
+                                                        <?php
+                                                        echo "🟢 Online : ". $_SESSION['name']." ".$_SESSION['lname']; 
+                                                        ?>
+                                                        </div>
 
 
                                 </div>
@@ -210,9 +212,12 @@
                                     if(!isset($_SESSION['id'])){
                                     }
                                     if(isset($_SESSION['id'])){
+                                        $select_basket = new shopSacredObj();
+                                        $sl4num_rows = $select_basket->runQuery("SELECT count(status_basket) FROM basket WHERE id_user='$_SESSION[id]' and status_basket='wait' ");
+                                        $fetch4count = mysqli_fetch_assoc($sl4num_rows);
                                         ?>
                     <li class="nav-item mr-2">
-                        <a class="btn btn-primary mr-2 col-md font-weight-bold" href="index.php?p=basket"><i class="fas fa-shopping-basket text-warning"></i> ตะกร้าของฉัน</a>
+                        <a class="btn btn-primary mr-2 col-md font-weight-bold" href="index.php?p=basket"><i class="fas fa-shopping-basket text-warning"></i> ตะกร้าของฉัน <span class="badge badge-light text-primary font-weight-bold"><?php echo $fetch4count['count(status_basket)']; ?></span></a>
                     </li>
                     <?php
                                     }
@@ -278,6 +283,9 @@
                     case "basket":
                         include_once('include_for_p/basket.php');
                     break;
+                    case "save_basket":
+                        include_once('include_for_p/save_basket.php');
+                    break;
                 
 
 
@@ -310,7 +318,7 @@
                     <br>
                     <b> ©2020 กลุ่มวิจัยด้านเทคโนโลยีสารสนเทศเพื่อการพัฒนาชุมชน (IT4CD) <br>
                         มหาวิทยาลัยราชภัฏนครสวรรค์ </b><br>
-                    <a class="text-decoration-none text-light " href="https://web.facebook.com/q3.hahaha"> ติดต่อ :
+                    <a class="text-decoration-none text-light " href="https://mail.google.com/mail/u/0/?tab=mm#inbox?compose=jrjtXJSVwCmpVHlRlvKmqjcwrrfNVdgrhRCDqfbxTSxvdKQwCTrWKKQBfwlfnbSgCVcrvbjx" target="_blank"> ติดต่อ :
                         jirapat.m@nsru.ac.th </a>
 
 
