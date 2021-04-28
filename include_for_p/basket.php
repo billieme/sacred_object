@@ -31,12 +31,12 @@ window.location.href = 'index.php';
           
                                                                 ?>
             <div id="table4overflowX">
-                    <?php
+                <?php
                                     $chkqty4del = mysqli_num_rows($sql);
                                     if($chkqty4del > 0){
                                     ?>
-                    <form id="form_basket" action="index.php?p=save_basket" method="post">
-                                    
+                <form id="form_basket" action="index.php?p=save_basket" method="post">
+
                     <div id="delBasket" class="alert alert-danger" hidden>
                         <button id="del" class="btn btn-danger">ล้างตะกร้าสินค้า 📛</button>
                     </div>
@@ -126,8 +126,8 @@ window.location.href = 'index.php';
                                     ?>
             <div class="text-right alert alert-primary p-2">
 
-                <h4 class="font-weight-bold m-0">💰 ราคารวมทั้งสิ้น : <text
-                        class="text-success"><?php echo number_format($fetchDT['SUM(b_price)']) ;?></text> บาท</h4>
+                <h4 class="font-weight-bold m-0">💰 ยอดรวม : <text
+                        ><input style="width: 10rem;" class="text-success font-weight-bold alert-primary border-0 text-right" name="total_prod" readonly type="text" value="<?php echo number_format($fetchDT['SUM(b_price)']) ;?>"></text> บาท</h4>
             </div>
 
             <?php
@@ -142,21 +142,66 @@ window.location.href = 'index.php';
                                     ?>
 
             </form>
-
-
-            ทำต่อ กงงี้
-        
-
-
-
             <?php
                                                             
                                                         }else{
                                                             echo"Can't SQL";
                                                         }
-                                    
             ?>
-        </div>
+
+            <!-- //! ----------------------------- ตรางจัดการสลิป ----------------------------- */ -->
+            <hr class="bg-success">
+            <h4 class="">ประวัติการเช่าวัตถุมงคลทั้งหมดของฉัน 📦</h4>
+            <div class="jumbotron jumbotron-fluid p-3">
+                <?php
+                                $sql4selectSaveBasket = new shopSacredObj();
+                                $sqlSelect_SB = $sql4selectSaveBasket->runQuery("SELECT * FROM save_basket ORDER BY id_save_basket DESC");
+                                ?>
+                <table id="myTable" class="w-100">
+                    <thead class="text-nowrap">
+                        
+                            <th>วันที่ทำการ</th>
+                            <th>ยอดรวม</th>
+                            <th class="text-center">ดูข้อมูล</th>
+                            <th class="text-center">สถานะบิล</th>
+                        
+                    </thead>
+                    <tbody class="text-nowrap">
+                        <?php
+                            while($fetch_SB = mysqli_fetch_array($sqlSelect_SB)){
+
+                                ?>
+                        <tr>
+                            <td><?php echo $fetch_SB['date_time'];?></td>
+                            <td><?php echo $fetch_SB['total_prod'];?></td>
+                            <td>
+                                <a href="index.php?p=veiw_save_basket&id4_save_basket=<?php echo $fetch_SB['id_save_basket'] ;?>" class="btn btn-primary w-100">ดูรายละเอียด <i class="far fa-eye"></i></a>
+                            </td>
+                            <td>
+                                <?php
+                                    if($fetch_SB['status_pay']=="not_pay"){
+                                        ?>
+                                        <div class="m-0 alert alert-warning text-center">
+                                        <?php echo"ยังไม่ชำระ"; ?>
+                                        </div>
+                                    <?php
+                                    }elseif($fetch_SB['status_pay']=="pay_already"){
+                                        ?>
+                                        <div class="m-0 alert alert-success text-center">
+                                        <?php echo"ชำระแล้ว"; ?>
+                                        </div>
+                                    <?php
+                                    }
+                                ?>
+                            </td>
+                            
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+
+        </div> <!-- ปิด card body -->
     </div>
 </div>
 
@@ -174,8 +219,8 @@ $(document).ready(function() {
 
             $("#delBasket").prop('hidden', false)
             $("#delBasket").addClass('animate__animated animate__bounceIn')
-            
-            
+
+
         } else {
             $(".checkboxId4del").each(function() {
                 $(this).prop('checked', false);

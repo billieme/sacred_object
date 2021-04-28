@@ -222,20 +222,7 @@
                     <?php
                                     }
                                     ?>
-                    <!--<li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>-->
+                    
                 </ul>
                 <form action="index.php?p=sacredOb" method="post" class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="ค้นหาวัตถุมงคล" aria-label="Search"
@@ -285,6 +272,9 @@
                     break;
                     case "save_basket":
                         include_once('include_for_p/save_basket.php');
+                    break;
+                    case "veiw_save_basket":
+                        include_once('include_for_p/veiw_save_basket.php');
                     break;
                 
 

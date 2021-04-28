@@ -17,13 +17,15 @@
             array_push($id_product['id_prod'], $fetch4insert['id_product']);
         }
         $newData_id_prod = implode(", ", $id_product['id_prod']); //!data
+        $total_prod = $_POST['total_prod']; //!data
         $p_number = $_POST['p_number']; //!data
         $address4send = $_POST['address4send']; //!data
 
-        $sqlInsert = $selectBasket->runQuery("INSERT INTO save_basket(`id_user`, `id_basket`, `id_product`, `phone_number`, `address_for_send`) VALUE (
+        $sqlInsert = $selectBasket->runQuery("INSERT INTO save_basket(`id_user`, `id_basket`, `id_product`, `total_prod`, `phone_number`, `address_for_send`) VALUE (
             '$_SESSION[id]',
             '$id4basket',
             '$newData_id_prod',
+            '$total_prod',
             '$p_number',
             '$address4send'
         )");
