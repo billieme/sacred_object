@@ -3,6 +3,7 @@
 <script src="sweetalert/sweetalert2.all.min.js"></script>
 
 <?php
+
     if(!isset($_SESSION['id'])){
         ?>
 <script>
@@ -10,6 +11,9 @@ window.location.href = 'index.php';
 </script>
 <?php
     }
+
+   
+
 ?>
 
 <div class="container mt-4 mb-4">
@@ -126,8 +130,10 @@ window.location.href = 'index.php';
                                     ?>
             <div class="text-right alert alert-primary p-2">
 
-                <h4 class="font-weight-bold m-0">💰 ยอดรวม : <text
-                        ><input style="width: 10rem;" class="text-success font-weight-bold alert-primary border-0 text-right" name="total_prod" readonly type="text" value="<?php echo number_format($fetchDT['SUM(b_price)']) ;?>"></text> บาท</h4>
+                <h4 class="font-weight-bold m-0">💰 ยอดรวม : <text><input style="width: 10rem;"
+                            class="text-success font-weight-bold alert-primary border-0 text-right" name="total_prod"
+                            readonly type="text" value="<?php echo number_format($fetchDT['SUM(b_price)']) ;?>"></text>
+                    บาท</h4>
             </div>
 
             <?php
@@ -159,12 +165,12 @@ window.location.href = 'index.php';
                                 ?>
                 <table id="myTable" class="w-100">
                     <thead class="text-nowrap">
-                        
-                            <th>วันที่ทำการ</th>
-                            <th>ยอดรวม</th>
-                            <th class="text-center">ดูข้อมูล</th>
-                            <th class="text-center">สถานะบิล</th>
-                        
+
+                        <th>วันที่ทำการ</th>
+                        <th>ยอดรวม</th>
+                        <th class="text-center">จัดการ</th>
+                        <th class="text-center">สถานะบิล</th>
+
                     </thead>
                     <tbody class="text-nowrap">
                         <?php
@@ -173,28 +179,76 @@ window.location.href = 'index.php';
                                 ?>
                         <tr>
                             <td><?php echo $fetch_SB['date_time'];?></td>
-                            <td><?php echo $fetch_SB['total_prod'];?></td>
+                            <td><?php echo $fetch_SB["total_prod"];?></td>
+
                             <td>
-                                <a href="index.php?p=veiw_save_basket&id4_save_basket=<?php echo $fetch_SB['id_save_basket'] ;?>" class="btn btn-primary w-100">ดูรายละเอียด <i class="far fa-eye"></i></a>
+                                <a href="index.php?p=veiw_save_basket&id4_save_basket=<?php echo $fetch_SB['id_save_basket'] ;?>"
+                                    class="btn btn-primary">ดูรายละเอียด <i class="far fa-eye"></i></a>
+                                <?php
+                                    if($fetch_SB['status_pay'] =="cancel_order"){
+
+                                    }else{
+                                ?>
+                                <a href="index.php?p=basket&chk_cancel=ok" class="btn btn-warning">ยกเลิกการสั่ง <i
+                                        class="fas fa-undo-alt"></i></a>
+                                <?php
+                                 if(isset($_GET['chk_cancel']) =="ok"){
+                                    ?>
+                                            <script>
+                                               $(document).ready(function(){
+                                            Swal.fire({
+                                                        title: 'ต้องการยกเลิกการสั่งวัตถุมงคล หรือไม่!',
+                                                        text: "ต้องการยกเลิกหรือไม่",
+                                                        icon: 'warning',
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: '#3085d6',
+                                                        cancelButtonColor: '#d33',
+                                                        cancelButtonText: 'ไม่ต้องการ',
+                                                        confirmButtonText: 'ตกลง'
+                                                        }).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                                window.location.href = 'chk_all/chk_cancel_order.php?cancel=go&id_cancel=<?php echo $fetch_SB["id_save_basket"]; ?>';
+                                                        }else{
+                                                            window.location.href = 'index.php?p=basket';
+                                                        };
+                                                });
+                                        });
+                                            </script>
+                                    <?php
+                                }
+                            }
+                            ?>
                             </td>
                             <td>
                                 <?php
                                     if($fetch_SB['status_pay']=="not_pay"){
                                         ?>
-                                        <div class="m-0 alert alert-warning text-center">
-                                        <?php echo"ยังไม่ชำระ"; ?>
-                                        </div>
-                                    <?php
+                                <div class="m-0 alert alert-warning text-center">
+                                    <?php echo"ยังไม่ชำระเงิน"; ?>
+                                </div>
+                                <?php
                                     }elseif($fetch_SB['status_pay']=="pay_already"){
                                         ?>
-                                        <div class="m-0 alert alert-success text-center">
-                                        <?php echo"ชำระแล้ว"; ?>
-                                        </div>
-                                    <?php
+                                <div class="m-0 alert alert-success text-center">
+                                    <?php echo"ชำระแล้ว"; ?>
+                                </div>
+                                <?php
+                                    }elseif($fetch_SB['status_pay']=="wait_process"){
+                                        ?>
+                                <div class="m-0 alert alert-primary text-center">
+                                    <?php echo"รอการตรวจสอบ..."; ?>
+                                </div>
+                                <?php
+                                    }elseif($fetch_SB['status_pay']=="cancel_order"){
+                                        ?>
+                                <div class="m-0 alert alert-secondary text-center">
+                                    <?php echo"ยกเลิกการดำเนินการแล้ว"; ?>
+                                </div>
+                                <?php
                                     }
                                 ?>
                             </td>
-                            
+
                         </tr>
                         <?php } ?>
                     </tbody>

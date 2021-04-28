@@ -1,15 +1,50 @@
 <?php
     if(isset($_POST['sm_slip'])){
-        ?>
-
-        <pre>
-        <?php echo var_dump($_FILES); ?>
-        </pre>
-
-        <?php
+      
+        $path = "image/slip_chk/";
+        $tmp = explode('.', $_FILES['slip_img']['name']);
+        $countTmp = count($tmp); 
+        $countTmp--;
+    
+      $check = getimagesize($_FILES['slip_img']['tmp_name']);
         
         
-        
+        if($check){
+            if($tmp[$countTmp] =="jpg" || "png" ){
+                $randomnum = rand(1,9999);
+                $newnamef = round(microtime(true)).$randomnum.".".$tmp[$countTmp]; //! เชื่อมชื่อใหม่กับนามสกุล
+                $moved = move_uploaded_file($_FILES['slip_img']['tmp_name'], $path.$newnamef);
+                if($moved){
+                    $sql4thispage = new shopSacredObj();
+                    $up_slip = $sql4thispage->runQuery("UPDATE save_basket SET slip_img='$newnamef', status_pay='wait_process' ");
+                    if($up_slip){
+                        $messageFile = "อัพเดทข้อมูลการชำระเงินเรียบร้อย โปรดรอการตรวจสอบจากเจ้าหน้าที่";
+                        ?>
+                        <div class="container">
+                            <div class="alert bg-success alert-dismissible fade show mt-5" role="alert">
+                                <h4 class="text-light">สำเร็จ !</h4><text class="text-light"><?php echo$messageFile; ?></text>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                }
+            }
+        }else{
+            $messageFile = "โปรดใช้ไฟล์นามสกุล .jpg .png หรือ .jpeg";
+            ?>
+<div class="container">
+    <div class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
+        <h4 class="font-weight-bold mb-2">ไม่สามารถใช้ไฟล์นามสกุล " .<?php echo$tmp[$countTmp]; ?> " ดำเนินการได้ !</h4><?php echo$messageFile; ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+<?php
+        }
     }
 ?>
 
@@ -82,9 +117,11 @@
                     <strong>ท่านยังไม่มีการอัพโหลดเอกสารหลักฐานการชำระเงิน</strong><br>
                     <small>(โปรดอัพเอกสารหลักฐานการชำระเงิน เช่น สลิป หรือ ใบเสร็จการโอนเงิน)</small>
 
-                    <form action="index.php?p=veiw_save_basket&id4_save_basket=<?php echo $_GET['id4_save_basket'];?>" method="post" enctype="multipart/form-data" class="was-validated">
+                    <form action="index.php?p=veiw_save_basket&id4_save_basket=<?php echo $_GET['id4_save_basket'];?>"
+                        method="post" enctype="multipart/form-data" class="was-validated">
                         <div class="custom-file mb-3 mt-2">
-                            <input type="file" class="custom-file-input" id="validatedCustomFile" name="slip_img" required>
+                            <input type="file" class="custom-file-input" id="validatedCustomFile" name="slip_img"
+                                required>
                             <label class="custom-file-label" for="validatedCustomFile">เลือกไฟล์ รูปภาพ...</label>
                             <div class="invalid-feedback">โปรดเลือกไฟล์รูปภาพที่มีนามสกุลดังนี้ .png .jpg .jpeg</div>
                         </div>
@@ -93,6 +130,11 @@
 
                 </div>
                 <?php
+                        }else{
+                        ?>
+                            <img class="w-100 rounded " src="image/slip_chk/<?php echo$fetch_SSB1['slip_img']; ?>" alt="">
+
+                            <?php
                         }
                       ?>
 
