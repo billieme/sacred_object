@@ -16,7 +16,7 @@
                 $moved = move_uploaded_file($_FILES['slip_img']['tmp_name'], $path.$newnamef);
                 if($moved){
                     $sql4thispage = new shopSacredObj();
-                    $up_slip = $sql4thispage->runQuery("UPDATE save_basket SET slip_img='$newnamef', status_pay='wait_process' ");
+                    $up_slip = $sql4thispage->runQuery("UPDATE save_basket SET slip_img='$newnamef', status_pay='wait_process' WHERE id_save_basket='$_GET[id4_save_basket]' ");
                     if($up_slip){
                         $messageFile = "อัพเดทข้อมูลการชำระเงินเรียบร้อย โปรดรอการตรวจสอบจากเจ้าหน้าที่";
                         ?>

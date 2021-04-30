@@ -1,6 +1,8 @@
 <?php
     session_start();
     require_once('../function.php');
+    require_once('../func4pdo/connect.php');
+    
     $connect_database = new DB_conn();
 ?>
 
@@ -156,7 +158,7 @@ if(!isset($_SESSION['user_level'])== "a"){
                         include_once('include_for_m/product_sys.php');
                     break;
                     case "m4":
-                        include_once('include_for_m/sell_sys.php');
+                        include_once('include_for_m/page_4.php');
                     break;
 
 
