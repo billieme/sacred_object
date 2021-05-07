@@ -26,25 +26,27 @@
                             $row = mysqli_num_rows($sqlSearch);
                             if($row < 1){
                                 ?>
-                                <h5 class="textbill-primary font-weight-bold">
-                                    <?php echo"ไม่พบวัตถุมงคล ' $SearchSObj ' ที่ท่านค้นหา"; ?>
-                                </h5>
-                                <?php
+                <h5 class="textbill-primary font-weight-bold">
+                    <?php echo"ไม่พบวัตถุมงคล ' $SearchSObj ' ที่ท่านค้นหา"; ?>
+                </h5>
+                <?php
                             }else{
                             ?>
-                            <div class=" pl-5 pr-5 col-md-12 alert alert-primary">
-                                <text class="font-weight-bold">ผลการค้นหา : </text><text class="text-secondary"><?php echo $SearchSObj;?></text>
-                            
-                            </div>
-                            <?php
+                <div class=" pl-5 pr-5 col-md-12 alert alert-primary">
+                    <text class="font-weight-bold">ผลการค้นหา : </text><text
+                        class="text-secondary"><?php echo $SearchSObj;?></text>
+
+                </div>
+                <?php
                                 while($fetchSeach = mysqli_fetch_array($sqlSearch)){
                                     ?>
 
-                                    
+
 
 
                 <div class="card col-md-3 m-2 p-3">
-                    <a class="card" href="index.php?p=readSacredObj&id4readSacredObj=<?php echo $fetchSeach['id_product']; ?>">
+                    <a class="card"
+                        href="index.php?p=readSacredObj&id4readSacredObj=<?php echo $fetchSeach['id_product']; ?>">
                         <img id="picSize" src="image/product/<?php echo $fetchSeach['product_cover']; ?>"
                             title="คลิกเพื่อดูรายละเอียดวัตถุมงคล">
                     </a>
@@ -52,16 +54,14 @@
                     <div>
                         <p class="mb-1 mt-1" id="name_shop_card"><?php echo $fetchSeach['product_name']; ?></p>
                     </div>
+                    <small class="font-weight-bold">คงเหลือ : <?php echo $fetchSeach['product_qty'] ?> ชิ้น</small>
 
-                    <div class="alert alert-success p-0 pr-2 pl-2 mb-0 mt-2">
+                    <div class=" p-0 pr-2 pl-2 mb-0 mt-2">
                         <strong class="d-flex d-inline">
-                            <p class="mb-1 mt-1 text-right text-danger">
-                                ฿
-                            </p>
-                            <p class="mb-1 mt-1 text-right text-success" id="name_shop_card">
+                            <h4 class="mb-1 mt-1 text-right text-success font-weight-bold" id="name_shop_card">
                                 <?php echo number_format($fetchSeach['product_price']); ?>
-                                บาท
-                            </p>
+                                <text class="text-danger">฿</text>
+                            </h4>
                         </strong>
                     </div>
 
@@ -75,7 +75,13 @@
 
 /* -------------------------------------------------------------------------- */
 
-                    }else{
+
+}else{
+                        //! --------------------------------- ทั้งหมด -------------------------------- */
+                        //! --------------------------------- ทั้งหมด -------------------------------- */
+                        //! --------------------------------- ทั้งหมด -------------------------------- */
+
+
                         ?>
                 <?php
                     $sql = $sacredSelectAll->runQuery("SELECT * FROM product ORDER BY id_product");
@@ -83,7 +89,8 @@
                         while( $fetchArray = mysqli_fetch_array($sql)){
                             ?>
                 <div class="card col-md-3 m-2 p-3">
-                    <a class="card" href="index.php?p=readSacredObj&id4readSacredObj=<?php echo $fetchArray['id_product']; ?>">
+                    <a class="card"
+                        href="index.php?p=readSacredObj&id4readSacredObj=<?php echo $fetchArray['id_product']; ?>">
                         <img id="picSize" src="image/product/<?php echo $fetchArray['product_cover']; ?>"
                             title="คลิกเพื่อดูรายละเอียดวัตถุมงคล">
                     </a>
@@ -91,16 +98,14 @@
                     <div>
                         <p class="mb-1 mt-1" id="name_shop_card"><?php echo $fetchArray['product_name']; ?></p>
                     </div>
+                    <small class="font-weight-bold">คงเหลือ : <?php echo $fetchArray['product_qty'] ?> ชิ้น</small>
 
-                    <div class="alert alert-success p-0 pr-2 pl-2 mb-0 mt-2">
+                    <div class=" p-0 pr-2 pl-2 mb-0 mt-2">
                         <strong class="d-flex d-inline">
-                            <p class="mb-1 mt-1 text-right text-danger">
-                                ฿
-                            </p>
-                            <p class="mb-1 mt-1 text-right text-success" id="name_shop_card">
+                            <h4 class="mb-1 mt-1 text-right text-success font-weight-bold" id="name_shop_card">
                                 <?php echo number_format($fetchArray['product_price']); ?>
-                                บาท
-                            </p>
+                                <text class="text-danger">฿</text>
+                            </h4>
                         </strong>
                     </div>
 

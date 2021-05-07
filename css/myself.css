@@ -3,7 +3,8 @@
     margin: 0px;
     padding: 0px;
     font-family: 'Roboto', sans-serif;
-    
+    transition: 1.5s all ease;
+
 }
 ::-webkit-scrollbar{
     width: 0.5em;

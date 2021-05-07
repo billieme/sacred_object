@@ -2,10 +2,51 @@
 
 <?php
 include_once('../function.php');
+include_once('../func4pdo/connect.php');
+
 if(isset($_GET['cancel'])=="go"){
     $sql4thispage = new shopSacredObj();
     $cancel_order = $sql4thispage->runQuery("UPDATE save_basket SET status_pay='cancel_order' WHERE id_save_basket='$_GET[id_cancel]' ");
                             if($cancel_order){
+
+                                $pdo4thisP = new connect_db();
+
+                                $sl4_img = $pdo4thisP->runQuery('SELECT id_basket, slip_img, id_product FROM save_basket WHERE id_save_basket=:id_s_b ');
+                                $sl4_img->execute(['id_s_b' => $_GET['id_cancel']]);
+                                $post_sl = $sl4_img->fetch();
+                            
+                                $sl4_id_prod = $pdo4thisP->runQuery('SELECT id_product, product_qty FROM product Where id_product in(:id_prod)');
+                                $sl4_id_prod->execute(['id_prod' => $post_sl->id_product]);
+
+
+                                $sl_newQty = $pdo4thisP->runQuery('SELECT id_product, b_product_qty FROM  basket where id_basket in(:id_basket) ');
+                                $sl_newQty->execute(['id_basket' => $post_sl->id_basket]);
+                                
+                                
+                                while($post_id_prod = $sl4_id_prod->fetch()){
+                                    $qtyOld = intval($post_id_prod->product_qty);
+
+                                    while($post_sl_newQty = $sl_newQty->fetch()){
+                                        $newQty = intval($post_sl_newQty->b_product_qty) + $qtyOld;
+                                        
+                                        $ud_qty_prod = $pdo4thisP->runQuery('UPDATE product SET `product_qty`=:ud_p_q where id_product=:ud_id_prod ');
+                                        $ud_qty_prod->execute(['ud_p_q' => $newQty, 'ud_id_prod' => $post_sl_newQty->id_product]);
+                                    }
+
+                                    
+                                    
+                                }
+
+
+                                if($post_sl->slip_img =='wait'){
+                                    
+                                }else{
+                                    $path = "../image/slip_chk/";
+                                    $sql4del_img = $post_sl->slip_img;
+                                    $file = $path.$sql4del_img;
+                                    unlink($file);
+                                    
+                                }
                                 ?>
                                     <script>
                                         window.location.href='../index.php?p=basket';

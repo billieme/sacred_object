@@ -161,11 +161,12 @@ window.location.href = 'index.php';
             <div class="jumbotron jumbotron-fluid p-3">
                 <?php
                                 $sql4selectSaveBasket = new shopSacredObj();
-                                $sqlSelect_SB = $sql4selectSaveBasket->runQuery("SELECT * FROM save_basket ORDER BY id_save_basket DESC");
+                                $sqlSelect_SB = $sql4selectSaveBasket->runQuery("SELECT * FROM save_basket where id_user='$_SESSION[id]' ORDER BY id_save_basket DESC");
                                 ?>
                 <table id="myTable" class="w-100">
                     <thead class="text-nowrap">
 
+                        <th>#</th>
                         <th>วันที่ทำการ</th>
                         <th>ยอดรวม</th>
                         <th class="text-center">จัดการ</th>
@@ -174,10 +175,12 @@ window.location.href = 'index.php';
                     </thead>
                     <tbody class="text-nowrap">
                         <?php
+                        $i=1;
                             while($fetch_SB = mysqli_fetch_array($sqlSelect_SB)){
 
                                 ?>
                         <tr>
+                            <td><?php echo $i;?></td>
                             <td><?php echo $fetch_SB['date_time'];?></td>
                             <td><?php echo $fetch_SB["total_prod"];?></td>
 
@@ -185,40 +188,46 @@ window.location.href = 'index.php';
                                 <a href="index.php?p=veiw_save_basket&id4_save_basket=<?php echo $fetch_SB['id_save_basket'] ;?>"
                                     class="btn btn-primary">ดูรายละเอียด <i class="far fa-eye"></i></a>
                                 <?php
+                                
                                     if($fetch_SB['status_pay'] =="cancel_order"){
 
-                                    }else{
+                                    }elseif($fetch_SB['status_pay'] =="approved"){
+
+                                    }
+                                    else{
                                 ?>
-                                <a href="index.php?p=basket&chk_cancel=ok" class="btn btn-warning">ยกเลิกการสั่ง <i
+                                <a href="index.php?p=basket&chk_cancel=ok&id_cancel=<?php echo $fetch_SB["id_save_basket"]; ?>" class="btn btn-warning">ยกเลิกการสั่ง <i
                                         class="fas fa-undo-alt"></i></a>
                                 <?php
                                  if(isset($_GET['chk_cancel']) =="ok"){
                                     ?>
-                                            <script>
-                                               $(document).ready(function(){
-                                            Swal.fire({
-                                                        title: 'ต้องการยกเลิกการสั่งวัตถุมงคล หรือไม่!',
-                                                        text: "ต้องการยกเลิกหรือไม่",
-                                                        icon: 'warning',
-                                                        showCancelButton: true,
-                                                        confirmButtonColor: '#3085d6',
-                                                        cancelButtonColor: '#d33',
-                                                        cancelButtonText: 'ไม่ต้องการ',
-                                                        confirmButtonText: 'ตกลง'
-                                                        }).then((result) => {
-                                                        if (result.isConfirmed) {
-                                                                window.location.href = 'chk_all/chk_cancel_order.php?cancel=go&id_cancel=<?php echo $fetch_SB["id_save_basket"]; ?>';
-                                                        }else{
-                                                            window.location.href = 'index.php?p=basket';
-                                                        };
-                                                });
-                                        });
-                                            </script>
-                                    <?php
+                                <script>
+                                $(document).ready(function() {
+                                    Swal.fire({
+                                        title: 'ต้องการยกเลิกการสั่งวัตถุมงคล หรือไม่!',
+                                        text: "ต้องการยกเลิกหรือไม่",
+                                        icon: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#3085d6',
+                                        cancelButtonColor: '#d33',
+                                        cancelButtonText: 'ไม่ต้องการ',
+                                        confirmButtonText: 'ตกลง'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            window.location.href =
+                                                'chk_all/chk_cancel_order.php?cancel=go&id_cancel=<?php echo $_GET["id_cancel"]; ?>';
+                                        } else {
+                                            window.location.href = 'index.php?p=basket';
+                                        };
+                                    });
+                                });
+                                </script>
+                                <?php
                                 }
                             }
                             ?>
                             </td>
+
                             <td>
                                 <?php
                                     if($fetch_SB['status_pay']=="not_pay"){
@@ -227,10 +236,10 @@ window.location.href = 'index.php';
                                     <?php echo"ยังไม่ชำระเงิน"; ?>
                                 </div>
                                 <?php
-                                    }elseif($fetch_SB['status_pay']=="pay_already"){
+                                    }elseif($fetch_SB['status_pay']=="approved"){
                                         ?>
                                 <div class="m-0 alert alert-success text-center">
-                                    <?php echo"ชำระแล้ว"; ?>
+                                    <?php echo"ชำระเงินเรียบร้อย"; ?>
                                 </div>
                                 <?php
                                     }elseif($fetch_SB['status_pay']=="wait_process"){
@@ -245,12 +254,21 @@ window.location.href = 'index.php';
                                     <?php echo"ยกเลิกการดำเนินการแล้ว"; ?>
                                 </div>
                                 <?php
+                                    }elseif($fetch_SB['status_pay']=="request_img"){
+                                        ?>
+                                <div class="m-0 alert alert-danger text-center">
+                                    <?php echo"โปรดเพิ่มรูปภาพใหม่อีกครั้ง"; ?>
+                                </div>
+                                <?php
                                     }
                                 ?>
                             </td>
 
                         </tr>
-                        <?php } ?>
+                        <?php
+                        $i++;
+                     } 
+                     ?>
                     </tbody>
                 </table>
             </div>

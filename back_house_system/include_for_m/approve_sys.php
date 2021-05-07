@@ -69,7 +69,7 @@
     <div class="card-body bg-light">
                 
                 <table class="min-vw-100 table table-striped pl-0 pr-0 pb-3 pt-0" id="myTable">
-                <thead class="text-center">
+                <thead class="text-center text-nowrap">
                     <tr id="bg_hd_table_m">
                     <th scope="col">ลำดับ</th>
                     <th scope="col">Username</th>
@@ -80,7 +80,7 @@
                     <th scope="col">จัดการอนุมัติ</th>
                     </tr>
                 </thead>
-                <tbody class="text-center">
+                <tbody class="text-center text-nowrap">
 
 
                 <?php
@@ -145,31 +145,6 @@
 
 
 
-<!-- function Data tab le-->
-<script type="text/javascript" charset="utf-8">
-        $(document).ready( function () {
-            $('#myTable').DataTable({
-                
-                "oLanguage": {
-                    "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
-                    "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
-                    "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
-                    "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
-                    "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
-                    "sSearch": "ค้นหา :",
-                    "aaSorting" :[[0,'desc']],
-                    "oPaginate": {
-                    "sFirst":    "หน้าแรก",
-                    "sPrevious": "ก่อนหน้า",
-                    "sNext":     "ถัดไป",
-                    "sLast":     "หน้าสุดท้าย"
-                    },
-                },
-                "scrollX": true 
-                        
-            });
-        } );
 
-</script>
 
 

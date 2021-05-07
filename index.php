@@ -219,7 +219,7 @@
                                         $fetch4count = mysqli_fetch_assoc($sl4num_rows);
                                         ?>
                     <li class="nav-item mr-2">
-                        <a class="btn btn-primary mr-2 col-md font-weight-bold" href="index.php?p=basket"><i class="fas fa-shopping-basket text-warning"></i> ตะกร้าของฉัน <span class="badge badge-light text-primary font-weight-bold"><?php echo $fetch4count['count(status_basket)']; ?></span></a>
+                        <a class="btn btn-primary mr-2 col-md font-weight-bold" href="index.php?p=basket"><i class="fas fa-shopping-basket text-warning"></i> ตะกร้าของฉัน <span class="badge badge-danger text-light font-weight-bold"><?php echo $fetch4count['count(status_basket)']; ?></span></a>
                     </li>
                     <?php
                                     }

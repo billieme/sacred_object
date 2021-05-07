@@ -51,7 +51,7 @@
 <div class="container mt-4 mb-4">
     <div class="card min-vh-100">
         <div class="card-header text-center alert-primary">
-            <h3 class="font-weight-bold ">รายละเอียดประวัติการเช่าวัตถุมงคลทั้งหมดของฉัน 📦</h3>
+            <h3 class="font-weight-bold ">รายละเอียดประวัติการเช่าวัตถุมงคล 📦</h3>
         </div>
         <div class="card-body">
             <div class="jumbotron jumbotron-fluid p-3 alert-success mb-3">
@@ -111,6 +111,13 @@
             <div class="jumbotron jumbotron-fluid alert-success mb-3 p-3">
                 <strong><u>หลักฐานการชำระเงิน</u> </strong> <br><br>
                 <?php
+                if($fetch_SSB1['status_pay'] == "cancel_order"){
+                    ?>
+                    <div class="alert alert-danger text-center">
+                            ท่านได้ยกเลิกการสั่งวัตถุมงคลแล้ว
+                    </div>
+                    <?php
+                }else{
                         if($fetch_SSB1['slip_img'] =="wait"){
                             ?>
                 <div class="m-1 alert alert-warning text-center">
@@ -136,6 +143,7 @@
 
                             <?php
                         }
+                }
                       ?>
 
             </div>

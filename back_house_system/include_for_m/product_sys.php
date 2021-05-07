@@ -79,8 +79,8 @@
     </div>
     <div class="card-body bg-light">
                 
-                    <table class="min-vw-100 table table-striped pb-3" id="myTable1">
-                <thead class="min-vw-100">
+                    <table class="min-vw-100 table table-striped pb-3" id="myTable">
+                <thead class="min-vw-100 text-nowrap">
                     <tr class="text-center" id="bg_hd_table_m">
                     <th scope="col">ลำดับ</th>
                     <th scope="col">รูปวัตถุมงคล</th>
@@ -93,7 +93,7 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody class="text-nowrap">
 
                 <?php
                         $res1 = $pd_sl->pdSlm3();
@@ -145,30 +145,6 @@
 
 
 
-<!-- function Data table ภาษาไทย--> 
-<script type="text/javascript" charset="utf-8">
-        $(document).ready( function () {
-            $('#myTable1').DataTable({
-                
-                "oLanguage": {
-                    "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
-                    "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
-                    "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
-                    "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
-                    "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
-                    "sSearch": "ค้นหา :",
-                    "aaSorting" :[[0,'desc']],
-                    "oPaginate": {
-                    "sFirst":    "หน้าแรก",
-                    "sPrevious": "ก่อนหน้า",
-                    "sNext":     "ถัดไป",
-                    "sLast":     "หน้าสุดท้าย"
-                    },
-                },
-                "scrollX": true 
-            });
-        } );
 
-</script>
 
 

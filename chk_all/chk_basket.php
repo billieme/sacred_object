@@ -14,6 +14,25 @@
                                 $qty = $_POST['data4basket']['qty'];
                                 $id = $_POST['data4basket']['id'];
                                 $sql = $forBasket->runQuery("SELECT * FROM product WHERE id_product='$id' ");
+                                $fetch_prod = mysqli_fetch_array($sql);
+                                if($qty > $fetch_prod['product_qty']){
+                                    ?>
+                                                    <script>
+                                                       $(document).ready(function() {
+    
+    Swal.fire({
+        icon: 'error',
+        text: 'จำนวนวัตถุมงคลคงเหลือไม่เพียงพอต่อความต้องการของท่าน',
+        showConfirmButton: false,
+        timer: 3500
+    }).then(function() {
+        window.location.href ='../index.php?p=readSacredObj&id4readSacredObj=<?php echo $id; ?>';
+    });
+
+});
+                                                    </script>
+                                    <?php
+                                }else{
                                 if($sql){
                                     if($qty <= 0 ){
                                         ?>
@@ -59,10 +78,10 @@ window.location.href = '../index.php?p=readSacredObj&id4readSacredObj=<?php echo
                                         
                                         $fetch = mysqli_fetch_array($sql);
                                         $id_user = $_SESSION['id'];
-                                        $id_product = $fetch['id_product'];
-                                        $cover_basket = $fetch['product_cover'];
-                                        $b_product_name = $fetch['product_name'];
-                                        $b_product_price = $fetch['product_price'];
+                                        $id_product = $fetch_prod['id_product'];
+                                        $cover_basket = $fetch_prod['product_cover'];
+                                        $b_product_name = $fetch_prod['product_name'];
+                                        $b_product_price = $fetch_prod['product_price'];
                                         $b_product_qty = $qty;
                                         $b_price = $qty*$b_product_price;
                                         
@@ -112,6 +131,7 @@ $(document).ready(function() {
                                     //! if can have SQL
                                     echo"Can't connect SQL";
                                 }
+                            }
                 }else{
                     //! check if don't have data4basket
                     ?>

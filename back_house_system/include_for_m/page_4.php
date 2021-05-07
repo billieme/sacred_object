@@ -4,8 +4,8 @@
 
 
 <div class="alert alert-primary mb-5">
-    <h3>หัวข้อ</h3>
-    <text>เนื้อความ</text>
+    <h3>📢 คำชี้แจงสำหรับเจ้าหน้าที่ และ ผู้ขาย</h3> <hr>
+    <text class="text-danger font-weight-bold mr-1">*</text><text>หัวข้อ ออร์เดอร์ เป็นระบบแจ้งเตือนแบบ Realtime ระบบจะแสดงเลขจำนวนผู้สั่งซื้อวัตถุมงคล ไม่จำเป็นต้อง Reload หน้าเว็บ โปรดเปิดหน้านี้ทิ้งไว้เพื่อดูการสั่งซื้อวัตถุมงคลที่เข้ามาใหม่</text>
 
 </div>
 
@@ -16,12 +16,13 @@
         </a>
     </div>
     <div class="col-md-4 text-decoration-none mb-2">
-        <a href="manager.php?m=m3" class="card p-5 bg-warning text-decoration-none" style="border: 5px solid white;">
+        
+        <a href="manager.php?m=m3" class="card p-5 text-decoration-none" style="background-color: rgb(134, 77, 3); border: 5px solid white;">
             <h3 class="text-light p-0 m-0 text-center"><i style="font-size: 5rem;" class="fas fa-cubes mb-2"></i><br> จัดการ Stock สินค้า</h3>
         </a>
     </div>
     <div id="test" class="col-md-4">
-        <a href="#" class="card p-5 bg-success text-decoration-none" style="border: 5px solid white;">
+        <a href="manager.php?m=m4_order_come" class="card p-5 bg-success text-decoration-none" style="border: 5px solid white;">
             <script>
             $(document).ready(function() {
                 
@@ -47,7 +48,7 @@
             })
             </script>
 
-            <h3 class="text-light p-0 m-0 text-center"><i style="font-size: 5rem;" class="fas fa-clipboard-list mb-2"></i><br> ออร์เดอร์ใหม่ <span
+            <h3 class="text-light p-0 m-0 text-center"><i style="font-size: 5rem;" class="fas fa-clipboard-list mb-2"></i><br> ออร์เดอร์ <span
                     class="badge-pill badge-danger" id="order"></span></h3>
         </a>
     </div>
