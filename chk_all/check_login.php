@@ -53,7 +53,7 @@ $(document).ready(function() {
         showConfirmButton: false,
         timer: 2500
     }).then(function() {
-        window.history.back();
+        window.location.href='../index.php';
     });
 
 });
