@@ -1,140 +1,49 @@
 <?php
-    $sacredSelectAll = new shopSacredObj();
-
+    $pdo4ThisP = new connect_db();
+    
 ?>
+<div class="card">
+    <div class="card-header bg-primary text-light">
+<h3 class="text-center"><i class="fas fa-list-alt"></i> รายการการเช่าวัตถุมงคลทั้งหมด</h3>
+    </div>
 
+    <div class="card-body">
+    <table class="w-100 table table-hover" id="myTable">
+        <thead class="text-nowrap alert-primary">
+            <tr>
 
+                <th>ชื่อ - นามสกุล</th>
+                <th>วันที่/เวลาดำเนินการ</th>
+                <th>ราคารวม</th>
+                <th class="text-center">ข้อมูล</th>
+            </tr>
+        </thead>
 
-<div class="container">
-    <div class="card">
-        <div class="card-header ">
-            <h3 class="text-center"><b><i class="fa fa-archive text-warning" aria-hidden="true"></i> วัตถุมงคลทั้งหมด
-            </h3>
-        </div>
-        <div class="card-body pt-4 min-vh-100">
-            <div class="row d-flex justify-content-center">
-                <?php
-                
-                if(isset($_POST['search']) && !empty($_POST['search'])){
-
-/*-------------------------- Show Search SacredOBJ ------------------------- */
-
-
-                        $SearchSObj = $_POST['search'];
-                        $sqlSearch = $sacredSelectAll->runQuery("SELECT * FROM product WHERE product_name LIKE '%$SearchSObj%' ");
-                        if($sqlSearch){
-                            $row = mysqli_num_rows($sqlSearch);
-                            if($row < 1){
-                                ?>
-                                <h5 class="textbill-primary font-weight-bold">
-                                    <?php echo"ไม่พบวัตถุมงคล ' $SearchSObj ' ที่ท่านค้นหา"; ?>
-                                </h5>
-                                <?php
-                            }else{
-                            ?>
-                            <div class=" pl-5 pr-5 col-md-12 alert alert-primary">
-                                <text class="font-weight-bold">ผลการค้นหา : </text><text class="text-secondary"><?php echo $SearchSObj;?></text>
-                            
-                            </div>
-                            <?php
-                                while($fetchSeach = mysqli_fetch_array($sqlSearch)){
-                                    ?>
-
-                                    
-
-
-                <div class="card col-md-3 m-2 p-3">
-                    <a class="card" href="index.php?p=readSacredObj&id4readSacredObj=<?php echo $fetchSeach['id_product']; ?>">
-                        <img id="picSize" src="image/product/<?php echo $fetchSeach['product_cover']; ?>"
-                            title="คลิกเพื่อดูรายละเอียดวัตถุมงคล">
-                    </a>
-
-                    <div>
-                        <p class="mb-1 mt-1" id="name_shop_card"><?php echo $fetchSeach['product_name']; ?></p>
-                    </div>
-
-                    <div class="alert alert-success p-0 pr-2 pl-2 mb-0 mt-2">
-                        <strong class="d-flex d-inline">
-                            <p class="mb-1 mt-1 text-right text-danger">
-                                ฿
-                            </p>
-                            <p class="mb-1 mt-1 text-right text-success" id="name_shop_card">
-                                <?php echo number_format($fetchSeach['product_price']); ?>
-                                บาท
-                            </p>
-                        </strong>
-                    </div>
-
-                </div>
-                <?php
-                                }
-                            }
-                        }else{
-                            echo"Can't Search data";
-                        }
-
-/* -------------------------------------------------------------------------- */
-
-                    }else{
-                        ?>
-                <?php
-                    $sql = $sacredSelectAll->runQuery("SELECT * FROM product ORDER BY id_product");
-                    if($sql){
-                        while( $fetchArray = mysqli_fetch_array($sql)){
-                            ?>
-                <div class="card col-md-3 m-2 p-3">
-                    <a class="card" href="index.php?p=readSacredObj&id4readSacredObj=<?php echo $fetchArray['id_product']; ?>">
-                        <img id="picSize" src="../image/product/<?php echo $fetchArray['product_cover']; ?>"
-                            title="คลิกเพื่อดูรายละเอียดวัตถุมงคล">
-                    </a>
-
-                    <div>
-                        <p class="mb-1 mt-1" id="name_shop_card"><?php echo $fetchArray['product_name']; ?></p>
-                    </div>
-
-                    <div class="alert alert-success p-0 pr-2 pl-2 mb-0 mt-2">
-                        <strong class="d-flex d-inline">
-                            <p class="mb-1 mt-1 text-right text-danger">
-                                ฿
-                            </p>
-                            <p class="mb-1 mt-1 text-right text-success" id="name_shop_card">
-                                <?php echo number_format($fetchArray['product_price']); ?>
-                                บาท
-                            </p>
-                        </strong>
-                    </div>
-
-                </div>
-
-
-
-
-                <?php
-                        }                       
-                    }else{
-                        ?>
-
-                <script>
-                alert("Can't SQL");
-                </script>
-
-                <?php
-                    }              
-                    }
+        <tbody class="text-nowrap">
+        <?php
+            $sl_list_success = $pdo4ThisP->runQuery('SELECT * from save_basket Where status_pay=:s1 order by id_save_basket DESC');
+            $sl_list_success->execute(['s1' => 'approved']);
+            while($post = $sl_list_success->fetch()){
+        ?>
+            <tr>
+                <td>
+                    <?php
+                        $sl_user = $pdo4ThisP->runQuery('SELECT * from user where id=:id_user');
+                        $sl_user->execute(['id_user' => $post->id_user]);
+                        $post_user = $sl_user->fetch();
+                        echo $post_user->title_name." ".$post_user->first_name." ".$post_user->last_name;
                     ?>
-
-
-
-            </div>
-        </div>
+                </td>
+                <td><?php echo $post->date_time;?></td>
+                <td><?php echo $post->total_prod ;?></td>
+                <td>
+                    <a href="manager.php?m=m4_veiw_order_come&id4_save_basket=<?php echo $post->id_save_basket; ?>" class="btn btn-primary w-100"><i class="far fa-eye"></i> ดูรายละเอียด</a>
+                </td>
+            </tr>
+            <?php
+            }
+            ?>
+        </tbody>
+    </table>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-$(document).ready(function() {
-
-    $('[data-toggle="tooltip"]').tooltip('show');
-
-});
-</script>

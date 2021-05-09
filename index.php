@@ -18,7 +18,7 @@
         }else{
             echo"ไม่สามารถเชื่อม function เช็ค User status ได้";
         }
-    }        
+    }   
 ?>
 
 <!DOCTYPE html>
