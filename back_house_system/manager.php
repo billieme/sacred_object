@@ -128,7 +128,7 @@ if($_SESSION['user_level'] == "a"){
                                                 <i class="fas fa-hand-holding-usd" id="m_m4"></i>
                                             </div>
                                             <div class="col">
-                                                <p class=" mb-0" id="t_m_m4">จัดการทำรายการขายสินค้า</p>
+                                                <p class=" mb-0" id="t_m_m4">จัดการทำรายการสินค้า</p>
                                             </div>
 
                                         </div>
@@ -186,8 +186,9 @@ if($_SESSION['user_level'] == "a"){
                     case "m4_sell_sys":
                         include_once('include_for_m/sell_sys.php');
                     break;
-
-
+                    case "m4_sell_sacred_obj":
+                        include_once('include_for_m/sell_sacred_obj.php');
+                    break;
 
                     default:
                         include_once('include_ for_m/approve_sys.php');

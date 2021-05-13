@@ -102,24 +102,24 @@
                             if($num['register_status'] == "wait"){
                                 ?>
                                 
-                            <a href="manager.php?m=m1&appv_pass_id=<?php echo $num['id']; ?>" class="btn btn-success ">อนุมัติ</a>
+                            <a href="manager.php?m=m1&appv_pass_id=<?php echo $num['id']; ?>" class="btn btn-success w-100 ">อนุมัติ</a>
                             <?php
                             }
                             if($num['register_status'] == "pass" && $num['user_level'] == "p" ){
                                 ?>
-                            <a href="manager.php?m=m1&appv_wait_id=<?php echo $num['id']; ?>" class="btn btn-warning ">ระงับ</a>
+                            <a href="manager.php?m=m1&appv_wait_id=<?php echo $num['id']; ?>" class="btn btn-warning w-100">ระงับ</a>
                                 
                             <?php
                             }
                             if($num['user_level'] == "a"){
                                 ?>
-                            <a href="#" style="cursor: no-drop;" title="* ไม่สามารถทำการได้"  class="btn btn-primary ">เจ้าหน้าที่</a>
+                            <a href="#" style="cursor: no-drop;" title="* ไม่สามารถทำการได้"  class="btn btn-primary w-100">เจ้าหน้าที่</a>
                                 
                             <?php
                             }
                             if($num['user_level'] == "ma"){
                                 ?>
-                            <a href="#" style="cursor: no-drop;" title="* ไม่สามารถทำการได้" class="btn btn-primary ">ผู้บริหาร</a>
+                            <a href="#" style="cursor: no-drop;" title="* ไม่สามารถทำการได้" class="btn btn-primary w-100">ผู้บริหาร</a>
                                 
                             <?php
                             }

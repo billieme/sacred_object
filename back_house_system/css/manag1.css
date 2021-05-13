@@ -94,6 +94,14 @@
     object-position: center;
 }
 
+#div_td{
+    overflow-x:scroll;
+    width: 100%;
+    
+}
+#div_td::-webkit-scrollbar{
+    background-color: transparent;
+}
 @media screen and (max-width: 764px){
     #picSize{
         width: 100%;

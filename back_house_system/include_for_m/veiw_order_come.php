@@ -67,26 +67,20 @@
 
                     <?php
                         $pdo4thisP =  new connect_db();
-                        $sl_s_p = $pdo4thisP->runQuery('SELECT
-                        * 
-                    FROM
-                        `save_basket` 
-                    WHERE
-                        status_pay =:status_pay') ;
+                        $sl_s_p = $pdo4thisP->runQuery('SELECT * FROM save_basket WHERE id_save_basket=:id_s_b') ;
 
-                    $sl_s_p->execute(['status_pay' => 'approved']);
+                    $sl_s_p->execute(['id_s_b' => $_GET['id4_save_basket']]);
                     $post_sl_s_p = $sl_s_p->fetch();
-                    
-                    if($post_sl_s_p->status_pay != 'approved'){
-                    ?>
-
-                    <div class="">
+                    if($post_sl_s_p->status_pay == 'approved'){
+                        
+                    }else{
+                        ?>
+                        <div class="">
                         <button id="approve" class="btn btn-success" style="border:3px solid white;">อนุมัติ</button>
                         <button id="request_again" class="btn btn-warning"
                             style="border:3px solid white;">ร้องขอหลักฐานการชำระเงินใหม่</button>
                     </div>
                     <?php
-                    }else{
                         
                     }
                     ?>

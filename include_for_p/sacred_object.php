@@ -21,7 +21,7 @@
 
 
                         $SearchSObj = $_POST['search'];
-                        $sqlSearch = $sacredSelectAll->runQuery("SELECT * FROM product WHERE product_name LIKE '%$SearchSObj%' ");
+                        $sqlSearch = $sacredSelectAll->runQuery("SELECT * FROM product WHERE product_name LIKE '%$SearchSObj%' or product_type LIKE '%$SearchSObj%' ");
                         if($sqlSearch){
                             $row = mysqli_num_rows($sqlSearch);
                             if($row < 1){
@@ -54,6 +54,7 @@
                     <div>
                         <p class="mb-1 mt-1" id="name_shop_card"><?php echo $fetchSeach['product_name']; ?></p>
                     </div>
+                    <small class="font-weight-bold">หมวดหมู่ : <?php echo $fetchSeach['product_type'] ?></small>
                     <small class="font-weight-bold">คงเหลือ : <?php echo $fetchSeach['product_qty'] ?> ชิ้น</small>
 
                     <div class=" p-0 pr-2 pl-2 mb-0 mt-2">
@@ -98,6 +99,7 @@
                     <div>
                         <p class="mb-1 mt-1" id="name_shop_card"><?php echo $fetchArray['product_name']; ?></p>
                     </div>
+                    <small class="font-weight-bold">หมวดหมู่ : <?php echo $fetchArray['product_type'] ?></small>
                     <small class="font-weight-bold">คงเหลือ : <?php echo $fetchArray['product_qty'] ?> ชิ้น</small>
 
                     <div class=" p-0 pr-2 pl-2 mb-0 mt-2">
