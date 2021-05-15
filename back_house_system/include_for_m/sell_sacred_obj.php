@@ -25,9 +25,9 @@
 <hr>
 
 <div class="alert alert-primary">
-    <h3>ค้นหาวัตถุมงคล สำหรับเจ้าหน้าที่</h3>
-    <text class="font-weight-bold text-danger">*</text><text> เช่น ชื่อของวัตถุมงคล หรือ ชื่อชนิดของวัตถุมงคล</text>
-    <input class="mt-1 w-100 form-control" type="text" name="" id="search">
+    <taxt class="d-flex align-items-center"><h3>ค้นหาวัตถุมงคล สำหรับเจ้าหน้าที่</h3>
+    <text class="ml-2 font-weight-bold text-danger">*</text><text> เช่น ชื่อของวัตถุมงคล หรือ ชื่อชนิดของวัตถุมงคล</text></taxt>
+    <input class="mt-1 w-100 form-control" type="text" name="" id="search" placeholder="พิมพ์ชื่อวัตถุมงคล หรือ ชนิดของวัตถุมงคลที่นี่">
 </div>
 
 <div class="text-center mb-3">
@@ -51,6 +51,28 @@
     </table>
 </div>
 
+<div>
+    <table id='myTable' class="table-hover w-100 table"> 
+        <thead>
+            
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+            
+        </thead>
+        <tbody>
+            <tr>
+                <td>x</td>
+                <td>x</td>
+                <td>x</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
 <script>
 $(document).ready(() => {
     $('#search').keyup(() => {
@@ -69,7 +91,7 @@ $(document).ready(() => {
                         $('#tb').attr('hidden', true)
                     } else {
 
-                        //! /* ---------------------------------- ตราง ---------------------------------- */
+      //! /* ---------------------------------- ตราง ---------------------------------- */
 
                         $('#st_0').text("")
                         $('#tb').attr('hidden', false)
@@ -84,7 +106,7 @@ $(document).ready(() => {
                                     <td>${value.product_qty}</td>
                                     <td>${value.product_price}</td>
                                     <td>
-                                        
+                                    <input style='width:100px;' id="qty" type="number" name="data4basket[qty]" value="1">
                                     </td>
                                     <td><button class="btn btn-primary">เพิ่ม <i class="fas fa-cart-plus"></i></button></td>
                                     
