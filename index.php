@@ -56,7 +56,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <!--CSS Data Table-->
 
-    
+    <!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
     
 
 
@@ -311,7 +312,10 @@
                     <b> ©2020 กลุ่มวิจัยด้านเทคโนโลยีสารสนเทศเพื่อการพัฒนาชุมชน (IT4CD) <br>
                         มหาวิทยาลัยราชภัฏนครสวรรค์ </b><br>
                     <a class="text-decoration-none text-light " href="https://mail.google.com/mail/u/0/?tab=mm#inbox?compose=jrjtXJSVwCmpVHlRlvKmqjcwrrfNVdgrhRCDqfbxTSxvdKQwCTrWKKQBfwlfnbSgCVcrvbjx" target="_blank"> ติดต่อ :
-                        jirapat.m@nsru.ac.th </a>
+                        jirapat.m@nsru.ac.th </a>  <br class="mb-2">
+
+                        <!-- Place this tag where you want the button to render. -->
+<a class="github-button" href="https://github.com/jirapat252262120/sacred_object" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star jirapat252262120/sacred_object on GitHub">Star</a>
 
 
                 </div>

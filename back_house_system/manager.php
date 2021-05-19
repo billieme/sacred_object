@@ -41,11 +41,12 @@ if($_SESSION['user_level'] == "a"){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
     <!--Sweet Alert-->
 
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
-  <!-- animate css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- animate css -->
+
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <!-- feather icon -->
 
 
 </head>
@@ -231,6 +232,11 @@ if($_SESSION['user_level'] == "a"){
                     <!-- JS Data Table -->
                     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
                     <!-- JS Data Table -->
+
+                    <script>
+                    feather.replace()
+                    </script>
+                    <!-- feather icon -->
 
 
                     <script>

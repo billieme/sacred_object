@@ -20,7 +20,7 @@
 <script src="../sweetalert/sweetalert2.all.min.js"></script>
 
 
-<a href='manager.php?m=m4' class="btn btn-primary"><i class="fas fa-undo-alt"></i> ย้อนกลับ</a>
+<a href='manager.php?m=m4' class="btn btn-primary"><i data-feather="corner-down-left"></i> ย้อนกลับ</a>
 
 <hr>
 
@@ -278,8 +278,8 @@ readonly type="text" value="<?php echo number_format($fetchDT['SUM(b_price)']) ;
 $chkQtybasket = mysqli_num_rows($sql);
 if($chkQtybasket > 0){
 ?>
-<div class="text-right">
-<button id="confirm" class="btn btn-success" type="submit" name="submitOrder">สั่งสินค้า</button>
+<div class="d-flex justify-content-end">
+<button id="confirm" class="btn btn-success d-flex align-items-center" type="submit" name="submitOrder">ยืนยันตะกร้าสินค้า <i data-feather="check-square"></i></button>
 </div>
 <?php
 }

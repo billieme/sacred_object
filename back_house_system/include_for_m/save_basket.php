@@ -1,3 +1,15 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!--jquery-->
+
+<button id="return" class="btn btn-success"><i data-feather="corner-down-left"></i> ย้อนกลับ</button>
+<script>
+$(document).ready(() => {
+    $("#return").click(() => {
+        history.back()
+    })
+})
+</script>
+<hr>
 <form action="chk_all\chk_save_basket.php" method="POST">
     <?php
 if (isset($_POST['submitOrder'])) {
@@ -69,16 +81,18 @@ if (isset($_POST['submitOrder'])) {
 
                         <table class="">
                             <tbody class="p-2">
-                            <tr>
-                                <td colspan="2" class="text-center p-3 font-weight-bold"><h4>กรอกข้อมูลลูกค้า</h4></td>
-                            </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center p-3 font-weight-bold">
+                                        <h4 class="">กรอกข้อมูลลูกค้า <i data-feather="user-check"></i></h4>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td class="text-right">คำนำหน้าชื่อ : </td>
                                     <td>
                                         <select class="form-control ml-2" name="title_name" id="">
-                                                <option value="นาย">นาย</option>
-                                                <option value="นาง">นาง</option>
-                                                <option value="นางสาว">นางสาว</option>
+                                            <option value="นาย">นาย</option>
+                                            <option value="นาง">นาง</option>
+                                            <option value="นางสาว">นางสาว</option>
                                         </select>
                                     </td>
                                 </tr>
