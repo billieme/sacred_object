@@ -41,6 +41,12 @@ if($_SESSION['user_level'] == "a"){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
     <!--Sweet Alert-->
 
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <!-- animate css -->
+
 
 </head>
 
@@ -188,6 +194,9 @@ if($_SESSION['user_level'] == "a"){
                     break;
                     case "m4_sell_sacred_obj":
                         include_once('include_for_m/sell_sacred_obj.php');
+                    break;
+                    case "m4_save_basket":
+                        include_once('include_for_m/save_basket.php');
                     break;
 
                     default:

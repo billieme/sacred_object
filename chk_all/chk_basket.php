@@ -17,21 +17,21 @@
                                 $fetch_prod = mysqli_fetch_array($sql);
                                 if($qty > $fetch_prod['product_qty']){
                                     ?>
-                                                    <script>
-                                                       $(document).ready(function() {
-    
+<script>
+$(document).ready(function() {
+
     Swal.fire({
         icon: 'error',
         text: 'จำนวนวัตถุมงคลคงเหลือไม่เพียงพอต่อความต้องการของท่าน',
         showConfirmButton: false,
         timer: 3500
     }).then(function() {
-        window.location.href ='../index.php?p=readSacredObj&id4readSacredObj=<?php echo $id; ?>';
+        window.location.href = '../index.php?p=readSacredObj&id4readSacredObj=<?php echo $id; ?>';
     });
 
 });
-                                                    </script>
-                                    <?php
+</script>
+<?php
                                 }else{
                                 if($sql){
                                     if($qty <= 0 ){
@@ -52,22 +52,22 @@ window.location.href = '../index.php?p=readSacredObj&id4readSacredObj=<?php echo
                                             $updateQty = $forBasket->runQuery("UPDATE basket SET b_product_qty='$qtyNew' WHERE id_product='$id' and status_basket='wait' ");
                                             if($updateQty){
                                                 ?>
-    <script>
-    $(document).ready(function() {
-    
-        Swal.fire({
-            icon: 'success',
-            text: 'บันทึกลงตะกร้าสินค้าเรียบร้อยแล้ว',
-            showConfirmButton: false,
-            timer: 2500
-        }).then(function() {
-            window.location.href =
-                '../index.php?p=readSacredObj&id4readSacredObj=<?php echo $id; ?>&basketSuccess=ok';
-        });
-    
+<script>
+$(document).ready(function() {
+
+    Swal.fire({
+        icon: 'success',
+        text: 'บันทึกลงตะกร้าสินค้าเรียบร้อยแล้ว',
+        showConfirmButton: false,
+        timer: 2500
+    }).then(function() {
+        window.location.href =
+            '../index.php?p=readSacredObj&id4readSacredObj=<?php echo $id; ?>&basketSuccess=ok';
     });
-    </script>
-    <?php
+
+});
+</script>
+<?php
                                             }
                                             
                                         }else{

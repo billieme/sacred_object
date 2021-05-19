@@ -2,10 +2,12 @@
 <!--jquery-->
 <script src="../sweetalert/sweetalert2.all.min.js"></script>
 
-
+<div class="w-100 mb-5">
+    <a href="manager.php?m=m4_sell_sacred_obj" class=" p-3 btn btn-warning font-weight-bold " style="border: 3px solid white;"><h4>ทำรายการขายวัตถุมงคล <i class="fas fa-cart-arrow-down"></i></h4></a> 
+ </div>
 
 <div class="alert alert-primary mb-5">
-    <h3>📢 คำชี้แจงสำหรับเจ้าหน้าที่ และ ผู้ขาย</h3>
+    <h3>📢 คำชี้แจงสำหรับเจ้าหน้าที่</h3>
     <hr>
     <text class="text-danger font-weight-bold mr-1">*</text><text>หัวข้อ วัตถุมงคลใกล้หมด จะแสดงตัวเลขจำนวนวัตถุมงคลแต่ละชนิดที่เหลือน้อยกว่า 5 ชิ้นใน Stock สินค้า</text><br>
     <text class="text-danger font-weight-bold mr-1">*</text><text>หัวข้อ ออร์เดอร์ใหม่ เป็นระบบแจ้งเตือนแบบ Realtime
@@ -14,9 +16,7 @@
 
 </div>
 
- <div class="w-100 mb-5">
-    <a href="manager.php?m=m4_sell_sacred_obj" class=" p-4 btn btn-warning font-weight-bold " style="border: 3px solid white;"><h4>ทำรายการขายวัตถุมงคล <i class="fas fa-cart-arrow-down"></i></h4></a> 
- </div>
+ 
 
 
 
