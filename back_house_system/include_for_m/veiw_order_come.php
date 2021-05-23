@@ -48,6 +48,7 @@
 
             <div class="jumbotron jumbotron-fluid alert-success mb-3 p-3">
                 <?php
+                    if($fetch_SSB1['name_cus'] =="-"){
                         $sl_user4 = $queryThis->runQuery("SELECT * FROM user WHERE id='$fetch_SSB1[id_user]' ");
                         $fetch_SU4 = mysqli_fetch_array($sl_user4);
                         ?>
@@ -56,6 +57,17 @@
                     <?php echo $fetch_SU4['title_name']." ".$fetch_SU4['first_name']." ".$fetch_SU4['last_name'] ; ?></text><br>
                 <text>เบอร์โทรติดต่อกลับ : <?php echo $fetch_SSB1['phone_number'];?> </text><br>
                 <text>ที่อยู่จัดส่ง : <?php echo $fetch_SSB1['address_for_send'];?></text><br>
+                    <?php
+                    }else{
+                    ?>
+                    <strong><u>รายละเอียดการจัดส่ง</u> </strong><br><br>
+                <text>ชื่อ :
+                    <?php echo $fetch_SSB1['name_cus'] ; ?></text><br>
+                <text>เบอร์โทรติดต่อกลับ : <?php echo $fetch_SSB1['phone_number'];?> </text><br>
+                <text>ที่อยู่จัดส่ง : <?php echo $fetch_SSB1['address_for_send'];?></text><br>
+                <?php
+                    }
+                    ?>
 
             </div>
 
@@ -86,10 +98,17 @@
                     ?>
                 </div>
 
+                <?php
+                    if($post_sl_s_p->name_cus =="-"){
 
+                        ?>
                 <img class="w-100 rounded" style="border:2px solid white;"
                     src="../image/slip_chk/<?php echo $fetch_SSB1['slip_img']; ?>" alt="">
-
+                    <?php
+                    }else{
+                        echo"เช่าบูชาที่ซุ้มพระ  / ชำระเงินเรียบร้อยแล้ว";
+                    }
+                    ?>
             </div>
         </div>
 

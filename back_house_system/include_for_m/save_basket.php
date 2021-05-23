@@ -10,7 +10,7 @@ $(document).ready(() => {
 })
 </script>
 <hr>
-<form action="chk_all\chk_save_basket.php" method="POST">
+<form action="include_for_m/chk_save_basket.php" method="POST">
     <?php
 if (isset($_POST['submitOrder'])) {
 ?>
