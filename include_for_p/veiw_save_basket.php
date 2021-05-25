@@ -139,7 +139,11 @@
                 <?php
                         }else{
                         ?>
-                            <img class="w-100 rounded " src="image/slip_chk/<?php echo$fetch_SSB1['slip_img']; ?>" alt="">
+                            <div class="row">
+                                <div class="col-12 col-md-7">
+                                    <img class="w-100 rounded " src="image/slip_chk/<?php echo$fetch_SSB1['slip_img']; ?>" alt="">
+                                </div>
+                            </div>
 
                             <?php
                         }

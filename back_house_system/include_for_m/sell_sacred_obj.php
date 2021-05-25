@@ -195,7 +195,7 @@ if($chkqty4del > 0){
 }
 ?>
 
-<table class="table w-100">
+<table class="table w-100 table-hover animate__animated animate__backInLeft animate_faster">
 <thead class="alert alert-primary font-weight-bold text-nowrap">
 <tr>
 <th scope="col">

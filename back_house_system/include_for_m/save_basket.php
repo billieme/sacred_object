@@ -105,7 +105,7 @@ if (isset($_POST['submitOrder'])) {
                                 <tr>
                                     <td class="text-right pt-2">เบอร์โทรติดต่อกลับ : </td>
                                     <td class="pt-2">
-                                        <input class="ml-2 form-control" type="text" name="p_number" required>
+                                        <input class="ml-2 form-control" type="text" name="p_number" required maxlength="10">
                                     </td>
                                 </tr>
                                 <tr>
