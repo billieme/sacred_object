@@ -47,11 +47,20 @@ if(isset($_GET['cancel'])=="go"){
                                     unlink($file);
                                     
                                 }
+                                if(isset($_GET['admin'])){
+                                    ?>
+                                    <script>
+                                        window.location.href='../back_house_system/manager.php?m=m4_sell_sys';
+                                    </script>
+                                <?php
+                                }else{
+
                                 ?>
                                     <script>
                                         window.location.href='../index.php?p=basket';
                                     </script>
                                 <?php
+                                }
                             }
 }
 

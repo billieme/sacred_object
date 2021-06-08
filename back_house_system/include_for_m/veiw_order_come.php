@@ -57,10 +57,10 @@
                     <?php echo $fetch_SU4['title_name']." ".$fetch_SU4['first_name']." ".$fetch_SU4['last_name'] ; ?></text><br>
                 <text>เบอร์โทรติดต่อกลับ : <?php echo $fetch_SSB1['phone_number'];?> </text><br>
                 <text>ที่อยู่จัดส่ง : <?php echo $fetch_SSB1['address_for_send'];?></text><br>
-                    <?php
+                <?php
                     }else{
                     ?>
-                    <strong><u>รายละเอียดการจัดส่ง</u> </strong><br><br>
+                <strong><u>รายละเอียดการจัดส่ง</u> </strong><br><br>
                 <text>ชื่อ :
                     <?php echo $fetch_SSB1['name_cus'] ; ?></text><br>
                 <text>เบอร์โทรติดต่อกลับ : <?php echo $fetch_SSB1['phone_number'];?> </text><br>
@@ -72,8 +72,8 @@
             </div>
 
             <div class="jumbotron jumbotron-fluid alert-success mb-3 p-3">
-                <div class="d-flex justify-content-between mb-4">
-                    <div class="d-flex align-self-center">
+                <div class="row d-flex justify-content-between mb-4">
+                    <div class="col d-flex align-self-center">
                         <strong><u>หลักฐานการชำระเงิน</u> </strong>
                     </div>
 
@@ -87,7 +87,7 @@
                         
                     }else{
                         ?>
-                        <div class="">
+                    <div class="col-lg d-flex justify-content-end mt-2">
                         <button id="approve" class="btn btn-success" style="border:3px solid white;">อนุมัติ</button>
                         <button id="request_again" class="btn btn-warning"
                             style="border:3px solid white;">ร้องขอหลักฐานการชำระเงินใหม่</button>
@@ -102,9 +102,15 @@
                     if($post_sl_s_p->name_cus =="-"){
 
                         ?>
-                <img class="w-100 rounded" style="border:2px solid white;"
-                    src="../image/slip_chk/<?php echo $fetch_SSB1['slip_img']; ?>" alt="">
-                    <?php
+                <div class="row">
+
+                    <div class="col-md-7">
+
+                        <img class="w-100 rounded" style="border:2px solid white;"
+                            src="../image/slip_chk/<?php echo $fetch_SSB1['slip_img']; ?>" alt="">
+                    </div>
+                </div>
+                <?php
                     }else{
                         echo"เช่าบูชาที่ซุ้มพระ  / ชำระเงินเรียบร้อยแล้ว";
                     }
@@ -140,7 +146,7 @@ $(document).ready(() => {
             }
         })
     })
-    $("#request_again").click(()=>{
+    $("#request_again").click(() => {
         Swal.fire({
             title: 'ต้องการร้องขอหลักฐานการชำระเงินใหม่?',
             text: "คุณต้องการร้องขอหลักฐานการชำระเงินใหม่จริงหรือไม่!",
@@ -182,8 +188,8 @@ $(document).ready(() => {
         title: 'อนุมัติการสั่งวัตถุมงคลเรียบร้อยแล้ว',
         showConfirmButton: false,
         timer: 1500
-    }).then(()=>{
-        window.location.href='manager.php?m=m4_order_come';
+    }).then(() => {
+        window.location.href = 'manager.php?m=m4_order_come';
     })
 })
 </script>
@@ -212,20 +218,20 @@ if(isset($_GET['request_again']) =="ok"){
     $sql4upd_np->execute(['np_s_b' =>'request_img', 'np_s_img' => 'wait', 'np_id_s_b' => $_GET['id4_save_basket']]);
     if($sql4upd_np){
    ?>
-   <script>
-        $(document).ready(() => {
+<script>
+$(document).ready(() => {
     Swal.fire({
 
         icon: 'success',
         title: 'ร้องขอหลักฐานการชำระเงินใหม่เรียบร้อยแล้ว',
         showConfirmButton: false,
         timer: 1500
-    }).then(()=>{
-        window.location.href='manager.php?m=m4_order_come';
+    }).then(() => {
+        window.location.href = 'manager.php?m=m4_order_come';
     })
 })
-   </script>
-   <?php
+</script>
+<?php
     }
 }
 

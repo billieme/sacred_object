@@ -64,7 +64,7 @@
 
 <div class="card">
     <div class="card-header" id="bg_hd_card_m1">
-        <h3 class="text-center"><b> <i class="fas fa-user-check"></i> ตรางอนุมัติรายชื่อผู้สมัครสมาชิก</b></h3>
+        <h3 class="text-center"><b> <i class="fas fa-user-check"></i> ตรางอนุมัติรายชื่อสมาชิก</b></h3>
     </div>
     <div class="card-body bg-light">
                 

@@ -13,7 +13,7 @@ if($_SESSION['user_level'] == "ma"){
 <html lang="en">
 
 <head>
-    <title><?php echo title_web_m; ?></title>
+    <title><?php echo title_web_e; ?></title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -53,6 +53,11 @@ if($_SESSION['user_level'] == "ma"){
 
 <body class="sb-nav-fixed">
 
+    <!--//! script alert & jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="../sweetalert/sweetalert2.all.min.js"></script>
+    <!-- Sweet alert-->
+
     <!-- Navbar-->
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark d-flex justify-content-center pr-0">
         <p class="navbar-brand text-light">ผู้บริหาร </p>
@@ -85,62 +90,35 @@ if($_SESSION['user_level'] == "ma"){
                             <hr>
 
                             <ul id="ul_m">
-                                <a href="manager.php?m=m1" class="text-light">
-                                    <li>
-                                        <div class="row d-flex align-items-center">
-
-                                            <div class="col-1 mr-1">
-                                                <i class="fas fa-address-book" id="m_m1"></i>
-                                            </div>
-                                            <div class="col">
-                                                <p class="mb-0" id="t_m_m1">อนุมัติรายชื่อผู้สมัครสมาชิก</p>
-                                            </div>
-
-
-                                        </div>
-                                    </li>
-                                </a>
-                                <a href="manager.php?m=m2" class="text-light">
+                            
+                                <a href="executive.php?m=report_prod" class="text-light">
                                     <li>
                                         <div class="row d-flex align-items-center">
                                             <div class="col-1 mr-1">
-                                                <i class="far fa-newspaper" id="m_m2"></i>
+                                            <i class="fas fa-chart-line"></i>
                                             </div>
                                             <div class="col">
-                                                <p class=" mb-0" id="t_m_m2">จัดการข่าว</p>
-                                            </div>
-
-
-                                        </div>
-
-                                    </li>
-                                </a>
-                                <a href="manager.php?m=m3" class="text-light">
-                                    <li>
-                                        <div class="row d-flex align-items-center">
-                                            <div class="col-1 mr-1">
-                                                <i class="fas fa-box-open" id="m_m3"></i>
-                                            </div>
-                                            <div class="col">
-                                                <p class=" mb-0" id="t_m_m3">จัดการสินค้า</p>
+                                                <p class="mb-0" id="t_m_m1">รายงานยอดวัตถุมงคลคงเหลือ</p>
                                             </div>
                                         </div>
                                     </li>
                                 </a>
-                                <a href="manager.php?m=m4" class="text-light">
+                            
+                                <a href="executive.php?m=report_sell" class="text-light">
                                     <li>
                                         <div class="row d-flex align-items-center">
-
                                             <div class="col-1 mr-1">
-                                                <i class="fas fa-hand-holding-usd" id="m_m4"></i>
+                                            <i class="fas fa-file-invoice-dollar"></i>
                                             </div>
                                             <div class="col">
-                                                <p class=" mb-0" id="t_m_m4">จัดการทำรายการสินค้า</p>
+                                                <p class="mb-0" id="t_m_m2">รายงานยอดขายทั้งหมด</p>
                                             </div>
-
                                         </div>
                                     </li>
                                 </a>
+
+                                
+
                             </ul>
 
                         </div>
@@ -156,8 +134,14 @@ if($_SESSION['user_level'] == "ma"){
 
                     <?php
                 switch ($_GET['m']){
-                    case "m1":
-                        include_once('include_for_m/approve_sys.php');
+                    case "report_prod":
+                        include_once('include_for_ex/report_prod.php');
+                    break;
+                    case "report_sell":
+                        include_once('include_for_ex/report_sell.php');
+                    break;
+                    case "report_search":
+                        include_once('include_for_ex/report_search.php');
                     break;
 
                     default:
@@ -172,9 +156,7 @@ if($_SESSION['user_level'] == "ma"){
 
 
 
-                    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
-                    <!-- Sweet alert-->
+
                     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"
                         crossorigin="anonymous"></script>
                     <script src="js/scripts.js"></script>
@@ -193,28 +175,33 @@ if($_SESSION['user_level'] == "ma"){
                     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
                     <!-- JS Data Table -->
 
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"></script>
+                    <!-- Chart js -->
+
                     <script>
                     feather.replace()
                     </script>
                     <!-- feather icon -->
 
 
+                    <!-- //! เปลี่ยนสี menu -->
+
                     <script>
                     $(document).ready(function() {
                         <?php
-                    if($_GET['m'] =="m1"){
+                    if($_GET['m'] =="report_prod"){
                         ?>
                         $("#t_m_m1").addClass('hoverMenuManager');
                         <?php
                     }
-                    if($_GET['m'] =="m2"){
+                    if($_GET['m'] =="report_sell"){
                         ?>
                         $("#t_m_m2").addClass('hoverMenuManager');
                         <?php
                     }
-                    if($_GET['m'] =="m3"){
+                    if($_GET['m'] =="report_search"){
                         ?>
-                        $("#t_m_m3").addClass('hoverMenuManager');
+                        $("#t_m_m2").addClass('hoverMenuManager');
                         <?php
                     }
                     if($_GET['m'] =="m4"){

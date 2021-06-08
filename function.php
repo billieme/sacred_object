@@ -118,14 +118,14 @@
                 return $result;
 
             }
-            public function edit_prod($newsT, $newsS, $news3, $news4, $news5, $newNF1, $idIns){
+            public function edit_prod($newsT, $newsS, $news3, $news4, $news5, $data4save, $idIns){
                 $result = mysqli_query($this->dbcon, "UPDATE product SET
                     product_name='$newsT',
                     product_type='$newsS',
                     product_des='$news3',
                     product_price='$news4',	
                     product_qty='$news5',
-                    product_cover='$newNF1' WHERE id_product='$idIns'");
+                    product_cover='$data4save' WHERE id_product='$idIns'");
 
                 return $result;
 
@@ -154,14 +154,14 @@
                         '$email',
                         '$phone_number',
                         '$profile_img',
-                        'wait',
+                        'pass',
                         'p')
                         ");
 
             return $result;
                     } 
             //? ฟังก์ชั่น เพิ่มสินค้า
-            public function inst_proD($pd1, $pd2, $pd3, $pd4, $pd5, $newNF1){
+            public function inst_proD($pd1, $pd2, $pd3, $pd4, $pd5, $data4save){
 
                     $result = mysqli_query($this->dbcon, "INSERT INTO product(
                         	product_name,
@@ -175,7 +175,7 @@
                         '$pd3',
                         '$pd4',
                         '$pd5',
-                        '$newNF1')
+                        '$data4save')
                         ");
 
             return $result;
@@ -274,11 +274,10 @@
                 return $re;
             }
             //? ฟังก์ชั่น del วัตถุ
-            public function delPd($id, $file){
+            public function delPd($id){
                 
                 $re = mysqli_query($this->dbcon, "DELETE FROM product WHERE id_product='$id'");
-                unlink($file);
-               
+
 
                 if($re){
                     // echo"<script>";

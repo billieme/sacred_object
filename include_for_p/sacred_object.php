@@ -14,85 +14,29 @@
         <div class="card-body pt-4 min-vh-100">
             <div class="row d-flex justify-content-center">
                 <?php
-                
-                if(isset($_POST['search']) && !empty($_POST['search'])){
+                    if(isset($_GET['page'])){
+                        $page = $_GET['page'];
+                    }else{
+                        $page=1;
 
-/*-------------------------- Show Search SacredOBJ ------------------------- */
-
-
-                        $SearchSObj = $_POST['search'];
-                        $sqlSearch = $sacredSelectAll->runQuery("SELECT * FROM product WHERE product_name LIKE '%$SearchSObj%' or product_type LIKE '%$SearchSObj%' ");
-                        if($sqlSearch){
-                            $row = mysqli_num_rows($sqlSearch);
-                            if($row < 1){
-                                ?>
-                <h5 class="textbill-primary font-weight-bold">
-                    <?php echo"ไม่พบวัตถุมงคล ' $SearchSObj ' ที่ท่านค้นหา"; ?>
-                </h5>
-                <?php
-                            }else{
-                            ?>
-                <div class=" pl-5 pr-5 col-md-12 alert alert-primary">
-                    <text class="font-weight-bold">ผลการค้นหา : </text><text
-                        class="text-secondary"><?php echo $SearchSObj;?></text>
-
-                </div>
-                <?php
-                                while($fetchSeach = mysqli_fetch_array($sqlSearch)){
-                                    ?>
-
-
-
-
-                <div class="card col-md-3 m-2 p-3">
-                    <a class="card"
-                        href="index.php?p=readSacredObj&id4readSacredObj=<?php echo $fetchSeach['id_product']; ?>">
-                        <img id="picSize" src="image/product/<?php echo $fetchSeach['product_cover']; ?>"
-                            title="คลิกเพื่อดูรายละเอียดวัตถุมงคล">
-                    </a>
-
-                    <div>
-                        <p class="mb-1 mt-1" id="name_shop_card"><?php echo $fetchSeach['product_name']; ?></p>
-                    </div>
-                    <small class="font-weight-bold">หมวดหมู่ : <?php echo $fetchSeach['product_type'] ?></small>
-                    <small class="font-weight-bold">คงเหลือ : <?php echo $fetchSeach['product_qty'] ?> ชิ้น</small>
-
-                    <div class=" p-0 pr-2 pl-2 mb-0 mt-2">
-                        <strong class="d-flex d-inline">
-                            <h4 class="mb-1 mt-1 text-right text-success font-weight-bold" id="name_shop_card">
-                                <?php echo number_format($fetchSeach['product_price']); ?>
-                                <text class="text-danger">฿</text>
-                            </h4>
-                        </strong>
-                    </div>
-
-                </div>
-                <?php
-                                }
-                            }
-                        }else{
-                            echo"Can't Search data";
-                        }
-
-/* -------------------------------------------------------------------------- */
-
-
-}else{
-                        //! --------------------------------- ทั้งหมด -------------------------------- */
-                        //! --------------------------------- ทั้งหมด -------------------------------- */
-                        //! --------------------------------- ทั้งหมด -------------------------------- */
-
+                    }
+                    $row_data  = 6; //! ข้อมูลที่จะโชว์ต่อ 1 หน้า
+                    $set_limit = ($page-1) * $row_data;
+                    
 
                         ?>
                 <?php
-                    $sql = $sacredSelectAll->runQuery("SELECT * FROM product ORDER BY id_product");
+                    $sql = $sacredSelectAll->runQuery("SELECT * FROM product ORDER BY id_product DESC limit $set_limit, $row_data");
                     if($sql){
                         while( $fetchArray = mysqli_fetch_array($sql)){
                             ?>
                 <div class="card col-md-3 m-2 p-3">
                     <a class="card"
                         href="index.php?p=readSacredObj&id4readSacredObj=<?php echo $fetchArray['id_product']; ?>">
-                        <img id="picSize" src="image/product/<?php echo $fetchArray['product_cover']; ?>"
+                        <?php
+                            $pic =explode(',', $fetchArray['product_cover']) ;
+                        ?>
+                        <img id="picSize" src="image/product/<?php echo $pic[0]; ?>"
                             title="คลิกเพื่อดูรายละเอียดวัตถุมงคล">
                     </a>
 
@@ -112,12 +56,8 @@
                     </div>
 
                 </div>
-
-
-
-
                 <?php
-                        }                       
+                        }              
                     }else{
                         ?>
 
@@ -126,14 +66,11 @@
                 </script>
 
                 <?php
-                    }              
-                    }
+                    }      
                     ?>
-
-
-
             </div>
         </div>
+
     </div>
 </div>
 
@@ -145,3 +82,40 @@ $(document).ready(function() {
 
 });
 </script>
+
+<nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="index.php?p=sacredOb&page=1" tabindex="-1"
+                                aria-disabled="true">หน้าแรก</a>
+                        </li>
+                        <li class="page-item <?=$page > 1 ? '' : 'disabled' ?>">
+                            <a class="page-link" href="index.php?p=sacredOb&page=<?=$page-1;?>" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                            <?php
+        $sql_page_all4pagination = $sacredSelectAll->runQuery("SELECT * from `product`");
+        $fetch_page = mysqli_num_rows($sql_page_all4pagination);
+        $page_all4pagination = ceil($fetch_page/$row_data);
+        
+        for($xx = 1 ; $xx <= $page_all4pagination; $xx++){
+            ?>
+                        </li>
+                        <li class="page-item <?=$page == $xx ? 'active' : '' ?>"><a class="page-link"
+                                href="index.php?p=sacredOb&page=<?=$xx?>"><?=$xx?></a></li>
+                        <?php
+            }
+            ?>
+
+
+                        <li class="page-item <?=$page < $page_all4pagination ? '' : 'disabled'; ?>">
+                            <a class="page-link" href="index.php?p=sacredOb&page=<?=$page+1;?>" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link"
+                                href="index.php?p=sacredOb&page=<?=$page_all4pagination?>">หน้าสุดท้าย</a>
+                        </li>
+                    </ul>
+                </nav>

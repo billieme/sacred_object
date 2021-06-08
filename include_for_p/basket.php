@@ -88,7 +88,10 @@ window.location.href = 'index.php';
                                         value="<?php echo $numfetch['id_basket']; ?>">
                                 </td>
                                 <td>
-                                    <img id="img4basket" src="image/product/<?php echo $numfetch['cover_basket']; ?>"
+                                <?php
+                                            $pic = explode(',', $numfetch['cover_basket']);
+                                ?>
+                                    <img id="img4basket" src="image/product/<?php echo $pic[0]; ?>"
                                         alt="">
 
                                 </td>
@@ -185,9 +188,24 @@ window.location.href = 'index.php';
                             <td><?php echo $fetch_SB["total_prod"];?></td>
 
                             <td>
-                                <a href="index.php?p=veiw_save_basket&id4_save_basket=<?php echo $fetch_SB['id_save_basket'] ;?>"
-                                    class="btn btn-primary">ดูรายละเอียด <i class="far fa-eye"></i></a>
                                 <?php
+                                    if($fetch_SB['status_pay'] =="not_pay"){
+                                        ?>
+                                         <a href="index.php?p=veiw_save_basket&id4_save_basket=<?php echo $fetch_SB['id_save_basket'] ;?>"
+                                    class="btn btn-success">ชำระเงิน <i class="far fa-eye"></i></a>
+                                        <?php
+                                    }elseif($fetch_SB['status_pay'] =="request_img"){
+                                        ?>
+                                                <a href="index.php?p=veiw_save_basket&id4_save_basket=<?php echo $fetch_SB['id_save_basket'] ;?>"
+                                    class="btn btn-danger">เพิ่มหลักฐานการโอนใหม่ <i class="far fa-eye"></i></a>
+                                        <?php
+                                    }else{
+                                        ?>
+                                        
+                                        <a href="index.php?p=veiw_save_basket&id4_save_basket=<?php echo $fetch_SB['id_save_basket'] ;?>"
+                                            class="btn btn-primary">ดูรายละเอียด <i class="far fa-eye"></i></a>
+                                        <?php
+                                    }
                                 
                                     if($fetch_SB['status_pay'] =="cancel_order"){
 

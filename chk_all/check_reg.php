@@ -12,10 +12,12 @@
 
     
 
-        $path = "../image/upload/"; //! ที่อยู่
+        $path = "../image/upload/"; //! ที่อยู่ไฟล์
         $tmp = explode('.', $_FILES['profile_img']['name']); //!แยกชื่อกับนามสกุลไฟล์
+        $countTmp = count($tmp);
+        $countTmp--;
         $randomnum = rand(1,2000);
-        $newnamef = round(microtime(true)).$randomnum.".".$tmp[1]; //! เชื่อมชื่อใหม่กับนามสกุล
+        $newnamef = round(microtime(true)).$randomnum.".".$tmp[$countTmp]; //! เชื่อมชื่อใหม่กับนามสกุล
 
         $moved = move_uploaded_file($_FILES['profile_img']['tmp_name'], $path.$newnamef);
 
@@ -42,8 +44,7 @@
                         
                             Swal.fire({
                             icon: 'success',
-                            title: 'สมัครสมาชิกเรียบร้อยแล้วครับ',
-                            text : 'โปรดรอการ อนุมัติ จากเจ้าหน้าที่',
+                            title: 'สมัครสมาชิกเรียบร้อยแล้ว',
                             showConfirmButton: false,
                             timer: 3500
                             }).then(function(){ 

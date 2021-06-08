@@ -41,9 +41,17 @@
                 ?>
 
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-6">
                     <div class="card w-100 p-3">
-                        <img id="imgSacredObj" src="image/product/<?php echo $fetchData['product_cover']; ?>" alt="">
+                    <?php
+                            $pic =explode(',', $fetchData["product_cover"]);
+                            $countPic = count($pic);
+                            for($i = 0 ; $i<$countPic ; $i++){
+                    ?>
+                        <img id="imgSacredObj<?=$i?>" src="image/product/<?php echo $pic[$i]; ?>" alt=""> <?php if($countPic ==1){}else{ ?><hr> <?php  } ?>
+                        <?php
+                    }
+                    ?>
                     </div>
                 </div>
                 <div class="col-md">
@@ -64,6 +72,7 @@
                         <div class="d-flex d-inline">
                             <p class="font-weight-bold mr-2">คงเหลือ</p> <?php echo $fetchData['product_qty'];?> ชิ้น
                         </div>
+                        <hr class="mt-0">
                         <div>
                             <p id="detailSacredObj"><?php echo $fetchData['product_des'];?></p>
                         </div>
@@ -71,20 +80,20 @@
                         <form action="chk_all/chk_basket.php" method="post">
                                 <!-- //! Form -->
 
-                        <div class="d-flex d-inline justify-content-between align-items-center">
+                        <div class="row d-flex d-inline justify-content-between align-items-center">
                         
-                            <div class="d-flex">
+                            <div class=" col d-flex align-self-end">
 
                                     <div class="">จำนวน</div>
                                     <input id="qty" type="number" name="data4basket[qty]" value="1">
                                     <div for="">ชิ้น</div>
                             </div>
 
-                            <div class="text-right">
+                            <div class="col-md text-right">
                                 <?php 
                                     if(!isset($_SESSION['id'])){
                                 ?>
-                                <text id="notSessionID" class="btn btn-danger">
+                                <text id="notSessionID" class="btn btn-danger w-100 mt-2">
                                     <i class="fas fa-cart-arrow-down"></i> เพิ่มลงตะกร้าสินค้า
                                 </text>
                                 <?php
@@ -94,7 +103,7 @@
 
                                 <input name="data4basket[id]" value="<?php echo$id4readSacredObj;?>" hidden></input>
 
-                                <button class="btn btn-success" type="submit" name="submit">
+                                <button class="btn btn-success w-100 mt-2" type="submit" name="submit">
                                     <i class="fas fa-cart-arrow-down"></i> เพิ่มลงตะกร้าสินค้า
                                 </button>
 
@@ -122,7 +131,15 @@
 
 <script>
 $(document).ready(function() {
-    $("#imgSacredObj").imageZoom();
+
+    <?php
+        for ($x = 0; $x < $countPic; $x++){
+            ?>
+
+            $("#imgSacredObj<?=$x;?>").imageZoom();
+            <?php
+        }
+    ?>
 
 
     $("#notSessionID").click(function() {
@@ -136,8 +153,9 @@ $(document).ready(function() {
             hideClass: {
                 popup: 'animate__animated animate__flipOutY'
             }
+        
         })
-
+    
 
     })
 });

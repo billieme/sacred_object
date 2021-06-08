@@ -93,7 +93,7 @@ if($_SESSION['user_level'] == "a"){
                                                 <i class="fas fa-address-book" id="m_m1"></i>
                                             </div>
                                             <div class="col">
-                                                <p class="mb-0" id="t_m_m1">อนุมัติรายชื่อผู้สมัครสมาชิก</p>
+                                                <p class="mb-0" id="t_m_m1">อนุมัติรายชื่อสมาชิก</p>
                                             </div>
 
 
@@ -115,6 +115,7 @@ if($_SESSION['user_level'] == "a"){
 
                                     </li>
                                 </a>
+                                
                                 <a href="manager.php?m=m3" class="text-light">
                                     <li>
                                         <div class="row d-flex align-items-center">
@@ -127,6 +128,20 @@ if($_SESSION['user_level'] == "a"){
                                         </div>
                                     </li>
                                 </a>
+
+                                <a href="manager.php?m=transfer" class="text-light">
+                                    <li>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-1 mr-1">
+                                            <i class="fas fa-comments-dollar" id="transfer"></i>
+                                            </div>
+                                            <div class="col">
+                                                <p class=" mb-0" id="t_m_transfer">จัดการช่องทางการโอนเงิน</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </a>
+
                                 <a href="manager.php?m=m4" class="text-light">
                                     <li>
                                         <div class="row d-flex align-items-center">
@@ -180,6 +195,9 @@ if($_SESSION['user_level'] == "a"){
                     break;
                     case "m3":
                         include_once('include_for_m/product_sys.php');
+                    break;
+                    case "transfer":
+                        include_once('include_for_m/transfer_sys.php');
                     break;
                     case "m4":
                         include_once('include_for_m/page_4.php');
@@ -260,6 +278,11 @@ if($_SESSION['user_level'] == "a"){
                     if($_GET['m'] =="m4"){
                         ?>
                         $("#t_m_m4").addClass('hoverMenuManager');
+                        <?php
+                    }
+                    if($_GET['m'] =="transfer"){
+                        ?>
+                        $("#t_m_transfer").addClass('hoverMenuManager');
                         <?php
                     }
                     

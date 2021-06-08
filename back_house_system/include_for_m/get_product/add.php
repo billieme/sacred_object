@@ -22,14 +22,24 @@
         //$newsAT = $_SESSION['name']." ".$_SESSION['lname'];
 
         $path = "../image/product/";
+        $count_mane = count($_FILES['proD6']['name']);
+        $i = 0;
+        $sum_img = array();
+        for ($i ; $i < $count_mane; $i++){
+            $temp = explode(".", $_FILES['proD6']['name'][$i]);
+            $countTemp = count($temp);
+            $countTemp--;
+            $randomN = rand(1, 999999999999);
+            $newNF1 = round(microtime(true)).$randomN.".".$temp[$countTemp];
+            array_push($sum_img, $newNF1);
+            $move_finish = move_uploaded_file($_FILES['proD6']['tmp_name'][$i], $path.$newNF1);
+        }
+        
     
-        $temp = explode(".", $_FILES['proD6']['name']);
-        $randomN = rand(1, 100000);
-        $newNF1 = round(microtime(true)).$randomN.".".$temp[1];
-        $move_finish = move_uploaded_file($_FILES['proD6']['tmp_name'], $path.$newNF1);
         
         if($move_finish){
-            $chk = $product_insert->inst_proD($pd1, $pd2, $pd3, $pd4, $pd5, $newNF1);
+            $data4save = implode(",", $sum_img);
+            $chk = $product_insert->inst_proD($pd1, $pd2, $pd3, $pd4, $pd5, $data4save);
 
             if($chk){
                 echo"<script>";
@@ -100,8 +110,13 @@
             </div>
             <div class="form-group">
                 <label> <b>รูปภาพวัตถุมงคล</b> </label>
-                <input type="file" class="form-control-file w-50" name="proD6" required>
+                <input type="file" class="form-control-file w-50" name="proD6[]" required>
+                
+                <div id="addinputpic" class="row"></div>
+                
             </div>
+                <div id="addpic" class="btn btn-primary p-3 mt-2">เพิ่มรูป +</div>
+
             <div class="form-group d-flex justify-content-end">
                 <button type="reset" class="btn btn-warning text-light">ยกเลิก</button>
                 <button type="submit" class="btn btn-success text-light ml-2" name="submit">บันทึก</button>
@@ -110,5 +125,25 @@
             </form>
     </div>
 </div>
+
+<script>
+    $(document).ready(()=>{
+        var i = 1
+        $("#addpic").click(()=>{
+            $('<div id ="div_ip'+i+'" class="col-5"><input id="row'+i+'" type="file" class="form-control-file w-100 mt-3" name="proD6[]" required></div><div class="col-5 d-flex align-items-end"><div id="'+i+'" class="btn btn-danger remove_btn">ลบ</div></div>').appendTo("#addinputpic")
+
+            i++
+        })
+        $(document).on('click', '.remove_btn', ()=>{
+            var btn_id = $('.remove_btn').attr('id')
+            $('#row'+btn_id+'').remove();
+            $('#'+btn_id+'').remove();
+            // console.log(btn_id)
+            
+        })
+        
+        
+    })
+</script>
 
 

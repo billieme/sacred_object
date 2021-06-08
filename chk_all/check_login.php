@@ -94,7 +94,7 @@ $(document).ready(function() {
         showConfirmButton: false,
         timer: 2500
     }).then(function() {
-        window.location.href = '../back_house_system/executive.php';
+        window.location.href = '../back_house_system/executive.php?m=report_prod';
     });
 
 });

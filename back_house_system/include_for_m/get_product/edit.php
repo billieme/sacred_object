@@ -24,8 +24,9 @@
     
             $path = "../image/product/";
             $fck = $_FILES['proD6']['name'];
-            
-            if($_FILES['proD6']['name'] == ""){
+           
+        
+            if($_FILES['proD6']['name'][0] == ""){
                 $chk1 = $pd_ED->edit_prod_np($newsT, $newsS, $news3, $news4, $news5, $idIns);
                 if($chk1){
                     echo"<script>";
@@ -49,26 +50,38 @@
             }
 
             
-            if($_FILES['proD6']['name'] != ""){  
+            if($_FILES['proD6']['name'][0] != ""){  
             
             $idS = $_GET['edit_id']; //! del in folder
             $resSFDinFol = $p_edit->selPForED($idS);
             $numSFDinFol = mysqli_fetch_array($resSFDinFol);
+
+            $count_mane = count($_FILES['proD6']['name']);
+            $sum_img = array();
+            for ($i=0; $i < $count_mane; $i++){
+                $temp = explode(".", $_FILES['proD6']['name'][$i]);
+                $countTemp = count($temp);
+                $countTemp--;
+                $randomN = rand(1, 999999999999);
+                $newNF1 = round(microtime(true)).$randomN.".".$temp[$countTemp];
+                array_push($sum_img, $newNF1);
+                $move_finish = move_uploaded_file($_FILES['proD6']['tmp_name'][$i], $path.$newNF1);
+
+            }
         
-            $temp = explode(".", $_FILES['proD6']['name']);
-            $randomN = rand(1, 100000);
-            $newNF1 = round(microtime(true)).$randomN.".".$temp[1];
-            $move_finish = move_uploaded_file($_FILES['proD6']['tmp_name'], $path.$newNF1);
             
             if($move_finish){
-                
+                $data4save = implode(",", $sum_img);
                 if($numSFDinFol){
-                    $nameold = $numSFDinFol['product_cover'];
-                    $file = $path.$nameold;
-                    $delPicInFol = unlink($file);
+                    $nameold = explode(',', $numSFDinFol['product_cover']);
+                    $count_nameold = count($nameold);
+                    for($fori = 0; $fori < $count_nameold; $fori++){
+                        $file = $path.$nameold[$fori];
+                        $delPicInFol = unlink($file);
+                    }
                 }
 
-                $chk2 = $pd_ED->edit_prod($newsT, $newsS, $news3, $news4, $news5, $newNF1, $idIns);
+                $chk2 = $pd_ED->edit_prod($newsT, $newsS, $news3, $news4, $news5, $data4save, $idIns);
                 if($chk2){
                     echo"<script>";
                     echo "setTimeout(function () { 
@@ -162,10 +175,24 @@
             </div>
             <div class="form-group">
                 <label> <b>รูปภาพวัตถุมงคลเดิม :</b> </label><br>
-                <img style="width:350px; border:2px solid green;" src="../image/product/<?php echo $numS['product_cover']; ?>" alt=""><br><br>
+
+                <?php
+                    $pic = explode(',', $numS['product_cover']) ;
+                    $countPic = count($pic);
+                    for ($i = 0 ; $i < $countPic ; $i++){
+                        ?>
+                        <img style="width:180px; border:2px solid green;" src="../image/product/<?php echo $pic[$i]; ?>" alt=""><br><br>
+                        <?php
+                    }
+                    ?>
+                
                 <label> <b>รูปภาพวัตถุมงคล</b> </label>
-                <input type="file" class="form-control-file w-50" name="proD6" >
+                <input type="file" class="form-control-file w-50" name="proD6[]" >
+                <div id="addinputpic" class="row"></div>
             </div>
+
+            <div id="addpic" class="btn btn-primary p-3 mt-2">เพิ่มรูป +</div>
+
             <div class="form-group d-flex justify-content-end">
                 <button type="reset" class="btn btn-warning text-light">ยกเลิก</button>
                 <button type="submit" class="btn btn-success text-light ml-2" name="submit">บันทึก</button>
@@ -178,5 +205,25 @@
                     ?>
     </div>
 </div>
+
+<script>
+    $(document).ready(()=>{
+        var i = 1
+        $("#addpic").click(()=>{
+            $('<div class="col-5"><input id="row'+i+'" type="file" class="form-control-file w-100 mt-3" name="proD6[]" required></div><div class="col-5 d-flex align-items-end"><div id="'+i+'" class="btn btn-danger remove_btn">ลบ</div></div>').appendTo("#addinputpic")
+
+            i++
+        })
+        $(document).on('click', '.remove_btn', ()=>{
+            var btn_id = $('.remove_btn').attr('id')
+            $('#row'+btn_id+'').remove();
+            $('#'+btn_id+'').remove();
+            // console.log(btn_id)
+            
+        })
+        
+        
+    })
+</script>
 
 

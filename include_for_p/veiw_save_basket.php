@@ -109,6 +109,26 @@
             </div>
 
             <div class="jumbotron jumbotron-fluid alert-success mb-3 p-3">
+                <strong><u>ช่องทางการชำระเงิน</u> </strong><br><br>
+                <?php
+                    $pdo_sl_transfer = new connect_db();
+                    $sql_sl_transfer = $pdo_sl_transfer->runQuery("SELECT * from `transfer` order by id ");
+                    $sql_sl_transfer->execute();
+
+                ?>
+                <div class="alert alert-warning">
+                <?php
+                    while($fetch_sl_transfer=$sql_sl_transfer->fetch()){
+                ?>
+                    <?="ธนาคาร : ".$fetch_sl_transfer->name_bank." ชื่อบัญชี : ".$fetch_sl_transfer->name_account." หมายเลขบัญชี : ".$fetch_sl_transfer->number_bank."<br>";?>
+                    <?php
+                    }
+                    ?>
+                </div>
+
+            </div>
+
+            <div class="jumbotron jumbotron-fluid alert-success mb-3 p-3">
                 <strong><u>หลักฐานการชำระเงิน</u> </strong> <br><br>
                 <?php
                 if($fetch_SSB1['status_pay'] == "cancel_order"){

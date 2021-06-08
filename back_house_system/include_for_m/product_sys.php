@@ -38,6 +38,7 @@
   
 <?php
     } //! ปีกการับ isset GET chk
+
     if(isset($_GET['statusDel']) =="ok"){
         
         $idS = $_GET['del_id'];
@@ -45,11 +46,15 @@
         $resSFDinFol = $pd_slD->pdSlm3_d($idS);
         $numSFDinFol = mysqli_fetch_array($resSFDinFol);
         if($numSFDinFol){
-            $nameold = $numSFDinFol['product_cover'];
-            $file = $path.$nameold;
-         
-            $id = $_GET['del_id'];
-            $delSucc = $del->delPd($id, $file);
+
+            $nameold = explode(',', $numSFDinFol['product_cover']) ;
+            $count_nameOld = count($nameold);
+            for($for1=0; $for1 < $count_nameOld; $for1++){
+                $file = $path.$nameold[$for1];
+                $id = $_GET['del_id'];
+                $delSucc = $del->delPd($id);
+                $delfile = unlink($file);
+            }
         }
                                 
         ?>
@@ -112,8 +117,11 @@
                     <tr class="text-center">
                     <th scope="row"><?php $num1['id_product']; echo $n;  ?></th>
                     <td>
+                        <?php
+                            $pic1 = explode(',', $num1['product_cover']);
+                        ?>
                         <div class="divImageProduct">
-                            <img src="../image/product/<?php echo $num1['product_cover'];?>" alt="">
+                            <img src="../image/product/<?php echo $pic1[0];?>" alt="">
                         </div>
                         
                     </td>

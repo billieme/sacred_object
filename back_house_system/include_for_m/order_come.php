@@ -34,7 +34,7 @@
                                     ?>
                                 </td>
                                 <td><?php echo $post1->date_time ?></td>
-                                <td><?php echo $post1->total_prod ?></td>
+                                <td><?php echo number_format($post1->total_prod);  ?></td>
                                 
                                 <td>
                                         <a href="manager.php?m=m4_veiw_order_come&id4_save_basket=<?php echo $post1->id_save_basket ?>" class="btn btn-primary w-100"><i class="far fa-eye"></i> ดูข้อมูล</button>

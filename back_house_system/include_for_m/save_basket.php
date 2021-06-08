@@ -61,9 +61,17 @@ if (isset($_POST['submitOrder'])) {
                                 ?>
                                     <td class="text-right pt-4 font-weight-bold" colspan="3">Total : <input
                                             style="width: 6rem;"
+                                            class="font-weight-bold alert-success border-0 text-right" name=""
+                                            readonly type="text"
+                                            value="<?php echo number_format($fetchSum['sum(b_price)']);?>"> ฿
+
+                                            <input
+                                            style="width: 6rem;"
                                             class="font-weight-bold alert-success border-0 text-right" name="total_prod"
                                             readonly type="text"
-                                            value="<?php echo number_format($fetchSum['sum(b_price)']);?>"> ฿</td>
+                                            hidden="true"
+                                            value="<?php echo $fetchSum['sum(b_price)'];?>">
+                                    </td>
 
                                 </tr>
                             </tbody>
@@ -105,7 +113,8 @@ if (isset($_POST['submitOrder'])) {
                                 <tr>
                                     <td class="text-right pt-2">เบอร์โทรติดต่อกลับ : </td>
                                     <td class="pt-2">
-                                        <input class="ml-2 form-control" type="text" name="p_number" required maxlength="10">
+                                        <input class="ml-2 form-control" type="text" name="p_number" required
+                                            maxlength="10">
                                     </td>
                                 </tr>
                                 <tr>

@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once('function.php');
+    require_once('func4pdo/connect.php');
     $connect_database = new DB_conn();
     $chk_r_s = new shopSacredObj();
     
@@ -11,6 +12,7 @@
             $num4chk_r_s = mysqli_fetch_array($sql4chk_r_s);
             if($num4chk_r_s['register_status'] == "pass"){
                     // echo"k";
+
             }else{
                 header("Location: chk_all/chk_logout.php?logout=m");
                 // echo"no";
@@ -19,6 +21,8 @@
             echo"ไม่สามารถเชื่อม function เช็ค User status ได้";
         }
     }   
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +35,7 @@
     <link rel="stylesheet" href="css/myself.css?version=<?php echo filemtime('css/myself.css'); ?>">
     <!--CSS หน้าแรก-->
 
-   
+
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!-- font awesome5 -->
@@ -40,25 +44,22 @@
     <link rel="stylesheet" href="bootstrap/bootstrap.css">
     <!--bootstrap-->
 
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
-  <!-- animation css Swal -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- animation css Swal -->
 
-  <link rel="stylesheet" href="css/image-zoom.css">
-  <!-- Zoom Image -->
-  
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
-  <!-- Data table -->
+    <link rel="stylesheet" href="css/image-zoom.css">
+    <!-- Zoom Image -->
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <!-- Data table -->
 
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <!--CSS Data Table-->
 
     <!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-    
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
 
 
 
@@ -105,16 +106,20 @@
                             <form action="chk_all/check_login.php" method="post">
                                 <div class="row d-flex justify-content-end">
                                     <div class="col-md p-0 mb-2 mr-2">
-                                        <input type="text" class="col-md inputbill-border" name="username" placeholder="Username"
-                                            required="sdgsdg" autocomplete="off" value="<?php if(isset($_COOKIE['saveUser'])){ echo $_COOKIE['saveUser']; } ?>">
+                                        <input type="text" class="col-md inputbill-border" name="username"
+                                            placeholder="Username" required="sdgsdg" autocomplete="off"
+                                            value="<?php if(isset($_COOKIE['saveUser'])){ echo $_COOKIE['saveUser']; } ?>">
                                     </div>
                                     <div class="col-md p-0 mr-2">
                                         <input type="password" class="col-md inputbill-border" name="password"
-                                            placeholder="Password" required value="<?php if(isset($_COOKIE['savePass'])){ echo $_COOKIE['savePass']; } ?>">
+                                            placeholder="Password" required
+                                            value="<?php if(isset($_COOKIE['savePass'])){ echo $_COOKIE['savePass']; } ?>">
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end pt-1">
-                                    <label class="textbill-primary font-weight-bold">บันทึกรหัสผ่าน <input type="checkbox" id="" name="savePass" value="ok" <?php if(isset($_COOKIE['savePass'])){?> checked <?php } ?>></label>
+                                    <label class="textbill-primary font-weight-bold">บันทึกรหัสผ่าน <input
+                                            type="checkbox" id="" name="savePass" value="ok"
+                                            <?php if(isset($_COOKIE['savePass'])){?> checked <?php } ?>></label>
                                 </div>
 
                                 <div class="row justify-content-end mt-2 pr-1 form-inline">
@@ -122,9 +127,8 @@
                                         <a class="mr-2 btnbill-primary" href="index.php?p=reg">สมัครสมาชิก</a>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btnbill-warning mr-1"
-                                            name="submit">เข้าสู่ระบบ <i class="fa fa-sign-in"
-                                                aria-hidden="true"></i></button>
+                                        <button type="submit" class="btnbill-warning mr-1" name="submit">เข้าสู่ระบบ <i
+                                                class="fa fa-sign-in" aria-hidden="true"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -145,12 +149,12 @@
                         <div class="col-sm d-flex justify-content-end">
                             <form action="chk_all/chk_logout.php" method="post">
                                 <div class="row justify-content-end mt-2 pr-1 form-inline">
-                                                    <div class="font-weight-bold alert alert-warning m-0">
+                                    <div class="font-weight-bold alert alert-warning m-0">
 
-                                                        <?php
+                                        <?php
                                                         echo "🟢 Online : ". $_SESSION['name']." ".$_SESSION['lname']; 
                                                         ?>
-                                                        </div>
+                                    </div>
 
 
                                 </div>
@@ -220,17 +224,20 @@
                                         $fetch4count = mysqli_fetch_assoc($sl4num_rows);
                                         ?>
                     <li class="nav-item mr-2">
-                        <a class="btn btn-primary mr-2 col-md font-weight-bold" href="index.php?p=basket"><i class="fas fa-shopping-basket text-warning"></i> ตะกร้าของฉัน <span class="badge badge-danger text-light font-weight-bold"><?php echo $fetch4count['count(status_basket)']; ?></span></a>
+                        <a class="btn btn-primary mr-2 col-md font-weight-bold" href="index.php?p=basket"><i
+                                class="fas fa-shopping-basket text-warning"></i> ตะกร้าของฉัน <span
+                                class="badge badge-danger text-light font-weight-bold"><?php echo $fetch4count['count(status_basket)']; ?></span></a>
                     </li>
                     <?php
                                     }
                                     ?>
-                    
+
                 </ul>
-                <form action="index.php?p=sacredOb" method="post" class="form-inline my-2 my-lg-0">
+                <form action="index.php?p=sacred_search" method="post" class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="ค้นหาวัตถุมงคล" aria-label="Search"
                         name="search" autocomplete="off" required>
-                    <button class="btn btn-outline-success btn-success text-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Search
+                    <button class="btn btn-outline-success btn-success text-light my-2 my-sm-0" type="submit"><i
+                            class="fas fa-search"></i> Search
                     </button>
                 </form>
             </div>
@@ -267,6 +274,9 @@
                     case "sacredOb":
                         include_once('include_for_p/sacred_object.php');
                     break;
+                    case "sacred_search":
+                        include_once('include_for_p/sacred_search.php');
+                    break;
                     case "readSacredObj":
                         include_once('include_for_p/read_SacredObj.php');
                     break;
@@ -290,10 +300,10 @@
 
             }else if(!isset($_GET['p'])){
                 ?>
-                    <script>
-                        window.location.href='index.php?p=home';
-                    </script>
-                <?php
+        <script>
+        window.location.href = 'index.php?p=home';
+        </script>
+        <?php
             }
         
         ?>
@@ -311,11 +321,15 @@
                     <br>
                     <b> ©2020 กลุ่มวิจัยด้านเทคโนโลยีสารสนเทศเพื่อการพัฒนาชุมชน (IT4CD) <br>
                         มหาวิทยาลัยราชภัฏนครสวรรค์ </b><br>
-                    <a class="text-decoration-none text-light " href="https://mail.google.com/mail/u/0/?tab=mm#inbox?compose=jrjtXJSVwCmpVHlRlvKmqjcwrrfNVdgrhRCDqfbxTSxvdKQwCTrWKKQBfwlfnbSgCVcrvbjx" target="_blank"> ติดต่อ :
-                        jirapat.m@nsru.ac.th </a>  <br class="mb-2">
+                    <a class="text-decoration-none text-light "
+                        href="https://mail.google.com/mail/u/0/?tab=mm#inbox?compose=jrjtXJSVwCmpVHlRlvKmqjcwrrfNVdgrhRCDqfbxTSxvdKQwCTrWKKQBfwlfnbSgCVcrvbjx"
+                        target="_blank"> ติดต่อ :
+                        jirapat.m@nsru.ac.th </a> <br class="mb-2">
 
-                        <!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/jirapat252262120/sacred_object" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star jirapat252262120/sacred_object on GitHub">Star</a>
+                    <!-- Place this tag where you want the button to render. -->
+                    <a class="github-button mt-2" href="https://github.com/jirapat252262120/jirapat252262120"
+                        data-size="large" data-show-count="true"
+                        aria-label="Star jirapat252262120/jirapat252262120 on GitHub">Star</a>
 
 
                 </div>
@@ -344,7 +358,7 @@
 
     <script src="js/image-zoom.min.js?version=<?php echo filemtime('js/image-zoom.min.js'); ?>"></script>
     <!-- Zoom image -->
-    
+
 
 
 
@@ -355,34 +369,35 @@
         bsCustomFileInput.init()
     })
     </script>
-    
-    
-    <!-- function Data tab le-->
-<script type="text/javascript" charset="utf-8">
-        $(document).ready( function () {
-            $('#myTable').DataTable({
-                
-                "oLanguage": {
-                    "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
-                    "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
-                    "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
-                    "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
-                    "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
-                    "sSearch": "ค้นหา :",
-                    "aaSorting" :[[0,'desc']],
-                    "oPaginate": {
-                    "sFirst":    "หน้าแรก",
-                    "sPrevious": "ก่อนหน้า",
-                    "sNext":     "ถัดไป",
-                    "sLast":     "หน้าสุดท้าย"
-                    },
-                },
-                "scrollX": true 
-                        
-            });
-        } );
 
-</script>
+
+    <!-- function Data tab le-->
+    <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $('#myTable').DataTable({
+
+            "oLanguage": {
+                "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
+                "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
+                "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
+                "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
+                "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
+                "sSearch": "ค้นหา :",
+                "aaSorting": [
+                    [0, 'desc']
+                ],
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+            },
+            "scrollX": true
+
+        });
+    });
+    </script>
 
 
 </body>
