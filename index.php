@@ -249,7 +249,7 @@
 
 
         <?php
-        //! Content Get Page ////////////////<<<<<
+        //! Content Get Page ////////////////<<<<<<
         ?>
 
 
