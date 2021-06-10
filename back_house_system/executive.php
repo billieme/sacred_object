@@ -143,6 +143,9 @@ if($_SESSION['user_level'] == "ma"){
                     case "report_search":
                         include_once('include_for_ex/report_search.php');
                     break;
+                    case "m4_veiw_order_come":
+                        include_once('include_for_ex/veiw_order_come_ex.php');
+                    break;
 
                     default:
                         include_once('include_ for_m/approve_sys.php');
@@ -205,6 +208,11 @@ if($_SESSION['user_level'] == "ma"){
                         <?php
                     }
                     if($_GET['m'] =="m4"){
+                        ?>
+                        $("#t_m_m4").addClass('hoverMenuManager');
+                        <?php
+                    }
+                    if($_GET['m'] =="id4_save_basket"){
                         ?>
                         $("#t_m_m4").addClass('hoverMenuManager');
                         <?php

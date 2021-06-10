@@ -57,7 +57,7 @@
                 <div class="col-md">
                     <div class="w-100 p-0 pl-2 ">
                         <strong>
-                            <h2 id="name_shop_card" class="pt-3 font-weight-bold">
+                            <h2 id="name_shop_card" class="pt-3 font-weight-bold text-wrap">
                                 <?php echo $fetchData['product_name']; ?>
                             </h2>
                         </strong>
@@ -66,7 +66,7 @@
                         </p>
                         <div class="m-0 d-flex d-inline ">
                             ราคา <p class="m-0 mr-2 ml-2 text-danger font-weight-bold">
-                                <b><?php echo $fetchData['product_price'];?></b>
+                                <b><?php echo number_format( $fetchData['product_price']);?></b>
                             </p>บาท
                         </div>
                         <div class="d-flex d-inline">

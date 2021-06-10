@@ -12,16 +12,16 @@
 
     
 
-        $path = "../image/upload/"; //! ที่อยู่ไฟล์
-        $tmp = explode('.', $_FILES['profile_img']['name']); //!แยกชื่อกับนามสกุลไฟล์
-        $countTmp = count($tmp);
-        $countTmp--;
-        $randomnum = rand(1,2000);
-        $newnamef = round(microtime(true)).$randomnum.".".$tmp[$countTmp]; //! เชื่อมชื่อใหม่กับนามสกุล
+        // $path = "../image/upload/"; //! ที่อยู่ไฟล์
+        // $tmp = explode('.', $_FILES['profile_img']['name']); //!แยกชื่อกับนามสกุลไฟล์
+        // $countTmp = count($tmp);
+        // $countTmp--;
+        // $randomnum = rand(1,2000);
+        // $newnamef = round(microtime(true)).$randomnum.".".$tmp[$countTmp]; //! เชื่อมชื่อใหม่กับนามสกุล
 
-        $moved = move_uploaded_file($_FILES['profile_img']['tmp_name'], $path.$newnamef);
+        // $moved = move_uploaded_file($_FILES['profile_img']['tmp_name'], $path.$newnamef);
 
-        if($moved){
+        // if($moved){
 
             $username = $_POST['username'];
             $password = md5($_POST['password']);
@@ -30,7 +30,7 @@
             $last_name = $_POST['last_name'];
             $email = $_POST['email'];
             $phone_number = $_POST['phone_number'];
-            $profile_img = $newnamef;
+            $profile_img = "-";
 
 
             $inserted = $reg->register_form($username, $password, $title_name, $first_name, $last_name, $email, $phone_number, $profile_img);
@@ -62,7 +62,7 @@
 
 
 
-        }
+        // }
 
      
     }

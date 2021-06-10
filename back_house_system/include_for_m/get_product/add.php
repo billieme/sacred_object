@@ -84,7 +84,7 @@
             
             <div class="form-group d-inline">
                 <label><b>ชื่อวัตถุมงคล</b> </label>
-                <input type="text" class="form-control border border-secondary w-50" name="proD1" placeholder="กรอกชื่อวัตถุทงคล" required >
+                <input type="text" class="form-control border border-secondary w-50" name="proD1" placeholder="กรอกชื่อวัตถุมงคล" required >
             </div>
             <div class="form-group d-inline">
             <label for="exampleFormControlSelect1" class="mt-2 "><b>ชนิด</b></label>

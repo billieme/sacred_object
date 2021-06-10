@@ -81,7 +81,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-row">
+                            <!-- <div class="form-row">
                                 <div class="col">
                                     <label for="profile_img" class="mt-2"> <b>รูปภาพ</b> </label>
                                     <div class="custom-file">
@@ -91,7 +91,7 @@
                                             for="customFile">Choose file</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="form-row mt-4 mb-4">
                                 <div class="col d-flex justify-content-end">
