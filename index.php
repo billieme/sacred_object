@@ -149,10 +149,10 @@
                         <div class="col-sm d-flex justify-content-end">
                             <form action="chk_all/chk_logout.php" method="post">
                                 <div class="row justify-content-end mt-2 pr-1 form-inline">
-                                    <div class="font-weight-bold alert alert-warning m-0">
+                                    <div class="font-weight-bold m-0 p-2">
 
                                         <?php
-                                                        echo "🟢 Online : ". $_SESSION['name']." ".$_SESSION['lname']; 
+                                                        echo "🟢 ". $_SESSION['name']." ".$_SESSION['lname']; 
                                                         ?>
                                     </div>
 
@@ -173,6 +173,8 @@
 
 
                 <?php
+                            }else{
+                                header("Location: chk_all/chk_logout.php?logout");
                             }
                             
                     }
