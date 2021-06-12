@@ -61,6 +61,26 @@ $(document).ready(function() {
 
 <?php
                 }
+                if($_SESSION['user_level']=="sp_@"){
+                    ?>
+<script>
+$(document).ready(function() {
+
+    Swal.fire({
+        icon: 'success',
+        title: 'รหัสผ่านถูกต้อง',
+        text: 'ยินดีต้อนรับคุณ (ผู้ดูแลระบบ)',
+        showConfirmButton: false,
+        timer: 2500
+    }).then(function() {
+        window.location.href = '../back_house_system/super_admin.php?m=1';
+    });
+
+});
+</script>
+
+<?php
+                }
                 
                 if($_SESSION['user_level']=="a"){
                     ?>
