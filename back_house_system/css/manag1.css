@@ -88,6 +88,21 @@
     object-fit: cover;
     object-position: center;
 }
+#edit_user_tb{
+    
+    overflow-x: scroll;
+}
+#edit_user_tb::-webkit-scrollbar{
+    height: 0.9rem;
+}
+#edit_user_tb::-webkit-scrollbar-thumb{
+    background-color: tomato;
+    border-radius: 20px;
+    -webkit-box-shadow: 10px 9px 19px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 9px 19px -11px rgba(0,0,0,0.75);
+    box-shadow: 10px 9px 19px -11px rgba(0,0,0,0.75);
+}
+
 
 
 #picSize{

@@ -4,7 +4,7 @@
         <h3><i class="fas fa-users-cog"></i> กำหนดสิทธิ์ในการเข้าใช้งาน</h3>
     </div>
     <div class="card-body">
-        <div class="alert alert-success">
+        <div class="alert alert-success" id="edit_user_tb">
             <h4 class="font-weight-bold"><u>ข้อมูลผู้ใช้งาน</u></h4>
             <?php
         $slect4page = new connect_db();
@@ -14,7 +14,7 @@
         
         $i = 1;
         ?>
-            <table class="w-100 table table-striped pl-0 pr-0 pb-3 pt-0" id="">
+            <table class="w-100 table table-striped pl-0 pr-0 pb-3 pt-0">
                 <thead class="text-center text-nowrap">
                     <tr id="bg_hd_table_m">
                         <th scope="col">ลำดับ</th>
@@ -96,7 +96,7 @@
             <form action="super_admin.php?m=2&id=<?=$_GET['id'];?>" method="post">
 
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-5 mb-2">
                         <select class="form-control" name="x" id="">
                             <option selected value="empty">
                                 <--- โปรดเลือกสิทธิ์ในการเข้าใช้งาน --->
@@ -107,8 +107,8 @@
                         </select>
                     </div>
 
-                    <div class="col">
-                        <button type="submit" name="submit" class="btn btn-success">บันทึก</button>
+                    <div class="col-md-5">
+                        <button type="submit" name="submit" class="btn btn-success ">บันทึก</button>
                     </div>
                 </div>
             </form>

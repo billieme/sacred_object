@@ -82,7 +82,7 @@
 
                         <div class="row d-flex d-inline justify-content-between align-items-center">
                         
-                            <div class=" col d-flex align-self-end">
+                            <div class=" col d-flex align-self-center">
 
                                     <div class="">จำนวน</div>
                                     <input id="qty" type="number" name="data4basket[qty]" value="1">
