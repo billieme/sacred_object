@@ -49,7 +49,8 @@ window.location.href = '../index.php?p=readSacredObj&id4readSacredObj=<?php echo
                                         if($fetch2 > 0){
                                             $qtyold = $fetchArr['b_product_qty'];
                                             $qtyNew = $qty + $qtyold;
-                                            $updateQty = $forBasket->runQuery("UPDATE basket SET b_product_qty='$qtyNew' WHERE id_product='$id' and status_basket='wait' ");
+                                            $raca_sum =  $qtyNew * $fetch_prod['product_price'];
+                                            $updateQty = $forBasket->runQuery("UPDATE basket SET b_product_qty='$qtyNew', b_price='$raca_sum' WHERE id_product='$id' and status_basket='wait' ");
                                             if($updateQty){
                                                 ?>
 <script>
@@ -61,8 +62,7 @@ $(document).ready(function() {
         showConfirmButton: false,
         timer: 2500
     }).then(function() {
-        window.location.href =
-            '../index.php?p=readSacredObj&id4readSacredObj=<?php echo $id; ?>&basketSuccess=ok';
+        window.location.href ='../index.php?p=readSacredObj&id4readSacredObj=<?php echo $id; ?>&basketSuccess=ok';
     });
 
 });
