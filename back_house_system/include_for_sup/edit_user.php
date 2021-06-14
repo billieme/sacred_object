@@ -101,9 +101,9 @@
                             <option selected value="empty">
                                 <--- โปรดเลือกสิทธิ์ในการเข้าใช้งาน --->
                             </option>
-                            <option value="a">เจ้าหน้าที่</option>
-                            <option value="ma">ผู้บริหาร</option>
-                            <option value="p">ผู้ใช้งานทั่วไป</option>
+                            <option value="admin">เจ้าหน้าที่</option>
+                            <option value="manager">ผู้บริหาร</option>
+                            <option value="people">ผู้ใช้งานทั่วไป</option>
                         </select>
                     </div>
 

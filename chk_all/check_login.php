@@ -42,7 +42,7 @@
 
             if($_SESSION['r_s'] == "pass"){
                 
-                if($_SESSION['user_level']=="p"){
+                if($_SESSION['user_level']=="people"){
                     ?>
 <script>
 $(document).ready(function() {
@@ -61,7 +61,7 @@ $(document).ready(function() {
 
 <?php
                 }
-                if($_SESSION['user_level']=="sp_@"){
+                if($_SESSION['user_level']=="super@dmin"){
                     ?>
 <script>
 $(document).ready(function() {
@@ -82,7 +82,7 @@ $(document).ready(function() {
 <?php
                 }
                 
-                if($_SESSION['user_level']=="a"){
+                if($_SESSION['user_level']=="admin"){
                     ?>
 <script>
 $(document).ready(function() {
@@ -102,7 +102,7 @@ $(document).ready(function() {
 
 <?php
                 }
-                if($_SESSION['user_level']=="ma"){
+                if($_SESSION['user_level']=="manager"){
                     ?>
 <script>
 $(document).ready(function() {

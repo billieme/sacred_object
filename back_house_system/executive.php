@@ -7,7 +7,7 @@
 ?>
 
 <?php
-if($_SESSION['user_level'] == "ma"){
+if($_SESSION['user_level'] == "manager"){
 ?>
 <!DOCTYPE html>
 <html lang="en">

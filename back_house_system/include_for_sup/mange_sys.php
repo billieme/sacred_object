@@ -47,25 +47,25 @@
                             <a href="manager.php?m=m1&appv_pass_id=<?php echo $num['id']; ?>" class="btn btn-success w-100 ">อนุมัติ</a>
                             <?php
                             }
-                            if($num['register_status'] == "pass" && $num['user_level'] == "sp_@" ){
+                            if($num['register_status'] == "pass" && $num['user_level'] == "super@dmin" ){
                                 ?>
                             <div  style="cursor:no-drop;"  class="btn btn-success w-100">ผู้ดูแลระบบ</div>
                                 
                             <?php
                             }
-                            if($num['register_status'] == "pass" && $num['user_level'] == "p" ){
+                            if($num['register_status'] == "pass" && $num['user_level'] == "people" ){
                                 ?>
                             <a href="super_admin.php?m=2&id=<?=$num['id']?>"  class="btn btn-warning w-100">ผู้ใช้งานทั่วไป</a>
                                 
                             <?php
                             }
-                            if($num['user_level'] == "a"){
+                            if($num['user_level'] == "admin"){
                                 ?>
                             <a href="super_admin.php?m=2&id=<?=$num['id']?>"  class="btn btn-primary w-100">เจ้าหน้าที่</a>
                                 
                             <?php
                             }
-                            if($num['user_level'] == "ma"){
+                            if($num['user_level'] == "manager"){
                                 ?>
                             <a href="super_admin.php?m=2&id=<?=$num['id']?>" class="btn btn-primary w-100">ผู้บริหาร</a>
                                 

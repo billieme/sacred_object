@@ -155,7 +155,7 @@
                         '$phone_number',
                         '$profile_img',
                         'pass',
-                        'p')
+                        'people')
                         ");
 
             return $result;
