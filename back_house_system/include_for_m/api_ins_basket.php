@@ -34,13 +34,17 @@
 
                         //? เช็คซ้ำ
                         $pdo2 = new shopSacredObj();
-                        $sl_bas = $pdo2->runQuery("SELECT b_product_qty FROM basket WHERE id_product='$_POST[id]' and status_basket='wait'");
+                        $sl_bas = $pdo2->runQuery("SELECT * FROM basket WHERE id_product='$_POST[id]' and status_basket='wait'");
                         $fetch2 = mysqli_num_rows($sl_bas);
                         $fetchArr = mysqli_fetch_array($sl_bas);
                         if($fetch2 > 0){
+                            $sl_prod_fet2 = $pdo2->runQuery("SELECT * from product where id_product='$_POST[id]'");
+                            $fetch_prod_fet2 = mysqli_fetch_array($sl_prod_fet2);
+
                             $qtyold = $fetchArr['b_product_qty'];
                             $qtyNew = $_POST['qty'] + $qtyold;
-                            $updateQty = $pdo2->runQuery("UPDATE basket SET b_product_qty='$qtyNew' WHERE id_product='$_POST[id]' and status_basket='wait' ");
+                            $raca_new = $qtyNew * $fetch_prod_fet2['product_price'];
+                            $updateQty = $pdo2->runQuery("UPDATE basket SET b_product_qty='$qtyNew', b_price='$raca_new' WHERE id_product='$_POST[id]' and status_basket='wait' ");
                             if($updateQty){
                                 $response = array(
                                     'status' =>"pass",
