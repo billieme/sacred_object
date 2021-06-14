@@ -105,21 +105,27 @@
                             <a href="manager.php?m=m1&appv_pass_id=<?php echo $num['id']; ?>" class="btn btn-success w-100 ">อนุมัติ</a>
                             <?php
                             }
-                            if($num['register_status'] == "pass" && $num['user_level'] == "p" ){
+                            if($num['register_status'] == "pass" && $num['user_level'] == "people" ){
                                 ?>
                             <a href="manager.php?m=m1&appv_wait_id=<?php echo $num['id']; ?>" class="btn btn-warning w-100">ระงับ</a>
                                 
                             <?php
                             }
-                            if($num['user_level'] == "a"){
+                            if($num['user_level'] == "admin"){
                                 ?>
                             <a href="#" style="cursor: no-drop;" title="* ไม่สามารถทำการได้"  class="btn btn-primary w-100">เจ้าหน้าที่</a>
                                 
                             <?php
                             }
-                            if($num['user_level'] == "ma"){
+                            if($num['user_level'] == "manager"){
                                 ?>
                             <a href="#" style="cursor: no-drop;" title="* ไม่สามารถทำการได้" class="btn btn-primary w-100">ผู้บริหาร</a>
+                                
+                            <?php
+                            }
+                            if($num['user_level'] == "super@dmin"){
+                                ?>
+                            <div style="cursor: no-drop;" title="* ไม่สามารถทำการได้" class="btn btn-success w-100">ผู้ดูแลระบบ</div>
                                 
                             <?php
                             }
