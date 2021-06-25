@@ -54,7 +54,7 @@
                     ?>
 </td>
 <td><?php echo $post->date_time;?></td>
-<td><?php echo $post->total_prod ;?></td>
+<td><?php echo number_format($post->total_prod );?></td>
 <td>
     <a href="manager.php?m=m4_veiw_order_come&id4_save_basket=<?php echo $post->id_save_basket; ?>"
         class="btn btn-primary"><i class="far fa-eye"></i> ดูรายละเอียด</a>

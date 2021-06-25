@@ -6,7 +6,7 @@
         "status_pay" => "approved",
         "value_ip" => "%".$_POST['value_ip']."%"
     );
-    $sql_sl_sell_admin = $pdo_sell->runQuery("SELECT sum(total_prod) from `save_basket` where `name_cus`=:name_cus and `status_pay`=:status_pay and `date` like :value_ip");
+    $sql_sl_sell_admin = $pdo_sell->runQuery("SELECT sum(total_prod) from `save_basket` where `name_cus`=:name_cus and `status_pay`=:status_pay and `date_time` like :value_ip");
     $sql_sl_sell_admin->execute($parame_online);
     $fet = $sql_sl_sell_admin->fetch(PDO::FETCH_ASSOC);
     // echo $fet['sum(total_prod)'];
@@ -26,7 +26,7 @@
         "status_pay" => "approved",
         "value_ip" => "%".$_POST['value_ip']."%"
     );
-    $sql2 = $pdo_sell->runQuery("SELECT sum(total_prod) from `save_basket` where `name_cus`!=:name_cus and `status_pay`=:status_pay and `date` like :value_ip ");
+    $sql2 = $pdo_sell->runQuery("SELECT sum(total_prod) from `save_basket` where `name_cus`!=:name_cus and `status_pay`=:status_pay and `date_time` like :value_ip ");
     $sql2->execute($parame2);
     $fet2 = $sql2->fetch(PDO::FETCH_ASSOC);
     // echo $fet2['sum(total_prod)'];

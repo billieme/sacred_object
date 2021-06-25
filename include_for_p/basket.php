@@ -128,7 +128,7 @@ window.location.href = 'index.php';
             </div>
             <?php
                                     $slectSumprice = new shopSacredObj();
-                                    $sql4slectSumprice = $slectSumprice->runQuery("SELECT SUM(b_price) FROM basket WHERE status_basket='wait' ");
+                                    $sql4slectSumprice = $slectSumprice->runQuery("SELECT SUM(b_price) FROM basket WHERE status_basket='wait' and id_user='$id_user' ");
                                     $fetchDT = mysqli_fetch_assoc($sql4slectSumprice);
                                     ?>
             <div class="text-right alert alert-primary p-2">
@@ -185,7 +185,7 @@ window.location.href = 'index.php';
                         <tr>
                             <td><?php echo $i;?></td>
                             <td><?php echo $fetch_SB['date_time'];?></td>
-                            <td><?php echo $fetch_SB["total_prod"];?></td>
+                            <td><?php echo number_format($fetch_SB["total_prod"]);?></td>
 
                             <td>
                                 <?php

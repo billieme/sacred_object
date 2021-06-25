@@ -43,7 +43,7 @@ if (isset($_POST['submitOrder'])) {
                                 ?>
                             <tr class="">
                                 <?php
-                                    $sqlSelectSum = $selectBasket->runQuery("SELECT sum(b_price) FROM basket WHERE status_basket='wait'");
+                                    $sqlSelectSum = $selectBasket->runQuery("SELECT sum(b_price) FROM basket WHERE status_basket='wait' and id_user='$_SESSION[id]' ");
                                     $fetchSum = mysqli_fetch_assoc($sqlSelectSum);
                                 ?>
                                 <td class="text-right pt-4 font-weight-bold" colspan="3">Total : <input style="width: 6rem;" class="font-weight-bold alert-success border-0 text-right" name="" readonly type="text" value="<?php echo number_format($fetchSum['sum(b_price)']);?>"> ฿

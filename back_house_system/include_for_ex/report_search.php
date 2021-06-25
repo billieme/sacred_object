@@ -67,7 +67,7 @@ $(document).ready(() => {
                         name_category.push(data[key].title)
                         number_value.push(data[key].sum)
                     }
-                    // console.log(name_category+" "+number_value)
+                    console.log(name_category+" "+number_value)
 
                     $("#sum1").text(number_value[0])
                     $("#sum2").text(number_value[1])
