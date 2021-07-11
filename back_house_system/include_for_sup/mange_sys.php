@@ -41,15 +41,15 @@
                     <td><?php echo $num['email']; ?></td>
                     <td class="text-center">
                         <?php
-                            if($num['register_status'] == "wait"){
+                            if($num['register_status'] == "wait" && $num['user_level'] == "people"){
                                 ?>
                                 
-                            <a href="manager.php?m=m1&appv_pass_id=<?php echo $num['id']; ?>" class="btn btn-success w-100 ">อนุมัติ</a>
+                            <a href="" class="btn btn-danger w-100 ">ผู้ใช้งานทั่วไป (ถูกระงับการใช้งาน)</a>
                             <?php
                             }
                             if($num['register_status'] == "pass" && $num['user_level'] == "super@dmin" ){
                                 ?>
-                            <div  style="cursor:no-drop;"  class="btn btn-success w-100">ผู้ดูแลระบบ</div>
+                            <div  style="cursor:no-drop;"  class="btn btn-info w-100">ผู้ดูแลระบบ</div>
                                 
                             <?php
                             }

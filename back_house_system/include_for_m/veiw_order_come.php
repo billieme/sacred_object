@@ -174,9 +174,34 @@ $(document).ready(() => {
 
 <?php
         if(isset($_GET['approve']) =='ok'){
-            $pdo4thisP = new connect_db();
-            $sql4update = $pdo4thisP->runQuery('UPDATE save_basket set status_pay=:s_b  where id_save_basket=:id_s_b ');
-            $sql4update->execute(['s_b' => 'approved', 'id_s_b' => $_GET['id4_save_basket']]);
+            $queryThis = new shopSacredObj();
+                        $sl_save_basket1 = $queryThis->runQuery("SELECT * FROM save_basket WHERE id_save_basket='$_GET[id4_save_basket]' ");
+                        $fetch_SSB1 = mysqli_fetch_array($sl_save_basket1);
+
+                        //* -------------------------------------------------------------------------- */
+                        
+                        $sl_basket2 = $queryThis->runQuery("SELECT * FROM basket WHERE id_basket in($fetch_SSB1[id_basket])");
+                        
+                        
+                        //* -------------------------------------------------------------------------- */
+
+            while($fetch_SB2 = mysqli_fetch_array($sl_basket2)){
+                    
+                    $sql_sl4product = $pdo4thisP->runQuery("SELECT * from `product` where id_product=:id_product ");
+                    $sql_sl4product->execute(['id_product' => $fetch_SB2['id_product']]); 
+                    $post_sl4product = $sql_sl4product->fetch(PDO::FETCH_ASSOC);//! ดึงสินค้า
+
+                    $compute = intval($post_sl4product['product_qty']) - intval($fetch_SB2['b_product_qty']); //! คำนวน
+
+                    $sql_ud4product = $pdo4thisP->runQuery("UPDATE product set product_qty=:prod_qty where id_product=:id_product ");
+                    $sql_ud4product->execute(['prod_qty' => $compute, 'id_product' => $fetch_SB2['id_product']]);
+
+            }
+            if($sql_ud4product){
+
+                $sql4update = $pdo4thisP->runQuery('UPDATE save_basket set status_pay=:s_b  where id_save_basket=:id_s_b ');
+                $sql4update->execute(['s_b' => 'approved', 'id_s_b' => $_GET['id4_save_basket']]);
+            }
 
             if($sql4update){
                 ?>

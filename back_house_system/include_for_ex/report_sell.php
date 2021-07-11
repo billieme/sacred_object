@@ -133,7 +133,7 @@ $(document).ready(() => {
                             $sl_user = $pdo4ThisP->runQuery('SELECT * from user where id=:id_user');
                             $sl_user->execute(['id_user' => $post->id_user]);
                             $post_user = $sl_user->fetch();
-                            if($post_user->user_level == "a"){
+                            if($post_user->user_level == "admin"){
                                 ?>
                         <div class="badge badge-success">เช่าบูชาที่ซุ้มพระ</div>
     </div>

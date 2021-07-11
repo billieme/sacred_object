@@ -2,6 +2,7 @@
     session_start();
     require_once('../function.php');
     require_once('../func4pdo/connect.php');
+    require_once('../func4pdo/newpdo.php');
     
     $connect_database = new DB_conn();
 ?>

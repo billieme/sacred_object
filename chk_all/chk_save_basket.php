@@ -42,9 +42,7 @@ $(document).ready(function() {
 <?php
             }else{
                 
-                $ud_qty_prod = $pdo4ThisP->runQuery('UPDATE product SET `product_qty`=:qty_new where id_product=:id_prod ');
-                $qty_new = intval($post_sl->product_qty) - intval($fetch4insert['b_product_qty']);
-                $ud_qty_prod->execute(['qty_new' => $qty_new, 'id_prod' =>$fetch4insert['id_product']]);
+                $ud_qty_prod = "x";
             }
         }
         
