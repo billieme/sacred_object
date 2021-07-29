@@ -1,4 +1,13 @@
 <div class="">
+<?php
+ if(isset($_GET['comefrom'])){
+?>
+<div class="text-light mb-1">
+    <a href="executive.php?m=report_search" class="btn btn-warning"><i class="fas fa-undo-alt"></i> ย้อนกลับ</a>
+</div>
+<?php
+}
+?>
 
     <div class="card min-vh-100">
         <div class="card-header text-center alert-primary">

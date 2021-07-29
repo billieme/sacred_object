@@ -218,6 +218,12 @@ if($_SESSION['user_level'] == "admin"){
                     case "m4_save_basket":
                         include_once('include_for_m/save_basket.php');
                     break;
+                    case "m4_order_notpay":
+                        include_once('include_for_m/order_notpay.php');
+                    break;
+                    case "m4_order_notpay_veiw":
+                        include_once('include_for_m/order_notpay_veiw.php');
+                    break;
 
                     default:
                         include_once('include_ for_m/approve_sys.php');

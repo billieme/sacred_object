@@ -83,14 +83,14 @@ function ajax_pull() {
                         x: {
                             ticks: {
                                 font: {
-                                    size: 20,
+                                    size: 15,
                                 }
                             }
                         },
                         y: {
                             ticks: {
                                 font: {
-                                    size: 15,
+                                    size: 20,
                                 }
                             }
                         }

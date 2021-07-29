@@ -2,21 +2,29 @@
 <!--jquery-->
 <script src="../sweetalert/sweetalert2.all.min.js"></script>
 
-<div class="w-100 mb-5">
-    <a href="manager.php?m=m4_sell_sacred_obj" class=" p-3 btn btn-warning font-weight-bold " style="border: 3px solid white;"><h4>ทำรายการขายวัตถุมงคล <i class="fas fa-cart-arrow-down"></i></h4></a> 
- </div>
 
-<div class="alert alert-primary mb-5">
+    
+        <div class="w-100 mb-3">
+            <a href="manager.php?m=m4_sell_sacred_obj" class=" p-3 btn btn-warning font-weight-bold "
+                style="border: 3px solid white;">
+                <h4>ทำรายการขายวัตถุมงคล <i class="fas fa-cart-arrow-down"></i></h4>
+            </a>
+        </div>
+    
+
+
+<div class="alert alert-primary mb-3">
     <h3>📢 คำชี้แจงสำหรับเจ้าหน้าที่</h3>
     <hr>
-    <text class="text-danger font-weight-bold mr-1">*</text><text>หัวข้อ วัตถุมงคลใกล้หมด จะแสดงตัวเลขจำนวนวัตถุมงคลแต่ละชนิดที่เหลือน้อยกว่า 5 ชิ้นใน Stock สินค้า</text><br>
+    <text class="text-danger font-weight-bold mr-1">*</text><text>หัวข้อ วัตถุมงคลใกล้หมด
+        จะแสดงตัวเลขจำนวนวัตถุมงคลแต่ละชนิดที่เหลือน้อยกว่า 5 ชิ้นใน Stock สินค้า</text><br>
     <text class="text-danger font-weight-bold mr-1">*</text><text>หัวข้อ ออร์เดอร์ใหม่ เป็นระบบแจ้งเตือนแบบ Realtime
         ระบบจะแสดงเลขจำนวนผู้สั่งซื้อวัตถุมงคล ไม่จำเป็นต้อง Reload หน้าเว็บ
         โปรดเปิดหน้านี้ทิ้งไว้เพื่อดูการสั่งซื้อวัตถุมงคลที่เข้ามาใหม่</text>
 
 </div>
 
- 
+
 
 
 
@@ -29,19 +37,19 @@
         <a href="manager.php?m=m4_sell_sys" class="card p-5 bg-primary text-decoration-none"
             style="border: 5px solid white;">
             <script>
-                $(document).ready(()=>{
-                    
-                    setInterval(()=>{
-                        $.ajax({
-                            method: 'GET',
-                            url: 'include_for_m/api_ajax_list_sell_all.php',
-                            dataType: 'json',
-                            success:function(data_api_sell_all){
-                                $("#api_sell_all").text(data_api_sell_all.msg)
-                            }
-                        })
-                    }, 500)
-                })
+            $(document).ready(() => {
+
+                setInterval(() => {
+                    $.ajax({
+                        method: 'GET',
+                        url: 'include_for_m/api_ajax_list_sell_all.php',
+                        dataType: 'json',
+                        success: function(data_api_sell_all) {
+                            $("#api_sell_all").text(data_api_sell_all.msg)
+                        }
+                    })
+                }, 500)
+            })
             </script>
             <h3 class="text-light p-0 m-0 text-center"><i style="font-size: 5rem;"
                     class="fas fa-cash-register mb-2"></i><br> ขายแล้วทั้งหมด <span class="badge-pill badge-danger ml-1"
@@ -71,6 +79,7 @@
                     id="request_p_r"></span></h3>
         </a>
     </div>
+        
     <div id="test" class="col-md-4">
         <a href="manager.php?m=m4_order_come" class="card p-5 bg-success text-decoration-none"
             style="border: 5px solid white;">
@@ -80,11 +89,11 @@
                 $sql->execute(['value' => 'wait_process']);
                 $post = $sql->fetch(PDO::FETCH_ASSOC);
                 ?>
-                <input type="number" name="" id="a" hidden="true" value="<?php echo$post['count(id_save_basket)'] ; ?>">
-            
+            <input type="number" name="" id="a" hidden="true" value="<?php echo$post['count(id_save_basket)'] ; ?>">
+
             <script>
             $(document).ready(function() {
-                
+
                 let a = $("#a").val()
                 setInterval(function() {
                     $.ajax({
@@ -92,20 +101,20 @@
                         url: 'include_for_m/ajax_order.php',
                         data: {
                             value: "wait_process",
-                            a:a
+                            a: a
                         },
                         dataType: 'json',
                         success: function(data) {
                             $("#order").text(data.msg)
-                            if(data.status_noti == "1"){
+                            if (data.status_noti == "1") {
                                 Swal.fire({
-                                            position: 'top-end',
-                                            icon: 'success',
-                                            text: 'แจ้งเตือน : Order ใหม่จากลูกค้า',
-                                            showConfirmButton: false,
-                                            timer: 5500,
-                                            timerProgressBar: true  
-                                    })
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    text: 'แจ้งเตือน : Order ใหม่จากลูกค้า',
+                                    showConfirmButton: false,
+                                    timer: 5500,
+                                    timerProgressBar: true
+                                })
                             }
                             a = data.msg
                         }
@@ -125,8 +134,17 @@
                     id="order"></span></h3>
         </a>
     </div>
+
+    <!-- //! แถว 2 -->
+    <div id="test" class="col-md-4">
+        <a href="manager.php?m=m4_order_notpay" class="card p-5 bg-danger text-decoration-none"
+            style="border: 5px solid white;">
+            
+
+            <h3 class="text-light p-0 m-0 text-center"><i style="font-size: 5rem;" class="fas fa-file-invoice-dollar mb-2"></i><br> ออร์เดอร์ที่ยังไม่ชำระเงิน </h3>
+        </a>
+    </div>
 </div>
 
 
 <!-- //!#################################################### -->
-

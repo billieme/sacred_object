@@ -1,5 +1,5 @@
 <div class="text-right mb-1">
-    <a href="executive.php?m=report_search" class="btn btn-info">ดูยอดขายราย วัน/เดือน/ปี</a>
+    <a href="executive.php?m=report_search" class="btn btn-info p-2"><h5 class="m-0"><i class="fas fa-search-plus"></i> ดูยอดขายราย วัน/เดือน/ปี</h5></a>
 </div>
 
 <div class="card">
@@ -93,6 +93,112 @@ $(document).ready(() => {
         }
     }) //! ปิด ajax
 })
+</script>
+
+
+<div class="card mt-4">
+    <div class="card-header bg-primary">
+        <h3 class="text-light"><i class="fas fa-search-dollar"></i> รายงานผลลำดับสินค้าขายดี</h3>
+    </div>
+    <div class="card-body">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-9">
+                <canvas id="myChart2" class=""></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(() => {
+    ajax_pull();
+})
+
+function ajax_pull() {
+
+    $.ajax({
+        method: 'post',
+        url: 'include_for_ex/api_report_sellgood.php',
+        dataType: 'json',
+        data: {
+            product: 'ok'
+        },
+        success: (data) => {
+            console.log(data)
+            let name_prod = []
+            let qty_prod = []
+
+            for (let key in data) {
+                name_prod.push(data[key].name_prod)
+                qty_prod.push(data[key].qty_sell)
+            }
+
+            var datainchart = {
+                labels: name_prod,
+                datasets: [{
+                    label: 'สินค้าขายดี',
+                    data: qty_prod,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 2,
+
+
+                }]
+            };
+            var graphTarget = $("#myChart2")
+            var berGraph = new Chart(graphTarget, {
+                type: "bar",
+                data: datainchart,
+                options: {
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            labels: {
+                                // This more specific font property overrides the global property
+                                font: {
+                                    size: 25
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 15,
+                                }
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                font: {
+                                    size: 20,
+                                }
+                            }
+                        }
+                    }
+
+                }
+            })
+
+        }
+    })
+
+}
 </script>
 
 <div class="card mt-4">

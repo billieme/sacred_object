@@ -1,4 +1,4 @@
-<div class="container">
+<div class="">
 
     <div class="card min-vh-100">
         <div class="card-header text-center alert-primary">
@@ -191,10 +191,19 @@ $(document).ready(() => {
                     $sql_sl4product->execute(['id_product' => $fetch_SB2['id_product']]); 
                     $post_sl4product = $sql_sl4product->fetch(PDO::FETCH_ASSOC);//! ดึงสินค้า
 
-                    $compute = intval($post_sl4product['product_qty']) - intval($fetch_SB2['b_product_qty']); //! คำนวน
+                    $compute = intval($post_sl4product['product_qty']) - intval($fetch_SB2['b_product_qty']); //! คำนวนลบจำนวนหาจำนวนคงเหลือ
 
-                    $sql_ud4product = $pdo4thisP->runQuery("UPDATE product set product_qty=:prod_qty where id_product=:id_product ");
-                    $sql_ud4product->execute(['prod_qty' => $compute, 'id_product' => $fetch_SB2['id_product']]);
+                    //*-------------------------------------------------------------
+                    
+                    $compute2 = intval($post_sl4product['sell_already']) + intval($fetch_SB2['b_product_qty']); //! คำนวนเพิ่มจำนวนหาจำนวนซื้อแล้วทั้งหมด
+
+                    //*-------------------------------------------------------------
+                    $sql_ud4product = $pdo4thisP->runQuery("UPDATE product set `product_qty`=:prod_qty,  `sell_already`=:sell_already where id_product=:id_product ");
+                    $sql_ud4product->execute([
+                        'prod_qty' => $compute,
+                        'sell_already' => $compute2, 
+                        'id_product' => $fetch_SB2['id_product']
+                     ]);
 
             }
             if($sql_ud4product){
