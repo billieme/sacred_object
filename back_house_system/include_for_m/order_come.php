@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header bg-success text-light">
-    <h3 class="text-center"><i class="fas fa-clipboard-list"></i> อนุมัติการสั่งซื้อวัตถุมงคล</h3>
+    <h3 class="text-center"><i class="fas fa-clipboard-list"></i> ตารางอนุมัติการสั่งซื้อวัตถุมงคล</h3>
     </div>
     <div class="card-body">
                 <table class="w-100 table table-striped pb-3" id="myTable">
@@ -8,18 +8,19 @@
                     
                                 <th>ชื่อ-นามสุกล</th>
                                 <th>วันที่สั่ง</th>
-                                <th>ยอดรวม</th>
+                                <th>ยอดรวม/บาท</th>
                                 <th>ข้อมูล</th>
 
             
                         </thead>
                         <tbody class="text-nowrap">
                         <?php
+                            $timeTH = new DB_conn();
                             $pdo = new connect_db();
                             $sql = $pdo->runQuery('SELECT * FROM save_basket WHERE status_pay=:wait Order by id_save_basket ');
                             $sql->execute(['wait' =>'wait_process']);
                             while($post1 = $sql->fetch()){
-                            
+                            $time = $post1->date_time;
                         ?>
                             <tr>
                                 <td>
@@ -33,7 +34,7 @@
                                         }
                                     ?>
                                 </td>
-                                <td><?php echo $post1->date_time ?></td>
+                                <td><?php echo $timeTH->thai_date_and_time(strtotime($time)) ?></td>
                                 <td><?php echo number_format($post1->total_prod);  ?></td>
                                 
                                 <td>

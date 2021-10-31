@@ -8,6 +8,7 @@
     $pd_sl = new DB_conn();
     $pd_slD = new DB_conn();
     $del = new DB_conn();
+    $timeTH = new DB_conn();
 
 
 
@@ -80,7 +81,7 @@
 </div>
 <div class="card">
     <div class="card-header" id="bg_hd_card_m3">
-        <h3 class="text-center"><b> <i class="fas fa-box-open"></i> ตรางจัดการสินค้า</b></h3>
+        <h3 class="text-center"><b> <i class="fas fa-box-open"></i> ตารางจัดการสินค้า</b></h3>
     </div>
     <div class="card-body bg-light">
                 
@@ -105,9 +106,8 @@
                         
                         $n=1;
                         while($num1 = mysqli_fetch_array($res1))
-                           
-                            
                         {
+                            $time = $num1['date_create'];
 
                         
 
@@ -127,9 +127,9 @@
                     </td>
                     <td><?php echo $num1['product_name'];?></td>
                     <td><?php echo $num1['product_type'];?></td>
-                    <td><?php echo $num1['product_price'];?></td>
-                    <td><?php echo $num1['product_qty'];?></td>
-                    <td><?php echo $num1['date_create'];?></td>
+                    <td><?php echo number_format($num1['product_price']);?></td>
+                    <td><?php echo number_format($num1['product_qty'])." ชิ้น";?></td>
+                    <td><?php echo $timeTH->thai_date_and_time(strtotime($time));?></td>
                     <td>
                         
                     <a href="manager.php?m=m3_edit&edit_id=<?php echo $num1['id_product']; ?>" class="btn btn-warning text-light">แก้ไข <i class="fas fa-edit"></i></a>

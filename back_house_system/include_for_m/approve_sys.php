@@ -64,7 +64,7 @@
 
 <div class="card">
     <div class="card-header" id="bg_hd_card_m1">
-        <h3 class="text-center"><b> <i class="fas fa-user-check"></i> ตรางอนุมัติรายชื่อสมาชิก</b></h3>
+        <h3 class="text-center"><b> <i class="fas fa-user-check"></i> ตารางระงับ - อนุมัติการใช้งานสมาชิก</b></h3>
     </div>
     <div class="card-body bg-light">
                 
@@ -73,11 +73,10 @@
                     <tr id="bg_hd_table_m">
                     <th scope="col">ลำดับ</th>
                     <th scope="col">Username</th>
-                    <th scope="col">Password</th>
                     <th scope="col">Name</th>
                     <th scope="col">Lastname</th>
                     <th scope="col">E-mail</th>
-                    <th scope="col">จัดการอนุมัติ</th>
+                    <th scope="col">จัดการแก้ไขสมาชิก</th>
                     </tr>
                 </thead>
                 <tbody class="text-center text-nowrap">
@@ -88,12 +87,10 @@
                 $res = $user_select->slU_m1();
                 while($num = mysqli_fetch_array($res))
                 {
-                    $pass = md5($num['password']);
                 ?>
                     <tr class="">
                     <th scope="row"><?php $num['id']; echo $n;?></th>
                     <td><?php echo $num['username']; ?></td>
-                    <td><?php echo $pass; ?></td>
                     <td><?php echo $num['first_name']; ?></td>
                     <td><?php echo $num['last_name']; ?></td>
                     <td><?php echo $num['email']; ?></td>
@@ -102,33 +99,16 @@
                             if($num['register_status'] == "wait"){
                                 ?>
                                 
-                            <a href="manager.php?m=m1&appv_pass_id=<?php echo $num['id']; ?>" class="btn btn-warning w-100 font-weight-bold">ลูกค้า (ถูกระงับการใช้งาน)</a>
+                            <a href="manager.php?m=m1&appv_pass_id=<?php echo $num['id']; ?>" class="btn btn-warning w-50 font-weight-bold" title="คลิกเพื่ออนุมัติการใช้งานสมาชิก">ลูกค้า (ถูกระงับการใช้งาน)</a>
                             <?php
                             }
                             if($num['register_status'] == "pass" && $num['user_level'] == "people" ){
                                 ?>
-                            <a href="manager.php?m=m1&appv_wait_id=<?php echo $num['id']; ?>" class="btn btn-success w-100 font-weight-bold">ลูกค้า</a>
+                            <a href="manager.php?m=m1&appv_wait_id=<?php echo $num['id']; ?>" class="btn btn-success w-50 font-weight-bold" title="คลิกเพื่อระงับการใช้งาน">ลูกค้า</a>
                                 
                             <?php
                             }
-                            if($num['user_level'] == "admin"){
-                                ?>
-                            <a href="#" style="cursor: no-drop;" title="* ไม่สามารถทำการได้"  class="btn btn-primary w-100 font-weight-bold">เจ้าหน้าที่</a>
-                                
-                            <?php
-                            }
-                            if($num['user_level'] == "manager"){
-                                ?>
-                            <a href="#" style="cursor: no-drop;" title="* ไม่สามารถทำการได้" class="btn btn-primary w-100 font-weight-bold">ผู้บริหาร</a>
-                                
-                            <?php
-                            }
-                            if($num['user_level'] == "super@dmin"){
-                                ?>
-                            <div style="cursor: no-drop;" title="* ไม่สามารถทำการได้" class="btn btn-info w-100 font-weight-bold">ผู้ดูแลระบบ</div>
-                                
-                            <?php
-                            }
+                            
 
                         ?>
                         

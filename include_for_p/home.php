@@ -43,7 +43,8 @@
         <div class="card-header ">
             <a href="index.php?p=newsAll" class="text-decoration-none text-dark">
                 <h3 class="mb-0"><i class="fa fa-newspaper-o text-success" aria-hidden="true"></i> ข่าวประชาสัมพันธ์
-                </h3>
+            </h3>
+            <span class="badge badge-success">อ่านข่าวประชาสัมพันธ์ทั้งหมดคลิก</span>
             </a>
         </div>
         <div class="card-body">

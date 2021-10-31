@@ -26,7 +26,7 @@
                                 <div class="col-lg-6">
                                     <label for="username" class="mt-2"> <b>Username</b></label>
                                     <input id="user" style="width:100%;" type="text"
-                                        class="form-control border border-secondary" name="username" required>
+                                        class="form-control border border-secondary" name="username" required placeholder="ชื่อผู้ใช้งาน">
                                     <span id="userChk" class="s"></span>
                                 </div>
 
@@ -35,7 +35,7 @@
                                 <div class="col-lg-6">
                                     <label for="password" class="mt-2"> <b>Password</b></label>
                                     <input style="width:100%;" type="text" class="form-control border border-secondary"
-                                        name="password" required>
+                                        name="password" required placeholder="รหัสผ่าน">
 
                                 </div>
                             </div>
@@ -55,13 +55,13 @@
                                 <div class="col-lg-5">
                                     <label for="first_name" class="mt-2"> <b>ชื่อจริง</b></label>
                                     <input style="width:100%;" type="text" class="form-control border border-secondary"
-                                        name="first_name" required>
+                                        name="first_name" required placeholder="ชื่อจริง">
                                 </div>
 
                                 <div class="col-lg-5">
                                     <label for="last_name" class="mt-2"> <b>นามสกุล</b></label>
                                     <input style="width:100%; " type="text" class="form-control border border-secondary"
-                                        name="last_name" required>
+                                        name="last_name" required placeholder="นามสกุล">
                                 </div>
                             </div>
 
@@ -69,7 +69,15 @@
                                 <div class="col-lg-5">
                                     <label for="email" class="mt-2"><b>E-mail</b></label>
                                     <input style="width:150%;" type="email" class="form-control border border-secondary"
-                                        name="email" required>
+                                        name="email" required placeholder="อีเมล">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col">
+                                    <label for="phone_number" class="mt-2"> <b>ที่อยู่</b> </label>
+                                    <textarea  type="text" class="form-control border border-secondary"
+                                        name="user_address" required placeholder="กรอกที่อยู่ของท่าน"></textarea>
                                 </div>
                             </div>
 
@@ -77,7 +85,7 @@
                                 <div class="col">
                                     <label for="phone_number" class="mt-2"> <b>เบอร์โทร</b> </label>
                                     <input style="width:200px;" type="text" class="form-control border border-secondary"
-                                        name="phone_number" required maxlength="10">
+                                        name="phone_number" required maxlength="10" placeholder="เบอร์โทรศัพท์">
                                 </div>
                             </div>
 

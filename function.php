@@ -133,7 +133,7 @@
             
         
             //? ฟังก์ชั่น สมัครสมาชิก
-            public function register_form($username, $password, $title_name, $first_name, $last_name, $email, $phone_number, $profile_img){
+            public function register_form($username, $password, $title_name, $first_name, $last_name, $email, $user_address, $phone_number, $profile_img){
 
                     $result = mysqli_query($this->dbcon, "INSERT INTO user(
                         username,
@@ -142,6 +142,7 @@
                         first_name,
                         last_name,
                         email,
+                        user_address,
                         phone_number,
                         profile_img,
                         register_status,
@@ -152,6 +153,7 @@
                         '$first_name',
                         '$last_name',
                         '$email',
+                        '$user_address',
                         '$phone_number',
                         '$profile_img',
                         'pass',
@@ -208,7 +210,7 @@
             }
             //? ฟังก์ชั่น ดึงข้อมูลผู้ใช้ หน้าอนุมัติ
             public function slU_m1(){
-                $re = mysqli_query($this->dbcon, "SELECT * FROM user ORDER BY id DESC");
+                $re = mysqli_query($this->dbcon, "SELECT * FROM user WHERE user_level ='people' ORDER BY id DESC");
                 return $re;
             }
             //? ฟังก์ชั่น ดึงข่าวหน้า มาโชว์หน้า EDIT News

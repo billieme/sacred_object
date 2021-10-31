@@ -19,7 +19,6 @@
                     <tr id="bg_hd_table_m">
                         <th scope="col">ลำดับ</th>
                         <th scope="col">Username</th>
-                        <th scope="col">Password</th>
                         <th scope="col">Name</th>
                         <th scope="col">Lastname</th>
                         <th scope="col">E-mail</th>
@@ -33,12 +32,12 @@
                 $n=1;
                 while($num = $sl_user->fetch(PDO::FETCH_ASSOC))
                 {
-                    $pass = md5($num['password']);
+                    
                 ?>
                     <tr class="">
                         <th scope="row"><?php $num['id']; echo $n;?></th>
                         <td><?php echo $num['username']; ?></td>
-                        <td><?php echo $pass; ?></td>
+                        
                         <td><?php echo $num['first_name']; ?></td>
                         <td><?php echo $num['last_name']; ?></td>
                         <td><?php echo $num['email']; ?></td>
@@ -50,25 +49,25 @@
                             <div class="btn btn-success w-100 ">อนุมัติ</div>
                             <?php
                             }
-                            if($num['register_status'] == "pass" && $num['user_level'] == "sp_@" ){
+                            if($num['register_status'] == "pass" && $num['user_level'] == "super@dmin" ){
                                 ?>
                             <div class="btn btn-success w-100">ผู้ดูแลระบบ</div>
 
                             <?php
                             }
-                            if($num['register_status'] == "pass" && $num['user_level'] == "p" ){
+                            if($num['register_status'] == "pass" && $num['user_level'] == "people" ){
                                 ?>
                             <div class="btn btn-warning w-100">ผู้ใช้งานทั่วไป</div>
 
                             <?php
                             }
-                            if($num['user_level'] == "a"){
+                            if($num['user_level'] == "admin"){
                                 ?>
                             <div class="btn btn-primary w-100">เจ้าหน้าที่</div>
 
                             <?php
                             }
-                            if($num['user_level'] == "ma"){
+                            if($num['user_level'] == "manager"){
                                 ?>
                             <div class="btn btn-primary w-100">ผู้บริหาร</div>
 

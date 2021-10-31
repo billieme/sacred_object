@@ -4,7 +4,7 @@
 ?>
 <div class="card">
     <div class="card-header bg-primary text-light">
-        <h3 class="text-center"><i class="fas fa-list-alt"></i> รายการการเช่าวัตถุมงคลทั้งหมด</h3>
+        <h3 class="text-center"><i class="fas fa-list-alt"></i> รายงานการเช่าวัตถุมงคลทั้งหมด</h3>
     </div>
 
     <div class="card-body">
@@ -26,6 +26,8 @@
             $sl_list_success->execute(['s1' => 'approved']);
             $i = 1;
             while($post = $sl_list_success->fetch()){
+                $time = $post->date_time;
+                $timeTH = new DB_conn();
         ?>
                 <tr>
                     <td><?=$i;?></td>
@@ -53,7 +55,7 @@
                         
                     ?>
 </td>
-<td><?php echo $post->date_time;?></td>
+<td><?php echo $timeTH->thai_date_and_time(strtotime($time))?></td>
 <td><?php echo number_format($post->total_prod );?></td>
 <td>
     <a href="manager.php?m=m4_veiw_order_come&id4_save_basket=<?php echo $post->id_save_basket; ?>"

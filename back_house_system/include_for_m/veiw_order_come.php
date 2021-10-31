@@ -16,6 +16,7 @@
                     </thead>
                     <tbody>
                         <?php
+                        $timeTH = new DB_conn();
                         $queryThis = new shopSacredObj();
                         $sl_save_basket1 = $queryThis->runQuery("SELECT * FROM save_basket WHERE id_save_basket='$_GET[id4_save_basket]' ");
                         $fetch_SSB1 = mysqli_fetch_array($sl_save_basket1);
@@ -105,7 +106,12 @@
                 <div class="row">
 
                     <div class="col-md-7">
+                    ทำรายการเมื่อวันที่ : <?php 
+                                    $time = $fetch_SSB1['date_time'];
 
+                                    echo $timeTH->thai_date_and_time(strtotime($time)); 
+                                    
+                                    ?>
                         <img class="w-100 rounded" style="border:2px solid white;"
                             src="../image/slip_chk/<?php echo $fetch_SSB1['slip_img']; ?>" alt="">
                     </div>
@@ -113,6 +119,14 @@
                 <?php
                     }else{
                         echo"เช่าบูชาที่ซุ้มพระ  / ชำระเงินเรียบร้อยแล้ว";
+                        ?>
+                        , ทำรายการเมื่อวันที่ : <?php 
+                                    $time = $fetch_SSB1['date_time'];
+
+                                    echo $timeTH->thai_date_and_time(strtotime($time)); 
+                                    
+                                    ?>
+                        <?php
                     }
                     ?>
             </div>

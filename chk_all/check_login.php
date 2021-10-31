@@ -28,6 +28,7 @@
             $_SESSION['lname'] = $num['last_name'];
             $_SESSION['pnumber'] = $num['phone_number'];
             $_SESSION['email'] = $num['email'];
+            $_SESSION['user_address'] = $num['user_address'];
             $_SESSION['user_level'] = $num['user_level'];
             $_SESSION['r_s'] = $num['register_status'];
             

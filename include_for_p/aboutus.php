@@ -23,7 +23,7 @@
                         <P><b>เบอร์โทรติดต่อ <i class="fas fa-phone-square-alt text-success"></i> :</b> </P>
                     </div>
                     <div class="col-9">
-                        <P>082-442-5465 (พระสักชัย จิตฺตสุโภ)</P>
+                        <P>056-227688 (ซุ้มบูชาวัตถุมงคลวัดนครสวรรค์พระอารามหลวง)</P>
                     </div>
                     <div class="col"></div>
                 </div>

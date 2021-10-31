@@ -1,4 +1,5 @@
 <?php
+    $slN = new DB_conn();
     if(isset($_POST['sm_slip'])){
       
         $path = "image/slip_chk/";
@@ -161,6 +162,11 @@
                         ?>
                             <div class="row">
                                 <div class="col-12 col-md-7">
+                                    ทำรายการเมื่อวันที่ : <?php 
+                                    $time = $fetch_SSB1['date_time'];
+                                    echo $slN->thai_date_and_time(strtotime($time)); 
+                                    
+                                    ?>
                                     <img class="w-100 rounded " src="image/slip_chk/<?php echo$fetch_SSB1['slip_img']; ?>" alt="">
                                 </div>
                             </div>

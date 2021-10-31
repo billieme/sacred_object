@@ -3,6 +3,7 @@
 <script src="sweetalert/sweetalert2.all.min.js"></script>
 
 <?php
+    $slN = new DB_conn();
 
     if(!isset($_SESSION['id'])){
         ?>
@@ -170,7 +171,7 @@ window.location.href = 'index.php';
                     <thead class="text-nowrap">
 
                         <th>#</th>
-                        <th>วันที่ทำการ</th>
+                        <th>วันที่ทำรายการ</th>
                         <th>ยอดรวม</th>
                         <th class="text-center">จัดการ</th>
                         <th class="text-center">สถานะบิล</th>
@@ -180,11 +181,11 @@ window.location.href = 'index.php';
                         <?php
                         $i=1;
                             while($fetch_SB = mysqli_fetch_array($sqlSelect_SB)){
-
+                                $time = $fetch_SB['date_time'];
                                 ?>
                         <tr>
                             <td><?php echo $i;?></td>
-                            <td><?php echo $fetch_SB['date_time'];?></td>
+                            <td><?php echo $slN->thai_date_and_time(strtotime($time));?></td>
                             <td><?php echo number_format($fetch_SB["total_prod"]);?></td>
 
                             <td>

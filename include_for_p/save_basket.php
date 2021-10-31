@@ -93,7 +93,7 @@ if (isset($_POST['submitOrder'])) {
                                     ที่อยู่สำหรับจัดส่ง : </td>
                                 <td class="pt-2">
                                     <textarea class="form-control ml-2" name="address4send" id="" cols="" rows="2"
-                                        required></textarea>
+                                        required><?php echo $_SESSION['user_address']; ?></textarea>
                                 </td>
                             </tr>
                             <tr>

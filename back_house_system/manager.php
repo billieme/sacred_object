@@ -94,7 +94,7 @@ if($_SESSION['user_level'] == "admin"){
                                                 <i class="fas fa-address-book" id="m_m1"></i>
                                             </div>
                                             <div class="col">
-                                                <p class="mb-0" id="t_m_m1">อนุมัติรายชื่อสมาชิก</p>
+                                                <p class="mb-0" id="t_m_m1">ระงับการใช้งานสมาชิก</p>
                                             </div>
 
 

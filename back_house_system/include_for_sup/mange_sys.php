@@ -16,7 +16,6 @@
                     <tr id="bg_hd_table_m">
                     <th scope="col">ลำดับ</th>
                     <th scope="col">Username</th>
-                    <th scope="col">Password</th>
                     <th scope="col">Name</th>
                     <th scope="col">Lastname</th>
                     <th scope="col">E-mail</th>
@@ -30,12 +29,12 @@
                 $n=1;
                 while($num = $sl_user->fetch(PDO::FETCH_ASSOC))
                 {
-                    $pass = md5($num['password']);
+                    
                 ?>
                     <tr class="">
                     <th scope="row"><?php $num['id']; echo $n;?></th>
                     <td><?php echo $num['username']; ?></td>
-                    <td><?php echo $pass; ?></td>
+                    
                     <td><?php echo $num['first_name']; ?></td>
                     <td><?php echo $num['last_name']; ?></td>
                     <td><?php echo $num['email']; ?></td>

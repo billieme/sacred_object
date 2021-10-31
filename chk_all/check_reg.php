@@ -29,11 +29,12 @@
             $first_name = $_POST['first_name'];
             $last_name = $_POST['last_name'];
             $email = $_POST['email'];
+            $user_address = $_POST['user_address'];
             $phone_number = $_POST['phone_number'];
             $profile_img = "-";
 
 
-            $inserted = $reg->register_form($username, $password, $title_name, $first_name, $last_name, $email, $phone_number, $profile_img);
+            $inserted = $reg->register_form($username, $password, $title_name, $first_name, $last_name, $email, $user_address, $phone_number, $profile_img);
 
             if($inserted){
 

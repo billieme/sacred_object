@@ -10,18 +10,19 @@
                 <th>#</th>
                 <th>ชื่อ-นามสุกล</th>
                 <th>วันเวลาที่สั่ง</th>
-                <th>ยอดรวม</th>
+                <th>ยอดรวม/บาท</th>
                 <th class="">ข้อมูล</th>
             </thead>
 
             <tbody class="text-nowrap">
                 <?php
                     $pdo4thisP = new newpdo();
+                    $timeTH = new DB_conn();
                     $sql_sl4savebasket = $pdo4thisP->runQuery("SELECT * from save_basket where status_pay!=:status_pay order by id_save_basket");
                     $sql_sl4savebasket->execute(['status_pay'=>"approved"]);
                     $x=1;
                    while($post_sl4savebasket = $sql_sl4savebasket->fetch(PDO::FETCH_ASSOC)) {
-                       
+                       $time = $post_sl4savebasket['date_time'];
                        ?>
                 <tr>
                     <td><?php echo $x;?></td>
@@ -35,12 +36,12 @@
                     </td>
                     <td>
                         <?php
-                            echo $post_sl4savebasket['date_time'];
+                            echo $timeTH->thai_date_and_time(strtotime($time));
                         ?>
                     </td>
                     <td>
                         <?php
-                            echo $post_sl4savebasket['total_prod'];
+                            echo number_format($post_sl4savebasket['total_prod']) ;
                         ?>
                     </td>
                     <td>
