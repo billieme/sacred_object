@@ -203,12 +203,13 @@ function ajax_pull() {
 
 <div class="card mt-4">
     <div class="card-header bg-primary">
-        <h3 class="text-light"><i class="fas fa-file-invoice-dollar"></i> ตรางรายงานยอดขายวัตถุมงคลทั้งหมด</h3>
+        <h3 class="text-light"><i class="fas fa-file-invoice-dollar"></i> ตารางรายงานยอดขายวัตถุมงคลทั้งหมด</h3>
     </div>
     <div class="card-body">
 
         <?php
                 $pdo4ThisP = new connect_db();
+                $timeTH = new DB_conn();
             
             ?>
         <table class="w-100 table table-hover" id="myTable">
@@ -229,6 +230,7 @@ function ajax_pull() {
             $sl_list_success->execute(['s1' => 'approved']);
             $i = 1;
             while($post = $sl_list_success->fetch()){
+                $time = $post->date_time;
         ?>
                 <tr>
                     <td><?=$i;?></td>
@@ -256,8 +258,8 @@ function ajax_pull() {
                         
                     ?>
 </td>
-<td><?php echo $post->date_time;?></td>
-<td><?php echo $post->total_prod ;?></td>
+<td><?php echo $timeTH->thai_date_and_time(strtotime($time));?></td>
+<td><?php echo number_format($post->total_prod );?></td>
 <td>
     <a href="executive.php?m=m4_veiw_order_come&id4_save_basket=<?php echo $post->id_save_basket; ?>"
         class="btn btn-primary w-100"><i class="far fa-eye"></i> ดูรายละเอียด</a>

@@ -107,7 +107,7 @@ function ajax_pull() {
 
 <div class="card mt-4">
     <div class="card-header bg-success">
-        <h3 class="text-light"><i class="fas fa-chart-line"></i> ตรางรายงานยอดวัตถุมงคลคงเหลือ</h3>
+        <h3 class="text-light"><i class="fas fa-chart-line"></i> ตารางรายงานยอดวัตถุมงคลคงเหลือ</h3>
     </div>
     <div class="card-body">
         <?php
@@ -115,6 +115,7 @@ function ajax_pull() {
         $pd_sl = new DB_conn();
         $pd_slD = new DB_conn();
         $del = new DB_conn();
+        $timeTH = new DB_conn();
 
         ?>
        <table class="min-vw-100 table table-striped pb-3" id="myTable">
@@ -141,6 +142,7 @@ function ajax_pull() {
                            
                             
                         {
+                            $time = $num1['date_create'];
 
                         
 
@@ -160,9 +162,9 @@ function ajax_pull() {
                     </td>
                     <td><?php echo $num1['product_name'];?></td>
                     <td><?php echo $num1['product_type'];?></td>
-                    <td><?php echo $num1['product_price'];?></td>
-                    <td><?php echo $num1['product_qty'];?></td>
-                    <td><?php echo $num1['date_create'];?></td>
+                    <td><?php echo number_format($num1['product_price']) ;?></td>
+                    <td><?php echo number_format($num1['product_qty']) ;?></td>
+                    <td><?php echo $timeTH->thai_date_and_time(strtotime($time));?></td>
                     
                     </tr>
                     <?php

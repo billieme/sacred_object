@@ -1,5 +1,6 @@
 <div class="">
 <?php
+$timeTH =  new DB_conn();
  if(isset($_GET['comefrom'])){
 ?>
 <div class="text-light mb-1">
@@ -114,7 +115,11 @@
                 <div class="row">
 
                     <div class="col-md-7">
+                    ทำรายการเมื่อวันที่ : <?php 
+                                    $time = $fetch_SSB1['date_time'];
 
+                                    echo $timeTH->thai_date_and_time(strtotime($time)); 
+                                    ?>
                         <img class="w-100 rounded" style="border:2px solid white;"
                             src="../image/slip_chk/<?php echo $fetch_SSB1['slip_img']; ?>" alt="">
                     </div>
@@ -122,6 +127,14 @@
                 <?php
                     }else{
                         echo"เช่าบูชาที่ซุ้มพระ  / ชำระเงินเรียบร้อยแล้ว";
+                        ?>
+                        , ทำรายการเมื่อวันที่ : <?php 
+                                    $time = $fetch_SSB1['date_time'];
+
+                                    echo $timeTH->thai_date_and_time(strtotime($time)); 
+                                    
+                                    ?>
+                        <?php
                     }
                     ?>
             </div>

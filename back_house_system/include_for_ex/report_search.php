@@ -4,7 +4,7 @@
 
 <div class="card">
     <div class="card-header bg-info">
-        <h3 class="text-light"><i class="fas fa-file-invoice-dollar"></i> รายงานยอดขายราย วัน/เดือน/ปี</h3>
+        <h3 class="text-light"><i class="fas fa-file-invoice-dollar"></i> รายงานยอดขายรวม ราย วัน/เดือน/ปี</h3>
     </div>
 
     <div class="card-body">
@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-md-2 mt-2">
 
-                    <input class="form-control" type="datetime-local" name="d_sta" required>
+                    <input class="form-control" type="date" name="d_sta" required>
 
                 </div>
 
@@ -57,7 +57,7 @@
 
                 <div class="col-md-2 mt-2">
 
-                    <input class="form-control" type="datetime-local" name="d_sto" required>
+                    <input class="form-control" type="date" name="d_sto" required>
 
                 </div>
 
@@ -107,8 +107,10 @@
 
             <tbody class="text-nowrap">
                 <?php
+                $timeTH = new DB_conn();
                 $i=1;
             while($fet_arr_bt = mysqli_fetch_array($sql_select_between)){
+                $time = $fet_arr_bt['date_time'];
         ?>
                 <tr>
                     <td><?=$i;?></td>
@@ -135,8 +137,8 @@
                         
                     ?>
 </td>
-<td><?php echo $fet_arr_bt['date_time'];?></td>
-<td><?php echo $fet_arr_bt['total_prod'] ;?></td>
+<td><?php echo $timeTH->thai_date_and_time(strtotime($time));?></td>
+<td><?php echo number_format($fet_arr_bt['total_prod']) ;?></td>
 <td>
     <a href="executive.php?m=m4_veiw_order_come&id4_save_basket=<?php echo $fet_arr_bt['id_save_basket']; ?>&comefrom=report_search"
         class="btn btn-primary w-100"><i class="far fa-eye"></i> ดูรายละเอียด</a>
